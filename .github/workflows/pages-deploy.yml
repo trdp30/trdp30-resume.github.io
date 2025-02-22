@@ -43,10 +43,6 @@ jobs:
 
       - name: Build
         run: pnpm run build
-        env:
-          VITE_EMAIL_ADDRESS: ${{ secrets.VITE_EMAIL }}
-          VITE_PHONE_NUMBER: ${{ secrets.VITE_PHONE_NUMBER }}
-          VITE_ADDRESS: ${{ secrets.VITE_ADDRESS }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
