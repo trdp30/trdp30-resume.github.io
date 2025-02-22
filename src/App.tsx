@@ -6,16 +6,16 @@ export const App = () => {
         <div className="flex flex-wrap gap-1 text-sm">
           <span className="mr-1 font-bold">Email:</span>
           <a className="text-blue-700" href="mailto:trdp30@gmail.com">
-            trdp30@gmail.com
+            {import.meta.env.VITE_EMAIL_ADDRESS}
           </a>
           <span className="mr-1 ml-2 font-bold">Phone:</span>
           <a className="text-blue-700" href="tel:trdp30@gmail.com">
-            9706055724
+            {import.meta.env.VITE_PHONE_NUMBER}
           </a>
         </div>
         <p className="text-sm">
           <span className="mr-1 font-bold">Address:</span>
-          <span>Bokakhat, Dist: Golaghat, Assam,India</span>
+          <span>{import.meta.env.VITE_ADDRESS}</span>
         </p>
         <div className="text-sm">
           <span className="mr-1 font-bold">Github: </span>
@@ -59,8 +59,8 @@ export const App = () => {
         <ul className="list-disc list-inside text-sm">
           <li>
             <strong className="text-base">Frontend Development:</strong>{" "}
-            ReactJs, EmberJs, BackboneJs, Redux, Redux-saga, RTK Query,
-            TailwindCss, Material UI, Shadcn/ui
+            Javascript, HTML/CSS, ReactJs, EmberJs, BackboneJs, Redux,
+            Redux-saga, RTK Query, TailwindCss, Material UI, Shadcn/ui
           </li>
           <li>
             <strong className="text-base">System Architecture:</strong> Scalable
@@ -127,20 +127,35 @@ export const App = () => {
             <p className="text-sm italic">
               ReactJs, Redux, Webpack, TailwindCss, Shadcn, GraphQL, Apollo
               Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC,
-              Sentry
+              Sentry, Docker, Kubernetes, GitHub Actions
             </p>
             <ul className="list-disc list-inside text-sm mt-1">
               <li>
                 Led the design and enhancement of the orchestration platform,
                 implementing scalable frontend architectures using Webpack,
                 React, Redux, and Redux-saga, with real-time data pipelines
-                powered by WebSocket (Socket.io) and Apollo Client.
+                powered by WebSocket integrated through Apollo Client and
+                `graphql-ws`.
               </li>
               <li>
                 The TOP project comprises multiple applications, with total
                 lines of code ranging from 19,884 in the largest application to
                 5,909 in the smallest, demonstrating expertise in managing
                 complex codebases.
+              </li>
+              <li>
+                Utilized Docker to containerize applications, ensuring
+                consistency across development, testing, and production
+                environments.
+              </li>
+              <li>
+                Deployed applications using Kubernetes, automating deployment,
+                scaling, and management of containerized applications.
+              </li>
+              <li>
+                Automated the deployment process using GitHub Actions, enabling
+                continuous integration and continuous deployment (CI/CD) for
+                seamless updates and rollbacks.
               </li>
             </ul>
           </div>
@@ -210,7 +225,7 @@ export const App = () => {
         <h2 className="text-xl font-semibold mb-2">Achievements</h2>
         <ul className="list-disc list-inside text-sm">
           <li>
-            5,590 GitHub Contributions in 2023: Achieved the highest GitHub
+            5,590 GitHub Contributions in 2024: Achieved the highest GitHub
             contribution in the organization for the year.
           </li>
           <li>
