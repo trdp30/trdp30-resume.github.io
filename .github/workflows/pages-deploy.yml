@@ -44,7 +44,7 @@ jobs:
       - name: Build
         run: pnpm run build
         env:
-          VITE_EMAIL: ${{ secrets.VITE_EMAIL }}
+          VITE_EMAIL_ADDRESS: ${{ secrets.VITE_EMAIL }}
           VITE_PHONE_NUMBER: ${{ secrets.VITE_PHONE_NUMBER }}
           VITE_ADDRESS: ${{ secrets.VITE_ADDRESS }}
 
