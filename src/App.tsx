@@ -5,11 +5,17 @@ export const App = () => {
         <h1 className="text-3xl font-bold mb-2">Trideep Kumar Das</h1>
         <div className="flex flex-wrap gap-1 text-sm">
           <span className="mr-1 font-bold">Email:</span>
-          <a className="text-blue-700" href="mailto:trdp30@gmail.com">
+          <a
+            className="text-blue-700"
+            href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS}`}
+          >
             {import.meta.env.VITE_EMAIL_ADDRESS}
           </a>
           <span className="mr-1 ml-2 font-bold">Phone:</span>
-          <a className="text-blue-700" href="tel:trdp30@gmail.com">
+          <a
+            className="text-blue-700"
+            href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
+          >
             {import.meta.env.VITE_PHONE_NUMBER}
           </a>
         </div>
@@ -74,6 +80,7 @@ export const App = () => {
           </li>
           <li>
             <strong className="text-base">Testing & Performance:</strong> Jest,
+            React testing library(RTL), Storybook, Lighthouse, Sentry,
             performance optimization (40% load reduction, 85%+ test coverage)
           </li>
         </ul>
@@ -125,9 +132,9 @@ export const App = () => {
               Talview Orchestration Platform (TOP)
             </h4>
             <p className="text-sm italic">
-              ReactJs, Redux, Webpack, TailwindCss, Shadcn, GraphQL, Apollo
+              ReactJs, Redux, Webpack, TailwindCss, Shadcn/ui, GraphQL, Apollo
               Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC,
-              Sentry, Docker, Kubernetes, GitHub Actions
+              Sentry, Docker, Kubernetes, GitHub Actions, Jest, RTL, Storybook
             </p>
             <ul className="list-disc list-inside text-sm mt-1">
               <li>

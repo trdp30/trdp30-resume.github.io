@@ -111,3 +111,6 @@ dist
 # Vitest cache
 .vitest
 .DS_Store
+
+# env
+.env
