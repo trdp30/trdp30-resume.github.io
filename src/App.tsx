@@ -1,4 +1,4 @@
-const Resume = () => {
+export const App = () => {
   return (
     <div className="container mx-auto p-6 max-w-4xl print:p-0 print:max-w-none">
       <header className="mb-6 pb-6 border-b border-gray-300 print:border-gray-400">
@@ -249,4 +249,4 @@ const Resume = () => {
   );
 };
 
-export default Resume;
+export default App;
