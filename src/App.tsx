@@ -125,8 +125,9 @@ const Resume = () => {
               Talview Orchestration Platform (TOP)
             </h4>
             <p className="text-sm italic">
-              ReactJs, Redux, Webpack, TailwindCss, GraphQL, Apollo Client,
-              WebSocket, Socket.io, Redux-saga, Storybook, WebRTC, Sentry
+              ReactJs, Redux, Webpack, TailwindCss, Shadcn, GraphQL, Apollo
+              Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC,
+              Sentry
             </p>
             <ul className="list-disc list-inside text-sm mt-1">
               <li>

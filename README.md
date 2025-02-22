@@ -38,7 +38,7 @@ _Talview | Bengaluru, India | June 2018 – Present_
 #### Key Projects
 
 - **Talview Orchestration Platform (TOP)**  
-  _Technologies:_ ReactJs, Redux, Webpack, TailwindCss, GraphQL, Apollo Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC, Sentry
+  _Technologies:_ ReactJs, Redux, Webpack, TailwindCss, Shadcn, GraphQL, Apollo Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC, Sentry,
 
   - Led the design and enhancement of the orchestration platform with scalable frontend architectures using React, Redux, and Redux-saga.
   - Managed real-time data pipelines powered by WebSocket (Socket.io) and Apollo Client.
