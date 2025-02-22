@@ -1,3 +1,19 @@
+let data = {
+  name: "Trideep Kumar Das",
+  email: "trdp30@gmail.com",
+  phone: "9706055724",
+  address: "Bokakhat, Dist: Golaghat, Assam, India",
+};
+
+if (process.env.NODE_ENV !== "production") {
+  data = {
+    name: "Test test Test",
+    email: "test0@test.com",
+    phone: "1234567890",
+    address: "Address, Dist: Address, Assam, India",
+  };
+}
+
 export const App = () => {
   return (
     <div className="container mx-auto p-6 max-w-4xl print:p-0 print:max-w-none">
@@ -5,23 +21,17 @@ export const App = () => {
         <h1 className="text-3xl font-bold mb-2">Trideep Kumar Das</h1>
         <div className="flex flex-wrap gap-1 text-sm">
           <span className="mr-1 font-bold">Email:</span>
-          <a
-            className="text-blue-700"
-            href={`mailto:${import.meta.env.VITE_EMAIL_ADDRESS}`}
-          >
-            {import.meta.env.VITE_EMAIL_ADDRESS}
+          <a className="text-blue-700" href={`mailto:${data.email}`}>
+            {data.email}
           </a>
           <span className="mr-1 ml-2 font-bold">Phone:</span>
-          <a
-            className="text-blue-700"
-            href={`tel:${import.meta.env.VITE_PHONE_NUMBER}`}
-          >
-            {import.meta.env.VITE_PHONE_NUMBER}
+          <a className="text-blue-700" href={`tel:${data.phone}`}>
+            {data.phone}
           </a>
         </div>
         <p className="text-sm">
           <span className="mr-1 font-bold">Address:</span>
-          <span>{import.meta.env.VITE_ADDRESS}</span>
+          <span>{data.address}</span>
         </p>
         <div className="text-sm">
           <span className="mr-1 font-bold">Github: </span>
