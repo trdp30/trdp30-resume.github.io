@@ -75,7 +75,7 @@ export const App = () => {
         <ul className="list-disc list-inside text-sm">
           <li>
             <strong className="text-base">Frontend Development:</strong>{" "}
-            Javascript, HTML/CSS, ReactJs, EmberJs, BackboneJs, Redux,
+            Javascript, Typescript HTML/CSS, ReactJs, EmberJs, BackboneJs, Redux,
             Redux-saga, RTK Query, TailwindCss, Material UI, Shadcn/ui
           </li>
           <li>
@@ -142,7 +142,7 @@ export const App = () => {
               Talview Orchestration Platform (TOP)
             </h4>
             <p className="text-sm italic">
-              ReactJs, Redux, Webpack, TailwindCss, Shadcn/ui, GraphQL, Apollo
+              Typescript, Javascript, ReactJs, Redux, Webpack, TailwindCss, Shadcn/ui, GraphQL, Apollo
               Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC,
               Sentry, Docker, Kubernetes, GitHub Actions, Jest, RTL, Storybook
             </p>
