@@ -16,7 +16,7 @@ I'm currently a Staff Frontend Engineer at Talview, leading a frontend team of 7
 
 ## Key Skills
 
-- **Frontend Development:** ReactJs, EmberJs, BackboneJs, Redux, Redux-saga, RTK Query, TailwindCss, Material UI, Shadcn/ui
+- **Frontend Development:** Javascript, Typescript, ReactJs, EmberJs, BackboneJs, Redux, Redux-saga, RTK Query, TailwindCss, Material UI, Shadcn/ui
 - **System Architecture:** Scalable frontend architectures, Webpack configuration, GraphQL, Apollo Client, REST APIs, WebSocket
 - **Leadership & Mentorship:** Team growth facilitation, code quality standardization, cross-functional collaboration
 - **Testing & Performance:** Jest, performance optimization (40% load reduction, 85%+ test coverage)
@@ -38,7 +38,7 @@ _Talview | Bengaluru, India | June 2018 – Present_
 #### Key Projects
 
 - **Talview Orchestration Platform (TOP)**  
-  _Technologies:_ ReactJs, Redux, Webpack, TailwindCss, Shadcn, GraphQL, Apollo Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC, Sentry,
+  _Technologies:_ Javascript, Typescript, ReactJs, Redux, Webpack, TailwindCss, Shadcn, GraphQL, Apollo Client, WebSocket, Socket.io, Redux-saga, Storybook, WebRTC, Sentry,
 
   - Led the design and enhancement of the orchestration platform with scalable frontend architectures using React, Redux, and Redux-saga.
   - Managed real-time data pipelines powered by WebSocket (Socket.io) and Apollo Client.
