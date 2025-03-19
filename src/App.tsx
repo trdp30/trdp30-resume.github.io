@@ -75,7 +75,7 @@ export const App = () => {
         <ul className="list-disc list-inside text-sm">
           <li>
             <strong className="text-base">Frontend Development:</strong>{" "}
-            Javascript, Typescript HTML/CSS, ReactJs, EmberJs, BackboneJs, Redux,
+            Javascript, Typescript, HTML/CSS, ReactJs, EmberJs, BackboneJs, Redux,
             Redux-saga, RTK Query, TailwindCss, Material UI, Shadcn/ui
           </li>
           <li>
