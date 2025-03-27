@@ -3,16 +3,6 @@
 @tailwind utilities;
 
 @media print {
-  @page {
-    size: A4;
-  }
-
-  body {
-    -webkit-print-color-adjust: exact; /* Ensures colors print accurately */
-    print-color-adjust: exact;
-    transform: scale(0.99); /* Scale content to fit page */
-  }
-
   .hidden-print {
     display: none !important; /* Hides elements like buttons */
   }
