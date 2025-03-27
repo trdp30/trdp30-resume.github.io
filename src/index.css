@@ -4,7 +4,7 @@
 
 @media print {
   @page {
-    size: auto; /* Adjust page size automatically */
+    size: A4;
   }
 
   body {
