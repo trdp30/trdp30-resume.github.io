@@ -140,8 +140,8 @@ export const App = () => {
         </header>
 
         {/* Professional Summary */}
-        <section className="mb-3 pb-4 border-b relative">
-          <h2 className="text-xl font-bold mb-1 text-black">
+        <section className="mb-4 pb-5 border-b relative">
+          <h2 className="text-xl font-bold mb-3 text-black">
             Professional Summary
           </h2>
           <p className="text-sm leading-relaxed text-black">
@@ -169,11 +169,11 @@ export const App = () => {
         </section>
 
         {/* Core Competencies */}
-        <section className="mb-3 pb-4 relative border-b">
-          <h2 className="text-xl font-bold mb-1 text-black">
+        <section className="mb-4 pb-5 relative border-b">
+          <h2 className="text-xl font-bold mb-3 text-black">
             Core Competencies
           </h2>
-          <ul className="text-sm space-y-1 text-black">
+          <ul className="text-sm space-y-2 text-black">
             <li className="flex items-start">
               <span className="font-semibold">
                 Frontend Architecture & Development
@@ -214,25 +214,51 @@ export const App = () => {
           </ul>
         </section>
 
+        {/* Prompt Engineering */}
+        <section className="mb-4 pb-5 relative border-b">
+          <h2 className="text-xl font-bold mb-3 text-black">
+            Prompt Engineering
+          </h2>
+          <ul className="text-sm space-y-2 text-black">
+            <li className="flex items-center">
+              <span>
+                <strong>Cursor</strong>
+              </span>
+              <span className="mx-2">|</span>
+              <span>
+                <strong>Windsurf</strong>
+              </span>
+              <span className="mx-2">|</span>
+              <span>
+                <strong>Claude Cloud</strong>
+              </span>
+              <span className="mx-2">|</span>
+              <span>
+                <strong>Codex</strong>
+              </span>
+            </li>
+          </ul>
+        </section>
+
         {/* Professional Experience */}
-        <section className="mb-3 pb-4 border-b relative">
-          <h2 className="text-xl font-bold mb-1 text-black">
+        <section className="mb-4 pb-5 border-b relative">
+          <h2 className="text-xl font-bold mb-3 text-black">
             Professional Experience
           </h2>
 
-          <div className="mb-1">
+          <div className="mb-4">
             <h3 className="text-lg font-semibold text-black">
               Staff Software Engineer - Frontend
             </h3>
-            <p className="text-sm italic mb-0 text-black">
+            <p className="text-sm italic mb-3 text-black">
               Talview | June 2018 - Present | Bengaluru, India
             </p>
 
-            <div className="mb-0">
-              <h4 className="font-semibold text-base mb-0 text-black">
+            <div className="mb-3">
+              <h4 className="font-semibold text-base mb-2 text-black">
                 Leadership & Architecture:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Lead <strong>frontend architecture</strong> and development
                   across multiple
@@ -253,11 +279,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-0">
-              <h4 className="font-semibold text-base mb-0 text-black">
+            <div className="mb-3">
+              <h4 className="font-semibold text-base mb-2 text-black">
                 Performance & Quality:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Optimized <strong>application architecture</strong>, achieving
                   a <strong>40% reduction in load time</strong> and enhanced
@@ -277,11 +303,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-0">
-              <h4 className="font-semibold text-base mb-0 text-black">
+            <div className="mb-3">
+              <h4 className="font-semibold text-base mb-2 text-black">
                 Mentorship & Delivery:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Mentored <strong>junior and mid-level engineers</strong>,
                   improving <strong>team productivity</strong> and{" "}
@@ -298,11 +324,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-0">
-              <h4 className="font-semibold text-base mb-0 text-black">
+            <div className="mb-3">
+              <h4 className="font-semibold text-base mb-2 text-black">
                 Key Achievements:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Achieved <strong>5,590 GitHub contributions in 2024</strong>,
                   highest in organization history.
@@ -321,20 +347,20 @@ export const App = () => {
             </div>
           </div>
 
-          <div className="mb-1">
-            <h3 className="text-lg font-semibold mb-0 text-black">
+          <div className="mb-4">
+            <h3 className="text-lg font-semibold mb-3 text-black">
               Key Projects
             </h3>
 
-            <div className="mb-1">
-              <h4 className="font-semibold text-base text-black mb-0">
+            <div className="mb-4">
+              <h4 className="font-semibold text-base text-black mb-2">
                 Talview Orchestration Platform (TOP)
               </h4>
-              <p className="text-sm italic mb-0 text-black">
+              <p className="text-sm italic mb-2 text-black">
                 React.js, TypeScript, GraphQL, Redux-Saga, WebSocket, Webpack,
                 Docker, GitHub Actions, Nx Monorepo Workspace
               </p>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Designed and led <strong>frontend architecture</strong>.
                 </li>
@@ -353,15 +379,15 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-1">
-              <h4 className="font-semibold text-base text-black mb-0">
+            <div className="mb-4">
+              <h4 className="font-semibold text-base text-black mb-2">
                 Proview Live Proctor
               </h4>
-              <p className="text-sm italic mb-0 text-black">
+              <p className="text-sm italic mb-2 text-black">
                 React.js, WebRTC, WebSocket, GraphQL, Apollo Client, Socket.io,
                 Sentry
               </p>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Developed a <strong>real-time proctoring platform</strong>{" "}
                   integrating <strong>live video streaming, chat</strong>, and{" "}
@@ -383,14 +409,14 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-1">
-              <h4 className="font-semibold text-base text-black mb-0">
+            <div className="mb-4">
+              <h4 className="font-semibold text-base text-black mb-2">
                 Proview Client
               </h4>
-              <p className="text-sm italic mb-0 text-black">
+              <p className="text-sm italic mb-2 text-black">
                 Backbone.js, Grunt, Browserify, Socket.io, Getstream.io, Sentry
               </p>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Delivered advanced <strong>event-tracking features</strong>{" "}
                   such as <strong>multi-face detection</strong>,{" "}
@@ -406,14 +432,14 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-1">
-              <h4 className="font-semibold text-base text-black mb-0">
+            <div className="mb-4">
+              <h4 className="font-semibold text-base text-black mb-2">
                 Recruit & Candidate Platforms
               </h4>
-              <p className="text-sm italic mb-0 text-black">
+              <p className="text-sm italic mb-2 text-black">
                 Ember.js, Ember-data, Semantic UI, Sentry
               </p>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
                   Enhanced <strong>user engagement</strong> by{" "}
                   <strong>30%</strong> through
@@ -434,9 +460,9 @@ export const App = () => {
         </section>
 
         {/* Achievements */}
-        <section className="mb-3 pb-4 border-b border-black relative">
-          <h2 className="text-xl font-bold mb-0 text-black">Achievements</h2>
-          <ul className="list-disc list-inside text-sm space-y-1 text-black">
+        <section className="mb-4 pb-5 border-b border-black relative">
+          <h2 className="text-xl font-bold mb-3 text-black">Achievements</h2>
+          <ul className="list-disc list-inside text-sm space-y-2 text-black">
             <li>
               <strong>5,590 GitHub Contributions (2024)</strong> - Highest
               organization-wide record.
@@ -465,7 +491,7 @@ export const App = () => {
 
         {/* Education */}
         <section className="relative">
-          <h2 className="text-xl font-bold mb-0 uppercase text-black">
+          <h2 className="text-xl font-bold mb-3 uppercase text-black">
             Education
           </h2>
           <p className="text-sm text-black">
