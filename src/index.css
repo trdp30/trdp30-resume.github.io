@@ -2,8 +2,87 @@
 @tailwind components;
 @tailwind utilities;
 
+@layer base {
+  body {
+    @apply bg-white text-black;
+  }
+
+  /* Ensure list markers are visible with flex */
+  ul li.flex {
+    display: flex;
+    position: relative;
+    padding-left: 1.25rem;
+  }
+
+  ul li.flex::before {
+    content: "•";
+    color: black;
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+  }
+}
+
 @media print {
   .hidden-print {
     display: none !important; /* Hides elements like buttons */
+  }
+
+  @page {
+    margin-top: 0.3in;
+    margin-left: 0.3in;
+    margin-right: 0.3in;
+    margin-bottom: 0.15in;
+    size: letter;
+  }
+
+  body {
+    background: white !important;
+    color: black !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .container {
+    max-width: 100% !important;
+    padding: 0 !important;
+  }
+
+  /* Ensure text is black in print */
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  p,
+  li,
+  span,
+  div,
+  a {
+    color: black !important;
+  }
+
+  /* Remove opacity for print */
+  h1 {
+    opacity: 1 !important;
+  }
+
+  /* Ensure links are visible */
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  /* Ensure borders print */
+  section,
+  header {
+    border-color: black !important;
+    /* page-break-inside: avoid; */
+  }
+
+  /* Prevent page breaks inside sections */
+  section {
+    /* page-break-inside: avoid; */
   }
 }

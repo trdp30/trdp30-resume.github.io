@@ -5,17 +5,17 @@ let data = {
   name: "Trideep Kumar Das",
   email: "trdp30@gmail.com",
   phone: "9706055724",
-  address: "Bokakhat, Dist: Golaghat, Assam, India",
+  location: "Bengaluru, India",
 };
 
-if (process.env.NODE_ENV !== "production") {
-  data = {
-    name: "Test test Test",
-    email: "test0@test.com",
-    phone: "1234567890",
-    address: "Address, Dist: Address, Assam, India",
-  };
-}
+// if (process.env.NODE_ENV !== "production") {
+//   data = {
+//     name: "Test test Test",
+//     email: "test0@test.com",
+//     phone: "1234567890",
+//     location: "Address, Dist: Address, Assam, India",
+//   };
+// }
 
 export const App = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -32,271 +32,446 @@ export const App = () => {
       <DownloadButton handleDownloadPDF={handleDownloadPDF} loading={loading} />
       <div
         ref={contentRef}
-        className="container mx-auto p-6 max-w-4xl print:p-0 print:max-w-none"
+        className="container mx-auto p-6 max-w-4xl print:p-0 print:max-w-none bg-white"
       >
-        <header className="mb-6 pb-6 border-b border-gray-300 print:border-gray-400">
-          <h1 className="text-3xl font-bold mb-2">Trideep Kumar Das</h1>
-          <div className="flex flex-wrap gap-1 text-sm">
-            <span className="mr-1 font-bold">Email:</span>
-            <a className="text-blue-700" href={`mailto:${data.email}`}>
-              {data.email}
-            </a>
-            <span className="mr-1 ml-2 font-bold">Phone:</span>
-            <a className="text-blue-700" href={`tel:${data.phone}`}>
-              {data.phone}
-            </a>
-          </div>
-          <p className="text-sm">
-            <span className="mr-1 font-bold">Address:</span>
-            <span>{data.address}</span>
+        {/* Header Section */}
+        <header className="mb-4 pb-3 border-b border-black">
+          <h1 className="text-3xl font-bold mb-1 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100">
+            {data.name.toUpperCase()}
+          </h1>
+          <p className="text-lg font-bold mb-2 text-black">
+            Lead Frontend Engineer | React & TypeScript Expert | Scalable System
+            Architect
           </p>
-          <div className="text-sm">
-            <span className="mr-1 font-bold">Github: </span>
-            <a
-              className="text-blue-700"
-              href="https://github.com/trdp30"
-              target="_blank"
-            >
-              https://github.com/trdp30
-            </a>
-
-            <span className="mr-1 ml-2 font-bold">LinkedIn: </span>
-            <a
-              className="text-blue-700"
-              href="https://linkedin.com/in/trideep-das-817962133"
-              target="_blank"
-            >
-              https://linkedin.com/in/trideep-das-817962133
-            </a>
+          <div className="flex flex-wrap items-center gap-4 text-sm text-black">
+            <div className="flex items-center gap-1">
+              <svg
+                className="w-4 h-4 text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"
+                />
+              </svg>
+              <span className="text-black">+91 {data.phone}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <svg
+                className="w-4 h-4 text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+                />
+              </svg>
+              <span className="text-black">{data.email}</span>
+            </div>
+            <div className="flex items-center gap-1">
+              <svg
+                className="w-4 h-4 text-black"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  fillRule="evenodd"
+                  d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-1.002-.014-1.845-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"
+                  clipRule="evenodd"
+                />
+              </svg>
+              <a
+                className="text-black underline hover:no-underline"
+                href="https://github.com/trdp30"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                GitHub
+              </a>
+            </div>
+            <div className="flex items-center gap-1">
+              <svg
+                className="w-4 h-4 text-black"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
+              </svg>
+              <a
+                className="text-black underline hover:no-underline"
+                href="https://linkedin.com/in/trideep-das-817962133"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                LinkedIn
+              </a>
+            </div>
+            <div className="flex items-center gap-1">
+              <svg
+                className="w-4 h-4 text-black"
+                fill="none"
+                stroke="currentColor"
+                viewBox="0 0 24 24"
+              >
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+                />
+                <path
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  strokeWidth={2}
+                  d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+                />
+              </svg>
+              <span className="text-black">{data.location}</span>
+            </div>
           </div>
         </header>
 
-        <section className="mb-6 pb-6 border-b border-gray-300 print:border-gray-400">
-          <h2 className="text-xl font-semibold mb-2">Profile</h2>
-          <p className="text-sm">
-            I'm currently a Staff Frontend Engineer at Talview, leading a
-            frontend team of 7-10 engineers (from junior to mid-senior levels)
-            for the past 3 years. With 7 years of experience in frontend
-            development, majorly with React, I specialize in building web
-            applications from scratch to production deployment. I have a proven
-            track record of leading end-to-end frontend development projects,
-            architecting scalable systems, and mentoring engineering teams.
-            Skilled in aligning technical solutions with strategic business
-            goals, I actively elevate team performance by fostering a culture of
-            technical excellence and continuous improvement through technical
-            leadership.
+        {/* Professional Summary */}
+        <section className="mb-3 pb-4 border-b relative">
+          <h2 className="text-xl font-bold mb-1 text-black">
+            Professional Summary
+          </h2>
+          <p className="text-sm leading-relaxed text-black">
+            Seasoned <strong>Frontend Engineering Leader</strong> with{" "}
+            <strong>7+ years of experience</strong> in architecting and
+            delivering{" "}
+            <strong>high-performance, scalable web applications</strong> across{" "}
+            <strong>SaaS and enterprise platforms</strong>. Currently serving as{" "}
+            <strong>Staff Frontend Engineer</strong> at Talview, leading a team
+            of <strong>7-10 engineers</strong> and driving{" "}
+            <strong>end-to-end frontend initiatives</strong> from design to
+            production deployment. Adept at building{" "}
+            <strong>modular architectures</strong> using
+            <strong> React, TypeScript, GraphQL, and Webpack</strong>, and
+            integrating <strong>CI/CD pipelines</strong> with{" "}
+            <strong>Docker</strong>. Proven success in improving application
+            performance by <strong>40%</strong>, boosting user engagement by{" "}
+            <strong>30%</strong>, and achieving{" "}
+            <strong>85%+ test coverage</strong>. Recognized for{" "}
+            <strong>technical leadership</strong>,
+            <strong> cross-functional collaboration</strong>, and{" "}
+            <strong>mentorship excellence</strong>, consistently aligning
+            engineering strategy with organizational growth and innovation.
           </p>
         </section>
 
-        <section className="mb-6 pb-6 border-b border-gray-300 print:border-gray-400">
-          <h2 className="text-xl font-semibold mb-2">Key Skills</h2>
-          <ul className="list-disc list-inside text-sm">
-            <li>
-              <strong className="text-base">Frontend Development:</strong>{" "}
-              Javascript, Typescript, HTML/CSS, ReactJs, EmberJs, BackboneJs,
-              Redux, Redux-saga, RTK Query, TailwindCss, Material UI, Shadcn/ui
+        {/* Core Competencies */}
+        <section className="mb-3 pb-4 relative border-b">
+          <h2 className="text-xl font-bold mb-1 text-black">
+            Core Competencies
+          </h2>
+          <ul className="text-sm space-y-1 text-black">
+            <li className="flex items-start">
+              <span className="font-semibold">
+                Frontend Architecture & Development
+              </span>
+              <span className="mx-2">|</span>
+              <span>React.js & TypeScript</span>
             </li>
-            <li>
-              <strong className="text-base">System Architecture:</strong>{" "}
-              Scalable frontend architectures, Webpack configuration, GraphQL,
-              Apollo Client, REST APIs, WebSocket
+            <li className="flex items-center">
+              <span className="font-semibold">Scalable System Design</span>
+              <span className="mx-2">|</span>
+              <span>Mentorship & Team Leadership</span>
             </li>
-            <li>
-              <strong className="text-base">Leadership & Mentorship:</strong>{" "}
-              Team growth facilitation, code quality standardization,
-              cross-functional collaboration
+            <li className="flex items-center">
+              <span>Redux / RTK Query / Redux-Saga</span>
+              <span className="mx-2">|</span>
+              <span>GraphQL / Apollo Client</span>
             </li>
-            <li>
-              <strong className="text-base">Testing & Performance:</strong>{" "}
-              Jest, React testing library(RTL), Storybook, Lighthouse, Sentry,
-              performance optimization (40% load reduction, 85%+ test coverage)
+            <li className="flex items-center">
+              <span>WebSocket / WebRTC</span>
+              <span className="mx-2">|</span>
+              <span>CI/CD (GitHub Actions, Docker)</span>
+            </li>
+            <li className="flex items-center">
+              <span>HTML5 / CSS3 / Tailwind / Material UI / Shadcn/UI</span>
+            </li>
+            <li className="flex items-center">
+              <span>Unit & Integration Testing (Jest, RTL, Storybook)</span>
+              <span className="mx-2">|</span>
+              <span>JavaScript (ES6+)</span>
+            </li>
+            <li className="flex items-center">
+              <span>Agile Delivery</span>
+              <span className="mx-2">|</span>
+              <span>Cross-Functional Collaboration</span>
+              <span className="mx-2">|</span>
+              <span>Performance Optimization</span>
             </li>
           </ul>
         </section>
 
-        <section className="mb-6 pb-6 border-b border-gray-300 print:border-gray-400">
-          <h2 className="text-xl font-semibold mb-2">
+        {/* Professional Experience */}
+        <section className="mb-3 pb-4 border-b relative">
+          <h2 className="text-xl font-bold mb-1 text-black">
             Professional Experience
           </h2>
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold">
+
+          <div className="mb-1">
+            <h3 className="text-lg font-semibold text-black">
               Staff Software Engineer - Frontend
             </h3>
-            <p className="text-sm italic">
-              Talview | Bengaluru, India | June 2018 – Present
+            <p className="text-sm italic mb-0 text-black">
+              Talview | June 2018 - Present | Bengaluru, India
             </p>
-            <ul className="list-disc list-inside text-sm mt-2">
-              <li>
-                Technical Leadership: Led large-scale frontend projects,
-                defining scalable architectures for high-performance
-                applications, increasing application load speed by 40% and
-                enhancing system stability.
-              </li>
-              <li>
-                Cross-Functional Collaboration: Worked closely with product
-                managers and UX designers to transform complex requirements into
-                intuitive, performant user interfaces.
-              </li>
-              <li>
-                Mentorship: Guided and mentored junior and senior engineers,
-                achieving 40-60% improvements in their coding skills and
-                productivity.
-              </li>
-              <li>
-                Code Quality and Performance Optimization: Conducted rigorous
-                code reviews, establishing benchmark code quality standards
-                recognized organization-wide.
-              </li>
-              <li>
-                Top GitHub Contributor: Achieved 5,590 GitHub contributions in
-                the last year, the highest contribution in the organization,
-                showcasing consistent and impactful engineering output.
-              </li>
-            </ul>
+
+            <div className="mb-0">
+              <h4 className="font-semibold text-base mb-0 text-black">
+                Leadership & Architecture:
+              </h4>
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                <li>
+                  Lead <strong>frontend architecture</strong> and development
+                  across multiple
+                  <strong> SaaS platforms</strong>, ensuring{" "}
+                  <strong>scalability, maintainability</strong>, and
+                  <strong> optimized performance</strong>.
+                </li>
+                <li>
+                  Defined reusable <strong>design systems</strong> and{" "}
+                  <strong>component libraries</strong>, reducing redundant code
+                  and improving development velocity by <strong>35%</strong>.
+                </li>
+                <li>
+                  Collaborated with <strong>product managers</strong>,{" "}
+                  <strong>backend engineers</strong>, and{" "}
+                  <strong>UX teams</strong>.
+                </li>
+              </ul>
+            </div>
+
+            <div className="mb-0">
+              <h4 className="font-semibold text-base mb-0 text-black">
+                Performance & Quality:
+              </h4>
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                <li>
+                  Optimized <strong>application architecture</strong>, achieving
+                  a <strong>40% reduction in load time</strong> and enhanced
+                  <strong> system stability</strong>.
+                </li>
+                <li>
+                  Established comprehensive{" "}
+                  <strong>unit and integration testing frameworks</strong> using{" "}
+                  <strong>Jest</strong> and{" "}
+                  <strong>React Testing Library</strong>, increasing coverage to{" "}
+                  <strong>85%+</strong>.
+                </li>
+                <li>
+                  Introduced <strong>automated deployment pipelines</strong> via{" "}
+                  <strong>GitHub Actions</strong>.
+                </li>
+              </ul>
+            </div>
+
+            <div className="mb-0">
+              <h4 className="font-semibold text-base mb-0 text-black">
+                Mentorship & Delivery:
+              </h4>
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                <li>
+                  Mentored <strong>junior and mid-level engineers</strong>,
+                  improving <strong>team productivity</strong> and{" "}
+                  <strong>code quality</strong>.
+                </li>
+                <li>
+                  Standardized <strong>coding guidelines</strong> and{" "}
+                  <strong>code-review processes</strong>.
+                </li>
+                <li>
+                  Delivered multiple{" "}
+                  <strong>enterprise-grade web applications</strong>.
+                </li>
+              </ul>
+            </div>
+
+            <div className="mb-0">
+              <h4 className="font-semibold text-base mb-0 text-black">
+                Key Achievements:
+              </h4>
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                <li>
+                  Achieved <strong>5,590 GitHub contributions in 2024</strong>,
+                  highest in organization history.
+                </li>
+                <li>
+                  Recognized as Production Engineering Champion, Annual
+                  Champion, and Engineering Champion.
+                </li>
+                <li>
+                  Instrumental in driving{" "}
+                  <strong>30% growth in user engagement</strong> through{" "}
+                  <strong>UI/UX enhancements</strong> and{" "}
+                  <strong>feature optimization</strong>.
+                </li>
+              </ul>
+            </div>
           </div>
 
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold">Key Projects</h3>
-            <div className="mb-2">
-              <h4 className="font-semibold">
+          <div className="mb-1">
+            <h3 className="text-lg font-semibold mb-0 text-black">
+              Key Projects
+            </h3>
+
+            <div className="mb-1">
+              <h4 className="font-semibold text-base text-black mb-0">
                 Talview Orchestration Platform (TOP)
               </h4>
-              <p className="text-sm italic">
-                Typescript, Javascript, ReactJs, Redux, Webpack, TailwindCss,
-                Shadcn/ui, GraphQL, Apollo Client, WebSocket, Socket.io,
-                Redux-saga, Storybook, WebRTC, Sentry, Docker, Kubernetes,
-                GitHub Actions, Jest, RTL, Storybook
+              <p className="text-sm italic mb-0 text-black">
+                React.js, TypeScript, GraphQL, Redux-Saga, WebSocket, Webpack,
+                Docker, GitHub Actions, Nx Monorepo Workspace
               </p>
-              <ul className="list-disc list-inside text-sm mt-1">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
-                  Led the design and enhancement of the orchestration platform,
-                  implementing scalable frontend architectures using Webpack,
-                  React, Redux, and Redux-saga, with real-time data pipelines
-                  powered by WebSocket integrated through Apollo Client and
-                  `graphql-ws`.
+                  Designed and led <strong>frontend architecture</strong>.
                 </li>
                 <li>
-                  The TOP project comprises multiple applications, with total
-                  lines of code ranging from 19,884 in the largest application
-                  to 5,909 in the smallest, demonstrating expertise in managing
-                  complex codebases.
+                  Containerized applications using <strong>Docker</strong>.
                 </li>
                 <li>
-                  Utilized Docker to containerize applications, ensuring
-                  consistency across development, testing, and production
-                  environments.
+                  Integrated <strong>GraphQL subscriptions</strong> with{" "}
+                  <strong>WebSocket</strong> for{" "}
+                  <strong>real-time data pipelines</strong>.
                 </li>
                 <li>
-                  Deployed applications using Kubernetes, automating deployment,
-                  scaling, and management of containerized applications.
-                </li>
-                <li>
-                  Automated the deployment process using GitHub Actions,
-                  enabling continuous integration and continuous deployment
-                  (CI/CD) for seamless updates and rollbacks.
+                  Automated <strong>CI/CD pipelines</strong> using{" "}
+                  <strong>GitHub Actions</strong>.
                 </li>
               </ul>
             </div>
 
-            <div className="mb-2">
-              <h4 className="font-semibold">Proview Live Proctor</h4>
-              <p className="text-sm italic">
-                ReactJs, Redux, WebSocket, GraphQL, Apollo Client, WebRTC,
-                Socket.io, Webpack, Sentry
-              </p>
-              <ul className="list-disc list-inside text-sm mt-1">
-                <li>
-                  Spearheaded a real-time proctoring system integrating
-                  real-time chat and video analysis, significantly improving
-                  candidate monitoring and security.
-                </li>
-                <li>
-                  Designed and implemented real-time streaming using WebRTC,
-                  leveraging Socket.io, Apollo Client (GraphQL), Webpack
-                  configuration, and Sentry for error tracking, ensuring stable
-                  and secure live proctoring experiences.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-2">
-              <h4 className="font-semibold">Proview Client</h4>
-              <p className="text-sm italic">
-                BackboneJs, Grunt, Browserify, jQuery, Socket.io, Getstream.io,
+            <div className="mb-1">
+              <h4 className="font-semibold text-base text-black mb-0">
+                Proview Live Proctor
+              </h4>
+              <p className="text-sm italic mb-0 text-black">
+                React.js, WebRTC, WebSocket, GraphQL, Apollo Client, Socket.io,
                 Sentry
               </p>
-              <ul className="list-disc list-inside text-sm mt-1">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
-                  Developed an event-capture platform with features like
-                  multiple face detection, copy/paste tracking, and screen
-                  activity recording for enhanced candidate evaluation.
+                  Developed a <strong>real-time proctoring platform</strong>{" "}
+                  integrating <strong>live video streaming, chat</strong>, and{" "}
+                  <strong>analytics</strong>.
                 </li>
                 <li>
-                  Integrated Socket.io based real-time notifications, enhancing
-                  platform responsiveness, and used Grunt and Browserify for
-                  efficient build processes.
+                  Implemented <strong>WebRTC-based video streaming</strong> with{" "}
+                  <strong>Socket.io</strong> and
+                  <strong> Apollo Client</strong> for{" "}
+                  <strong>real-time communication</strong>, ensuring{" "}
+                  <strong>stable and secure</strong> live proctoring
+                  experiences.
+                </li>
+                <li>
+                  Enhanced <strong>system reliability and monitoring</strong>{" "}
+                  using <strong>Sentry</strong> for
+                  <strong> error tracking</strong>.
                 </li>
               </ul>
             </div>
 
-            <div className="mb-2">
-              <h4 className="font-semibold">Recruit & Candidate Platforms</h4>
-              <p className="text-sm italic">
-                EmberJs, Ember-data, Semantic UI, Sentry
+            <div className="mb-1">
+              <h4 className="font-semibold text-base text-black mb-0">
+                Proview Client
+              </h4>
+              <p className="text-sm italic mb-0 text-black">
+                Backbone.js, Grunt, Browserify, Socket.io, Getstream.io, Sentry
               </p>
-              <ul className="list-disc list-inside text-sm mt-1">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
-                  Oversaw end-to-end development and maintenance, optimizing
-                  performance and enhancing user engagement by 30%.
+                  Delivered advanced <strong>event-tracking features</strong>{" "}
+                  such as <strong>multi-face detection</strong>,{" "}
+                  <strong>copy/paste monitoring</strong>, and{" "}
+                  <strong>screen recording</strong>.
                 </li>
                 <li>
-                  Refactored legacy codebases, achieving performance
-                  enhancements and improved maintainability, using Ember-data
-                  for data management and Semantic UI for consistent UI
-                  components.
+                  Integrated{" "}
+                  <strong>Socket.io-based real-time notifications</strong> and
+                  <strong> Getstream.io</strong> for{" "}
+                  <strong>activity feeds</strong>.
+                </li>
+              </ul>
+            </div>
+
+            <div className="mb-1">
+              <h4 className="font-semibold text-base text-black mb-0">
+                Recruit & Candidate Platforms
+              </h4>
+              <p className="text-sm italic mb-0 text-black">
+                Ember.js, Ember-data, Semantic UI, Sentry
+              </p>
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                <li>
+                  Enhanced <strong>user engagement</strong> by{" "}
+                  <strong>30%</strong> through
+                  <strong> modernized frontends</strong>,{" "}
+                  <strong>optimized performance</strong>, and{" "}
+                  <strong>restructured legacy codebases</strong>.
+                </li>
+                <li>
+                  Refactored <strong>legacy applications</strong> using{" "}
+                  <strong>Ember-data</strong> for{" "}
+                  <strong>efficient data management</strong> and{" "}
+                  <strong>Semantic UI</strong> for{" "}
+                  <strong>consistent UI components</strong>.
                 </li>
               </ul>
             </div>
           </div>
         </section>
 
-        <section className="mb-6 pb-6 border-b border-gray-300 print:border-gray-400">
-          <h2 className="text-xl font-semibold mb-2">Achievements</h2>
-          <ul className="list-disc list-inside text-sm">
+        {/* Achievements */}
+        <section className="mb-3 pb-4 border-b border-black relative">
+          <h2 className="text-xl font-bold mb-0 text-black">Achievements</h2>
+          <ul className="list-disc list-inside text-sm space-y-1 text-black">
             <li>
-              5,590 GitHub Contributions in 2024: Achieved the highest GitHub
-              contribution in the organization for the year.
+              <strong>5,590 GitHub Contributions (2024)</strong> - Highest
+              organization-wide record.
             </li>
             <li>
-              30% Increase in User Engagement: Developed and launched new
-              features that drove significant user engagement improvements.
+              <strong>40% Load Time Reduction</strong> through{" "}
+              <strong>architectural refactoring</strong> and optimized{" "}
+              <strong>Webpack configuration</strong>.
             </li>
             <li>
-              40% Reduction in Load Time: Optimized application performance,
-              enhancing overall user satisfaction.
+              <strong>85%+ Test Coverage</strong> across all major{" "}
+              <strong>frontend modules</strong>.
             </li>
             <li>
-              85% Test Coverage: Elevated test coverage across projects,
-              ensuring robust and reliable software solutions.
+              <strong>30% User Engagement Growth</strong> through{" "}
+              <strong>strategic feature development</strong> and{" "}
+              <strong>UI performance tuning</strong>.
             </li>
             <li>
-              Mentorship Impact: Successfully mentored developers, boosting
-              productivity by up to 60%.
-            </li>
-            <li>
-              Multiple Engineering Awards: Recognized as Production Engineering
-              Champion, Annual Champion, and Engineering Champion for impactful
-              contributions.
+              Multiple <strong>Engineering Awards</strong> recognizing{" "}
+              <strong>technical excellence</strong> and
+              <strong> leadership impact</strong>.
             </li>
           </ul>
         </section>
 
-        <section>
-          <h2 className="text-xl font-semibold mb-2">Education</h2>
-          <p className="text-sm">
+        {/* Education */}
+        <section className="relative">
+          <h2 className="text-xl font-bold mb-0 uppercase text-black">
+            Education
+          </h2>
+          <p className="text-sm text-black">
             <strong>Master of Computer Applications (MCA)</strong>
             <br />
-            Sikkim Manipal Institute of Technology (SMIT) | 2015 – 2018
+            Sikkim Manipal Institute of Technology (SMIT) | 2015 - 2018
           </p>
         </section>
       </div>
