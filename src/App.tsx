@@ -200,7 +200,7 @@ export const App = () => {
               <span>HTML5 / CSS3 / Tailwind / Material UI / Shadcn/UI</span>
             </li>
             <li className="flex items-center">
-              <span>Unit & Integration Testing (Jest, RTL, Storybook)</span>
+              <span>Unit, Integration and End-to-End Testing (Jest, RTL, Cypress Storybook)</span>
               <span className="mx-2">|</span>
               <span>JavaScript (ES6+)</span>
             </li>
