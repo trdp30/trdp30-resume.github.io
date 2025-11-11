@@ -198,17 +198,23 @@ export const App = () => {
               <span>GraphQL / Apollo Client</span>
             </li>
             <li className="flex items-center">
-              <span>WebSocket / WebRTC</span>
+              <span>WebSocket / WebRTC / Firebase Realtime Database</span>
               <span className="mx-2">|</span>
               <span>CI/CD (GitHub Actions, Docker)</span>
+            </li>
+            <li className="flex items-center">
+              <span>NodeJs / Hasura</span>
+              <span className="mx-2">|</span>
+              <span>Firebase Console / GCP Cloud Run</span>
             </li>
             <li className="flex items-center">
               <span>HTML5 / CSS3 / Tailwind / Material UI / Shadcn/UI</span>
             </li>
             <li className="flex items-center">
-              <span>Unit, Integration and End-to-End Testing (Jest, RTL, Cypress Storybook)</span>
-              <span className="mx-2">|</span>
-              <span>JavaScript (ES6+)</span>
+              <span>
+                Unit, Integration and End-to-End Testing (Jest, RTL, Cypress,
+                Storybook)
+              </span>
             </li>
             <li className="flex items-center">
               <span>Agile Delivery</span>
