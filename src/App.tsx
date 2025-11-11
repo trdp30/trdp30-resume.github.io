@@ -175,11 +175,17 @@ export const App = () => {
           </h2>
           <ul className="text-sm space-y-2 text-black">
             <li className="flex items-start">
-              <span className="font-semibold">
-                Frontend Architecture & Development
-              </span>
-              <span className="mx-2">|</span>
-              <span>React.js & TypeScript</span>
+              <div>
+                <span className="font-semibold">
+                  Frontend Architecture & Development
+                </span>
+                <span className="mx-2">|</span>
+                <br />
+                <span>
+                  React.js / EmberJs / React Native & TypeScript / Javascript /
+                  Webpack / Vite / Nx monorepo / Micro-Frontend
+                </span>
+              </div>
             </li>
             <li className="flex items-center">
               <span className="font-semibold">Scalable System Design</span>
