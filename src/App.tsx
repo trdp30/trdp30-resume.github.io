@@ -17,9 +17,27 @@ let data = {
 //   };
 // }
 
+const role = [
+  "Lead Frontend Engineer",
+  "Staff Frontend Engineer",
+  "UI Manager",
+];
+
 export const App = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
+  const [targetRoleIndex, setTargetRoleIndex] = useState(0);
+
+  const handleSwitchTargetRole = () => {
+    let index = targetRoleIndex;
+    if (index === 2) {
+      index = 0;
+      setTargetRoleIndex(index);
+    } else {
+      index += 1;
+      setTargetRoleIndex(index);
+    }
+  };
 
   const handleDownloadPDF = async () => {
     setLoading(true);
@@ -39,9 +57,12 @@ export const App = () => {
           <h1 className="text-3xl font-bold mb-1 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100">
             {data.name.toUpperCase()}
           </h1>
-          <p className="text-lg font-bold mb-2 text-black">
-            Lead Frontend Engineer | React & TypeScript Expert | Scalable System
-            Architect
+          <p
+            className="text-lg font-bold mb-2 text-black"
+            onClick={handleSwitchTargetRole}
+          >
+            {role[targetRoleIndex]} | React & TypeScript Expert | Scalable
+            System Architect
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
