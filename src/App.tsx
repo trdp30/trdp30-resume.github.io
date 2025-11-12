@@ -176,8 +176,11 @@ export const App = () => {
             <strong>end-to-end frontend initiatives</strong> from design to
             production deployment. Adept at building{" "}
             <strong>modular architectures</strong> using
-            <strong> React, TypeScript, GraphQL, and Webpack</strong>, and
-            integrating <strong>CI/CD pipelines</strong> with{" "}
+            <strong>
+              {" "}
+              React, TypeScript, GraphQL/RESTful API, and Webpack
+            </strong>
+            , and integrating <strong>CI/CD pipelines</strong> with{" "}
             <strong>Docker</strong>. Proven success in improving application
             performance by <strong>40%</strong>, boosting user engagement by{" "}
             <strong>30%</strong>, and achieving{" "}
@@ -216,7 +219,7 @@ export const App = () => {
             <li className="flex items-center">
               <span>Redux / RTK Query / Redux-Saga</span>
               <span className="mx-2">|</span>
-              <span>GraphQL / Apollo Client</span>
+              <span>GraphQL / Apollo Client / RESTful API / Axios</span>
             </li>
             <li className="flex items-center">
               <span>WebSocket / WebRTC / Firebase Realtime Database</span>
