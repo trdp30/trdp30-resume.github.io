@@ -1,0 +1,201 @@
+{
+  "projects": [
+    {
+      "name": "Workflow Tool",
+      "description": "A tool for managing the workflow of the candidates and the interviewers",
+      "technologies": [
+        "ReactJs",
+        "Typescript",
+        "Monorepo",
+        "GraphQL",
+        "Apollo Client",
+        "Hasura Subscriptions",
+        "Nx Monorepo",
+        "Webpack",
+        "Sentry",
+        "Docker",
+        "GitHub Actions",
+        "Jest",
+        "React Testing Library"
+      ],
+      "myContribution": [
+        "Lead Architecture design and development from design to production",
+        "Implement new features",
+        "Maintain the application",
+        "Code review",
+        "Manage deployment pipeline",
+        "Collaborate with the backend team for the integration of the features",
+        "Collaborate with product team, CS team and other stack holders for the roadmap planning and feature development"
+      ]
+    },
+    {
+      "name": "Candidate Web Application V3",
+      "description": "A platform for where candidates can take the test and live interview and manage their availability",
+      "technologies": [
+        "ReactJs",
+        "Typescript",
+        "Monorepo",
+        "GraphQL",
+        "Apollo Client",
+        "Hasura Subscriptions",
+        "Nx Monorepo",
+        "Webpack",
+        "Sentry",
+        "Docker",
+        "GitHub Actions",
+        "tavus.io",
+        "Jest",
+        "React Testing Library"
+      ],
+      "myContribution": [
+        "Lead Architecture design and development from design to production",
+        "Implement new features",
+        "Maintain the application",
+        "Code review",
+        "Manage deployment pipeline",
+        "Collaborate with product team, CS team and other stack holders for the roadmap planning and feature development"
+      ]
+    },
+    {
+      "name": "Teserra Components Library ",
+      "description": "A library of components for the Teserra platform",
+      "technologies": [
+        "ReactJs",
+        "Typescript",
+        "Storybook",
+        "Chromatic",
+        "TailwindCss",
+        "Shadcn/ui",
+        "Radix UI",
+        "Cypress",
+        "Jest",
+        "React Testing Library"
+      ],
+      "myContribution": [
+        "Lead Architecture design and setup",
+        "Review and approve the components"
+      ]
+    },
+    {
+      "name": "Candidate Web Application V2",
+      "description": "A platform for where candidates can take the test and live interview and manage their availability",
+      "technologies": [
+        "ReactJs",
+        "Typescript",
+        "Micro-frontend",
+        "Webpack Module Federation",
+        "RESTFull API",
+        "Redux",
+        "Webpack",
+        "Sentry",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "myContribution": [
+        "Architecture design and development from design to production",
+        "Implement new features",
+        "Migrate legacy code to new architecture",
+        "Manage deployment pipeline",
+        "Collaborate with the backend team for the integration of the features",
+        "Collaborate with product team for the roadmap planning and feature development"
+      ]
+    },
+    {
+      "name": "Recruit Web Application",
+      "description": "A platform for orchestrating and managing the flow of data between different systems.",
+      "technologies": [
+        "EmberJs",
+        "Javascript",
+        "RESTFull API",
+        "Ember Data",
+        "Ember Table",
+        "Ember Calendar",
+        "Sentry",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "myContribution": [
+        "Implement new features",
+        "Optimized performance",
+        "Refactored legacy code in structured way",
+        "Debugging and fixing issues",
+        "Provide support to the CS team for the application",
+        "Manage deployment pipeline",
+        "Collaborate with the backend team for the integration of the features",
+        "Collaborate with product team for the feature development"
+      ]
+    },
+    {
+      "name": "Candidate Web Application",
+      "description": "A platform for where candidates can take the tests, live interview and manage their availability.",
+      "technologies": [
+        "EmberJs",
+        "Javascript",
+        "RESTFull API",
+        "Ember Data",
+        "Ember Calendar",
+        "Sentry",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "myContribution": [
+        "Implement new features",
+        "Optimized performance",
+        "Refactored legacy code in structured way",
+        "Debugging and fixing issues",
+        "Provide support to the CS team for the application",
+        "Manage deployment pipeline",
+        "Collaborate with the backend team for the integration of the features",
+        "Collaborate with product team for the feature development"
+      ]
+    },
+    {
+      "name": "Proview Live Proctor",
+      "description": "A platform for invigilator to monitor the candidates during the test and live interview",
+      "technologies": [
+        "ReactJs",
+        "Javascript",
+        "react-table",
+        "RESTFull API",
+        "WebRTC",
+        "WebSocket",
+        "Getstream.io",
+        "videojs",
+        "HLS Streaming",
+        "Webpack",
+        "Sentry",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "myContribution": [
+        "Architecture design and development from design to production",
+        "Implement new features",
+        "Optimized performance",
+        "Manage deployment pipeline",
+        "Collaborate with the backend team for the integration of the features",
+        "Collaborate with product team for the feature development"
+      ]
+    },
+    {
+      "name": "Proview Client",
+      "description": "A platform through which we monitor the candidates activity during the test",
+      "technologies": [
+        "BackboneJs",
+        "Javascript",
+        "Grunt",
+        "RESTFull API",
+        "React",
+        "Getstream.io",
+        "Sentry",
+        "Docker",
+        "GitHub Actions"
+      ],
+      "myContribution": [
+        "Implement new features",
+        "Debugging and fixing issues",
+        "Collaborate with the backend team for the integration of the features",
+        "Collaborate with product team for the feature development"
+      ]
+    }
+  ]
+}
