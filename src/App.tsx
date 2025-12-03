@@ -211,79 +211,16 @@ export const App = () => {
           </p>
         </section>
 
-        {/* Skills Section - ATS Friendly */}
-        <section className="mb-4 pb-5 relative border-b">
-          <h2 className="text-xl font-bold mb-3 text-black">
-            Technical Skills
-          </h2>
-          <div
-            className="text-sm text-black"
-            itemScope
-            itemType="https://schema.org/ItemList"
-          >
-            <meta itemProp="name" content="Technical Skills" />
-            <p className="mb-2">
-              <strong>Programming Languages:</strong>{" "}
-              <span itemProp="itemListElement">JavaScript, TypeScript</span>
-            </p>
-            <p className="mb-2">
-              <strong>Frontend Frameworks:</strong>{" "}
-              <span itemProp="itemListElement">
-                React, React.js, Ember.js, Backbone.js, React Native
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>State Management:</strong>{" "}
-              <span itemProp="itemListElement">
-                Redux, Redux-Saga, RTK Query
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>API & Data:</strong>{" "}
-              <span itemProp="itemListElement">
-                GraphQL, Apollo Client, RESTful API, REST API, Hasura,
-                WebSocket, WebRTC
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>Build Tools:</strong>{" "}
-              <span itemProp="itemListElement">
-                Webpack, Vite, Nx Monorepo, Grunt
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>Styling:</strong>{" "}
-              <span itemProp="itemListElement">
-                Tailwind CSS, CSS3, HTML5, Material UI, Shadcn/UI, Semantic UI
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>Testing:</strong>{" "}
-              <span itemProp="itemListElement">
-                Jest, React Testing Library, Cypress, Storybook, Chromatic
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>DevOps & CI/CD:</strong>{" "}
-              <span itemProp="itemListElement">
-                Docker, GitHub Actions, CI/CD, Sentry
-              </span>
-            </p>
-            <p className="mb-2">
-              <strong>Architecture:</strong>{" "}
-              <span itemProp="itemListElement">
-                Micro-frontend, Webpack Module Federation, Monorepo, Scalable
-                Architecture
-              </span>
-            </p>
-          </div>
-        </section>
-
         {/* Core Competencies */}
-        <section className="mb-4 pb-5 relative border-b">
+        <section
+          className="mb-4 pb-5 relative border-b"
+          itemScope
+          itemType="https://schema.org/ItemList"
+        >
           <h2 className="text-xl font-bold mb-3 text-black">
             Core Competencies
           </h2>
+          <meta itemProp="name" content="Core Competencies" />
           <ul className="text-sm space-y-2 text-black">
             <li className="flex items-start">
               <div>
@@ -292,9 +229,10 @@ export const App = () => {
                 </span>
                 <span className="mx-2">|</span>
                 <br />
-                <span>
-                  React.js / EmberJs / React Native & TypeScript / Javascript /
-                  Webpack / Vite / Nx monorepo / Micro-Frontend
+                <span itemProp="itemListElement">
+                  React / Ember.js / Backbone.js / React Native / TypeScript /
+                  JavaScript / Webpack / Vite / Nx Monorepo / Micro-Frontend /
+                  Webpack Module Federation / Monorepo
                 </span>
               </div>
             </li>
@@ -304,27 +242,50 @@ export const App = () => {
               <span>Mentorship & Team Leadership</span>
             </li>
             <li className="flex items-center">
-              <span>Redux / RTK Query / Redux-Saga</span>
+              <span itemProp="itemListElement">
+                Redux / Redux-Saga / RTK Query
+              </span>
               <span className="mx-2">|</span>
-              <span>GraphQL / Apollo Client / RESTful API / Axios</span>
+              <span itemProp="itemListElement">
+                GraphQL / Apollo Client / Hasura / Hasura Subscriptions /
+                RESTful API / Axios
+              </span>
             </li>
             <li className="flex items-center">
-              <span>WebSocket / WebRTC / Firebase Realtime Database</span>
+              <span itemProp="itemListElement">
+                WebSocket / WebRTC / Firebase Realtime Database / Getstream.io
+              </span>
               <span className="mx-2">|</span>
-              <span>CI/CD (GitHub Actions, Docker)</span>
+              <span itemProp="itemListElement">
+                CI/CD / GitHub Actions / Docker / Sentry
+              </span>
             </li>
             <li className="flex items-center">
-              <span>NodeJs / Hasura</span>
+              <span itemProp="itemListElement">Node.js / Hasura</span>
               <span className="mx-2">|</span>
-              <span>Firebase Console / GCP Cloud Run</span>
+              <span itemProp="itemListElement">
+                Firebase Console / GCP Cloud Run
+              </span>
             </li>
             <li className="flex items-center">
-              <span>HTML5 / CSS3 / Tailwind / Material UI / Shadcn/UI</span>
+              <span itemProp="itemListElement">
+                HTML5 / CSS3 / TailwindCSS / Material UI / Shadcn/ui / Semantic
+                UI / Radix UI
+              </span>
             </li>
             <li className="flex items-center">
-              <span>
-                Unit, Integration and End-to-End Testing (Jest, RTL, Cypress,
-                Storybook)
+              <span itemProp="itemListElement">
+                Ember.js / Ember Data / Ember Table / Ember Calendar
+              </span>
+              <span className="mx-2">|</span>
+              <span itemProp="itemListElement">
+                Grunt / react-table / videojs / HLS Streaming / tavus.io
+              </span>
+            </li>
+            <li className="flex items-center">
+              <span itemProp="itemListElement">
+                Unit, Integration and End-to-End Testing (Jest / React Testing
+                Library / RTL / Cypress / Storybook / Chromatic)
               </span>
             </li>
             <li className="flex items-center">

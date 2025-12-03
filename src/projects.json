@@ -9,11 +9,11 @@
         "GraphQL",
         "Monorepo",
         "Redux",
-        "Redux-saga",
-        "TailwindCss",
+        "Redux-Saga",
+        "TailwindCSS",
         "Apollo Client",
         "Hasura Subscriptions",
-        "Nx workspace",
+        "Nx Monorepo",
         "Webpack",
         "Sentry",
         "Docker",
@@ -30,7 +30,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team, CS team and other stakeholders for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Led architecture design and development from design to production to build using Nx workspace (monorepo architecture) with React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and lazy loading. Implemented new features consuming Hasura GraphQL server with Apollo Client and maintained client data in Redux reducer/slice processed through Redux Saga. Utilized Hasura Subscriptions through WebSocket for real-time updates. Maintained the application by conducting code reviews and wrote unit tests with Jest and React Testing Library. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking and monitoring with Sentry. Collaborated with backend team for feature integration and with product team, CS team and stakeholders for roadmap planning and feature development"
+      "technologyUsageDescription": "Led architecture design and development from design to production to build using Nx Monorepo (monorepo architecture) with React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and lazy loading. Implemented new features consuming Hasura GraphQL server with Apollo Client and maintained client data in Redux reducer/slice processed through Redux-Saga. Utilized Hasura Subscriptions through WebSocket for real-time updates. Maintained the application by conducting code reviews and wrote unit tests with Jest and React Testing Library. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking and monitoring with Sentry. Collaborated with backend team for feature integration and with product team, CS team and stakeholders for roadmap planning and feature development"
     },
     {
       "name": "Candidate Web Application V3",
@@ -38,12 +38,12 @@
       "technologies": [
         "React",
         "TypeScript",
-        "TailwindCss",
+        "TailwindCSS",
         "Monorepo",
         "GraphQL",
         "Apollo Client",
         "Hasura Subscriptions",
-        "Nx workspace",
+        "Nx Monorepo",
         "Webpack",
         "Sentry",
         "Docker",
@@ -60,7 +60,7 @@
         "Manage deployment pipeline",
         "Collaborate with product team, CS team and other stakeholders for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Led architecture design and development from design to production to build with Nx workspace (monorepo architecture) using React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and optimization. Implemented new features consuming Hasura GraphQL server with Apollo Client for data fetching and caching, and utilized Hasura Subscriptions through WebSocket for real-time updates. Integrated tavus.io for AI-powered asynchronous video interviews. Maintained the application by conducting code reviews and wrote unit tests with Jest and React Testing Library. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with product team, CS team and stakeholders for roadmap planning and feature development"
+      "technologyUsageDescription": "Led architecture design and development from design to production to build with Nx Monorepo (monorepo architecture) using React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and optimization. Implemented new features consuming Hasura GraphQL server with Apollo Client for data fetching and caching, and utilized Hasura Subscriptions through WebSocket for real-time updates. Integrated tavus.io for AI-powered asynchronous video interviews. Maintained the application by conducting code reviews and wrote unit tests with Jest and React Testing Library. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with product team, CS team and stakeholders for roadmap planning and feature development"
     },
     {
       "name": "Teserra Components Library",
@@ -71,7 +71,7 @@
         "Monorepo",
         "Storybook",
         "Chromatic",
-        "TailwindCss",
+        "TailwindCSS",
         "Shadcn/ui",
         "Radix UI",
         "Cypress",
@@ -189,7 +189,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the feature development"
       ],
-      "technologyUsageDescription": "Led architecture design and development from design to production to build real-time proctoring dashboard with React and JavaScript for invigilators to monitor candidates activity collected from the Proview Client. Pulled that through RESTful API including monitoring logic and activity tracking, displayed candidate data in sortable, filterable tables with react-table and styled with Semantic UI. Integrated videoJs for streaming HLS video for live monitoring, and enabled real-time bidirectional communication chat-bot with Getstream.io(WebSocket). Bundled application with Webpack. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with backend, media team, product team for feature integration and feature development"
+      "technologyUsageDescription": "Led architecture design and development from design to production to build real-time proctoring dashboard with React and JavaScript for invigilators to monitor candidates activity collected from the Proview Client. Pulled that through RESTful API including monitoring logic and activity tracking, displayed candidate data in sortable, filterable tables with react-table and styled with Semantic UI. Integrated videojs for streaming HLS Streaming video for live monitoring, and enabled real-time bidirectional communication chat-bot with Getstream.io (WebSocket). Bundled application with Webpack. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with backend, media team, product team for feature integration and feature development"
     },
     {
       "name": "Proview Client",
