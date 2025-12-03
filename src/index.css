@@ -29,11 +29,11 @@
   }
 
   @page {
-    margin-top: 0.3in;
-    margin-left: 0.3in;
-    margin-right: 0.3in;
-    margin-bottom: 0.15in;
-    size: letter;
+    margin-top: 0.25in;
+    margin-left: 0.25in;
+    margin-right: 0.25in;
+    margin-bottom: 0.25in;
+    size: A4;
   }
 
   body {
@@ -83,6 +83,28 @@
 
   /* Prevent page breaks inside sections */
   section {
-    /* page-break-inside: avoid; */
+    page-break-inside: avoid;
+  }
+
+  /* Compact spacing for print */
+  .print\:mb-1 {
+    margin-bottom: 0.25rem !important;
+  }
+
+  .print\:pb-1 {
+    padding-bottom: 0.25rem !important;
+  }
+
+  .print\:mb-0\.5 {
+    margin-bottom: 0.125rem !important;
+  }
+
+  .print\:pb-0\.5 {
+    padding-bottom: 0.125rem !important;
+  }
+
+  /* Reduce line height for compact text */
+  p, li, span {
+    line-height: 1.3 !important;
   }
 }

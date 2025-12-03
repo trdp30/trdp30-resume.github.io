@@ -1,5 +1,6 @@
 import { useRef, useState } from "react";
 import DownloadButton from "./DownloadButton";
+import projectsData from "./projects.json";
 
 let data = {
   name: "Trideep Kumar Das",
@@ -53,13 +54,31 @@ export const App = () => {
         className="container mx-auto p-6 max-w-4xl print:p-0 print:max-w-none bg-white"
       >
         {/* Header Section */}
-        <header className="mb-4 pb-3 border-b border-black">
-          <h1 className="text-3xl font-bold mb-1 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100">
+        <header
+          className="mb-4 pb-3 border-b border-black"
+          itemScope
+          itemType="https://schema.org/Person"
+        >
+          <h1
+            className="text-3xl font-bold mb-1 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100"
+            itemProp="name"
+          >
             {data.name.toUpperCase()}
           </h1>
+          <meta itemProp="email" content={data.email} />
+          <meta itemProp="telephone" content={`+91-${data.phone}`} />
+          <div
+            itemProp="address"
+            itemScope
+            itemType="https://schema.org/PostalAddress"
+          >
+            <meta itemProp="addressLocality" content="Bengaluru" />
+            <meta itemProp="addressCountry" content="India" />
+          </div>
           <p
             className="text-lg font-bold mb-2 text-black"
             onClick={handleSwitchTargetRole}
+            itemProp="jobTitle"
           >
             {role[targetRoleIndex]} | React & TypeScript Expert | Scalable
             System Architect
@@ -192,6 +211,74 @@ export const App = () => {
           </p>
         </section>
 
+        {/* Skills Section - ATS Friendly */}
+        <section className="mb-4 pb-5 relative border-b">
+          <h2 className="text-xl font-bold mb-3 text-black">
+            Technical Skills
+          </h2>
+          <div
+            className="text-sm text-black"
+            itemScope
+            itemType="https://schema.org/ItemList"
+          >
+            <meta itemProp="name" content="Technical Skills" />
+            <p className="mb-2">
+              <strong>Programming Languages:</strong>{" "}
+              <span itemProp="itemListElement">JavaScript, TypeScript</span>
+            </p>
+            <p className="mb-2">
+              <strong>Frontend Frameworks:</strong>{" "}
+              <span itemProp="itemListElement">
+                React, React.js, Ember.js, Backbone.js, React Native
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>State Management:</strong>{" "}
+              <span itemProp="itemListElement">
+                Redux, Redux-Saga, RTK Query
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>API & Data:</strong>{" "}
+              <span itemProp="itemListElement">
+                GraphQL, Apollo Client, RESTful API, REST API, Hasura,
+                WebSocket, WebRTC
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>Build Tools:</strong>{" "}
+              <span itemProp="itemListElement">
+                Webpack, Vite, Nx Monorepo, Grunt
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>Styling:</strong>{" "}
+              <span itemProp="itemListElement">
+                Tailwind CSS, CSS3, HTML5, Material UI, Shadcn/UI, Semantic UI
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>Testing:</strong>{" "}
+              <span itemProp="itemListElement">
+                Jest, React Testing Library, Cypress, Storybook, Chromatic
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>DevOps & CI/CD:</strong>{" "}
+              <span itemProp="itemListElement">
+                Docker, GitHub Actions, CI/CD, Sentry
+              </span>
+            </p>
+            <p className="mb-2">
+              <strong>Architecture:</strong>{" "}
+              <span itemProp="itemListElement">
+                Micro-frontend, Webpack Module Federation, Monorepo, Scalable
+                Architecture
+              </span>
+            </p>
+          </div>
+        </section>
+
         {/* Core Competencies */}
         <section className="mb-4 pb-5 relative border-b">
           <h2 className="text-xl font-bold mb-3 text-black">
@@ -282,12 +369,45 @@ export const App = () => {
             Professional Experience
           </h2>
 
-          <div className="mb-4">
-            <h3 className="text-lg font-semibold text-black">
+          <div
+            className="mb-4"
+            itemScope
+            itemType="https://schema.org/OrganizationRole"
+          >
+            <h3
+              className="text-lg font-semibold text-black"
+              itemProp="jobTitle"
+            >
               Staff Software Engineer - Frontend
             </h3>
+            <div
+              itemProp="worksFor"
+              itemScope
+              itemType="https://schema.org/Organization"
+            >
+              <meta itemProp="name" content="Talview" />
+            </div>
             <p className="text-sm italic mb-3 text-black">
-              Talview | June 2018 - Present | Bengaluru, India
+              <span itemProp="worksFor">Talview</span> |
+              <span itemProp="startDate" content="2018-06">
+                {" "}
+                June 2018
+              </span>{" "}
+              -<span itemProp="endDate"> Present</span> |
+              <span
+                itemProp="jobLocation"
+                itemScope
+                itemType="https://schema.org/Place"
+              >
+                <span
+                  itemProp="address"
+                  itemScope
+                  itemType="https://schema.org/PostalAddress"
+                >
+                  <span itemProp="addressLocality">Bengaluru</span>,
+                  <span itemProp="addressCountry">India</span>
+                </span>
+              </span>
             </p>
 
             <div className="mb-3">
@@ -366,10 +486,6 @@ export const App = () => {
               </h4>
               <ul className="list-disc list-inside text-sm space-y-2 text-black">
                 <li>
-                  Achieved <strong>5,590 GitHub contributions in 2024</strong>,
-                  highest in organization history.
-                </li>
-                <li>
                   Recognized as Production Engineering Champion, Annual
                   Champion, and Engineering Champion.
                 </li>
@@ -383,158 +499,92 @@ export const App = () => {
             </div>
           </div>
 
-          <div className="mb-4">
+          <div className="mb-3">
             <h3 className="text-lg font-semibold mb-3 text-black">
               Key Projects
             </h3>
 
-            <div className="mb-4">
-              <h4 className="font-semibold text-base text-black mb-2">
-                Talview Orchestration Platform (TOP)
-              </h4>
-              <p className="text-sm italic mb-2 text-black">
-                React.js, TypeScript, GraphQL, Redux-Saga, WebSocket, Webpack,
-                Docker, GitHub Actions, Nx Monorepo Workspace
-              </p>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
-                <li>
-                  Designed and led <strong>frontend architecture</strong>.
-                </li>
-                <li>
-                  Containerized applications using <strong>Docker</strong>.
-                </li>
-                <li>
-                  Integrated <strong>GraphQL subscriptions</strong> with{" "}
-                  <strong>WebSocket</strong> for{" "}
-                  <strong>real-time data pipelines</strong>.
-                </li>
-                <li>
-                  Automated <strong>CI/CD pipelines</strong> using{" "}
-                  <strong>GitHub Actions</strong>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-4">
-              <h4 className="font-semibold text-base text-black mb-2">
-                Proview Live Proctor
-              </h4>
-              <p className="text-sm italic mb-2 text-black">
-                React.js, WebRTC, WebSocket, GraphQL, Apollo Client, Socket.io,
-                Sentry
-              </p>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
-                <li>
-                  Developed a <strong>real-time proctoring platform</strong>{" "}
-                  integrating <strong>live video streaming, chat</strong>, and{" "}
-                  <strong>analytics</strong>.
-                </li>
-                <li>
-                  Implemented <strong>WebRTC-based video streaming</strong> with{" "}
-                  <strong>Socket.io</strong> and
-                  <strong> Apollo Client</strong> for{" "}
-                  <strong>real-time communication</strong>, ensuring{" "}
-                  <strong>stable and secure</strong> live proctoring
-                  experiences.
-                </li>
-                <li>
-                  Enhanced <strong>system reliability and monitoring</strong>{" "}
-                  using <strong>Sentry</strong> for
-                  <strong> error tracking</strong>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-4">
-              <h4 className="font-semibold text-base text-black mb-2">
-                Proview Client
-              </h4>
-              <p className="text-sm italic mb-2 text-black">
-                Backbone.js, Grunt, Browserify, Socket.io, Getstream.io, Sentry
-              </p>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
-                <li>
-                  Delivered advanced <strong>event-tracking features</strong>{" "}
-                  such as <strong>multi-face detection</strong>,{" "}
-                  <strong>copy/paste monitoring</strong>, and{" "}
-                  <strong>screen recording</strong>.
-                </li>
-                <li>
-                  Integrated{" "}
-                  <strong>Socket.io-based real-time notifications</strong> and
-                  <strong> Getstream.io</strong> for{" "}
-                  <strong>activity feeds</strong>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-4">
-              <h4 className="font-semibold text-base text-black mb-2">
-                Recruit & Candidate Platforms
-              </h4>
-              <p className="text-sm italic mb-2 text-black">
-                Ember.js, Ember-data, Semantic UI, Sentry
-              </p>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
-                <li>
-                  Enhanced <strong>user engagement</strong> by{" "}
-                  <strong>30%</strong> through
-                  <strong> modernized frontends</strong>,{" "}
-                  <strong>optimized performance</strong>, and{" "}
-                  <strong>restructured legacy codebases</strong>.
-                </li>
-                <li>
-                  Refactored <strong>legacy applications</strong> using{" "}
-                  <strong>Ember-data</strong> for{" "}
-                  <strong>efficient data management</strong> and{" "}
-                  <strong>Semantic UI</strong> for{" "}
-                  <strong>consistent UI components</strong>.
-                </li>
-              </ul>
-            </div>
+            {projectsData.projects.map((project, index) => (
+              <div
+                key={index}
+                className="mb-3"
+                itemScope
+                itemType="https://schema.org/SoftwareApplication"
+              >
+                <h4
+                  className="font-semibold text-base text-black mb-2"
+                  itemProp="name"
+                >
+                  {project.name}
+                </h4>
+                <meta itemProp="description" content={project.description} />
+                <div
+                  className="hidden print:hidden"
+                  itemProp="applicationCategory"
+                  content="WebApplication"
+                >
+                  <span itemProp="operatingSystem">Web Browser</span>
+                </div>
+                {project.technologies && project.technologies.length > 0 && (
+                  <div className="hidden print:hidden">
+                    <meta
+                      itemProp="keywords"
+                      content={project.technologies.join(", ")}
+                    />
+                    <span className="sr-only">
+                      Technologies: {project.technologies.join(", ")}
+                    </span>
+                  </div>
+                )}
+                {project.technologyUsageDescription && (
+                  <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                    {project.technologyUsageDescription
+                      .split(". ")
+                      .filter((sentence) => sentence.trim().length > 0)
+                      .map((sentence, idx) => (
+                        <li key={idx} itemProp="description">
+                          {sentence.trim().endsWith(".")
+                            ? sentence.trim()
+                            : `${sentence.trim()}.`}
+                        </li>
+                      ))}
+                  </ul>
+                )}
+              </div>
+            ))}
           </div>
         </section>
 
-        {/* Achievements */}
-        <section className="mb-4 pb-5 border-b border-black relative">
-          <h2 className="text-xl font-bold mb-3 text-black">Achievements</h2>
-          <ul className="list-disc list-inside text-sm space-y-2 text-black">
-            <li>
-              <strong>5,590 GitHub Contributions (2024)</strong> - Highest
-              organization-wide record.
-            </li>
-            <li>
-              <strong>40% Load Time Reduction</strong> through{" "}
-              <strong>architectural refactoring</strong> and optimized{" "}
-              <strong>Webpack configuration</strong>.
-            </li>
-            <li>
-              <strong>85%+ Test Coverage</strong> across all major{" "}
-              <strong>frontend modules</strong>.
-            </li>
-            <li>
-              <strong>30% User Engagement Growth</strong> through{" "}
-              <strong>strategic feature development</strong> and{" "}
-              <strong>UI performance tuning</strong>.
-            </li>
-            <li>
-              Multiple <strong>Engineering Awards</strong> recognizing{" "}
-              <strong>technical excellence</strong> and
-              <strong> leadership impact</strong>.
-            </li>
-          </ul>
-        </section>
-
         {/* Education */}
-        <section className="relative">
+        <section
+          className="relative"
+          itemScope
+          itemType="https://schema.org/EducationalOccupationalCredential"
+        >
           <h2 className="text-xl font-bold mb-3 uppercase text-black">
             Education
           </h2>
-          <p className="text-sm text-black">
-            <strong>Master of Computer Applications (MCA)</strong>
-            <br />
-            Sikkim Manipal Institute of Technology (SMIT) | 2015 - 2018
-          </p>
+          <div itemScope itemType="https://schema.org/EducationalOrganization">
+            <p className="text-sm text-black">
+              <strong itemProp="credentialCategory">
+                Master of Computer Applications (MCA)
+              </strong>
+              <br />
+              <span itemProp="name">
+                Sikkim Manipal Institute of Technology (SMIT)
+              </span>{" "}
+              |
+              <span itemProp="dateCreated" content="2015">
+                {" "}
+                2015
+              </span>{" "}
+              -
+              <span itemProp="dateModified" content="2018">
+                {" "}
+                2018
+              </span>
+            </p>
+          </div>
         </section>
       </div>
     </div>
