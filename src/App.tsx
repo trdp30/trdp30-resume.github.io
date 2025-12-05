@@ -117,7 +117,7 @@ export const App = () => {
       >
         {/* Header Section */}
         <header
-          className="mb-3 pb-2 border-b border-black"
+          className="mb-1.5 pb-1 border-b border-black"
           itemScope
           itemType="https://schema.org/Person"
         >
@@ -242,11 +242,11 @@ export const App = () => {
         </header>
 
         {/* Professional Summary */}
-        <section className="mb-3 pb-3 border-b relative">
-          <h2 className="text-xl font-bold mb-2 text-black">
+        <section className="mb-1.5 pb-1.5 border-b relative">
+          <h2 className="text-xl font-bold mb-1 text-black">
             Professional Summary
           </h2>
-          <p className="text-sm leading-relaxed text-black">
+          <p className="text-sm leading-tight text-black">
             Seasoned <strong>Frontend Engineering Leader</strong> with{" "}
             <strong>7+ years of experience</strong> in architecting and
             delivering{" "}
@@ -275,15 +275,15 @@ export const App = () => {
 
         {/* Core Competencies */}
         <section
-          className="mb-3 pb-3 relative border-b"
+          className="mb-1.5 pb-1.5 relative border-b"
           itemScope
           itemType="https://schema.org/ItemList"
         >
-          <h2 className="text-xl font-bold mb-2 text-black">
+          <h2 className="text-xl font-bold mb-1 text-black">
             Core Competencies
           </h2>
           <meta itemProp="name" content="Core Competencies" />
-          <ul className="text-sm space-y-1.5 text-black">
+          <ul className="text-sm space-y-0.5 text-black">
             <li className="flex items-start">
               <div>
                 <span className="font-semibold">
@@ -380,13 +380,13 @@ export const App = () => {
         </section>
 
         {/* Professional Experience */}
-        <section className="mb-3 pb-3 border-b">
-          <h2 className="text-xl font-bold mb-2 text-black">
+        <section className="mb-1.5 pb-1.5 border-b">
+          <h2 className="text-xl font-bold mb-1 text-black">
             Professional Experience
           </h2>
 
           <div
-            className="mb-3"
+            className="mb-1.5"
             itemScope
             itemType="https://schema.org/OrganizationRole"
           >
@@ -403,7 +403,7 @@ export const App = () => {
             >
               <meta itemProp="name" content="Talview" />
             </div>
-            <p className="text-sm italic mb-2 text-black">
+            <p className="text-sm italic mb-1 text-black">
               <span itemProp="worksFor">Talview</span> |{" "}
               <span itemProp="startDate" content="2018-06">
                 June 2018
@@ -425,11 +425,11 @@ export const App = () => {
               </span>
             </p>
 
-            <div className="mb-2">
-              <h4 className="font-semibold text-base mb-1.5 text-black">
+            <div className="mb-1">
+              <h4 className="font-semibold text-base mb-0.5 text-black">
                 Leadership & Architecture:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
                 <li>
                   Lead <strong>frontend architecture</strong> and development
                   across multiple
@@ -450,11 +450,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-2">
-              <h4 className="font-semibold text-base mb-1.5 text-black">
+            <div className="mb-1">
+              <h4 className="font-semibold text-base mb-0.5 text-black">
                 Performance & Quality:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
                 <li>
                   Streamlined <strong>application architecture</strong>,
                   achieving a <strong>40% reduction in load time</strong> and
@@ -475,11 +475,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-2">
-              <h4 className="font-semibold text-base mb-1.5 text-black">
+            <div className="mb-1">
+              <h4 className="font-semibold text-base mb-0.5 text-black">
                 Mentorship & Delivery:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
                 <li>
                   Mentored <strong>junior and mid-level engineers</strong>,
                   improving <strong>team productivity</strong> and{" "}
@@ -496,11 +496,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-2">
-              <h4 className="font-semibold text-base mb-1.5 text-black">
+            <div className="mb-1">
+              <h4 className="font-semibold text-base mb-0.5 text-black">
                 Key Achievements:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
                 <li>
                   Recognized as Production Engineering Champion, Annual
                   Champion, and Engineering Champion.
@@ -515,26 +515,26 @@ export const App = () => {
             </div>
           </div>
 
-          <div className="mb-2">
-            <h3 className="text-lg font-semibold mb-2 text-black">
+          <div className="mb-1">
+            <h3 className="text-lg font-semibold mb-1 text-black">
               Key Projects
             </h3>
 
             {projectsData.projects.map((project, index) => (
               <div
                 key={index}
-                className="mb-2"
+                className="mb-1"
                 itemScope
                 itemType="https://schema.org/SoftwareApplication"
               >
                 <h4
-                  className="font-semibold text-base text-black mb-1.5"
+                  className="font-semibold text-base text-black mb-0.5"
                   itemProp="name"
                 >
                   {project.name}
                 </h4>
                 <p
-                  className="text-sm text-black mb-1 print:text-xs"
+                  className="text-sm text-black mb-0.5 print:text-xs"
                   itemProp="description"
                 >
                   {project.description}
@@ -586,7 +586,7 @@ export const App = () => {
           itemScope
           itemType="https://schema.org/EducationalOccupationalCredential"
         >
-          <h2 className="text-xl font-bold mb-2 uppercase text-black">
+          <h2 className="text-xl font-bold mb-1 uppercase text-black">
             Education
           </h2>
           <div itemScope itemType="https://schema.org/EducationalOrganization">
