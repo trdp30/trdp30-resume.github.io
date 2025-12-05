@@ -287,26 +287,33 @@ export const App = () => {
             <li className="flex items-start">
               <div>
                 <span className="font-semibold">
-                  Frontend Architecture & Development
+                  Frontend Frameworks & Languages:
                 </span>
                 <span className="mx-2">|</span>
-                <br />
                 <span itemProp="itemListElement">
-                  React / Ember.js / Backbone.js / React Native / TypeScript /
-                  JavaScript / Webpack / Vite / Nx Monorepo / Micro-Frontend /
-                  Webpack Module Federation
+                  React / Ember.js / Backbone.js / TypeScript / JavaScript
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">
+                  Build Tools & Architecture:
+                </span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Webpack / Nx Monorepo / Micro-Frontend / Webpack Module
+                  Federation / Grunt / Node.js
                 </span>
               </div>
             </li>
             <li className="flex items-center">
-              <span className="font-semibold">Scalable System Design</span>
+              <span className="font-semibold">State Management:</span>
               <span className="mx-2">|</span>
-              <span>Mentorship & Team Leadership</span>
+              <span itemProp="itemListElement">Redux / Redux-Saga</span>
             </li>
             <li className="flex items-center">
-              <span itemProp="itemListElement">
-                Redux / Redux-Saga / RTK Query
-              </span>
+              <span className="font-semibold">Data Fetching & APIs:</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
                 GraphQL / Apollo Client / Hasura / Hasura Subscriptions /
@@ -314,48 +321,51 @@ export const App = () => {
               </span>
             </li>
             <li className="flex items-center">
-              <span itemProp="itemListElement">
-                WebSocket / WebRTC / Firebase Realtime Database / Getstream.io
-              </span>
+              <span className="font-semibold">Real-time Communication:</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
-                CI/CD / GitHub Actions / Docker / Sentry
+                WebSocket / WebRTC / Getstream.io
               </span>
             </li>
             <li className="flex items-center">
-              <span itemProp="itemListElement">Node.js</span>
+              <span className="font-semibold">Styling & UI Libraries:</span>
               <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                Firebase Console / GCP Cloud Run
-              </span>
-            </li>
-            <li className="flex items-center">
               <span itemProp="itemListElement">
                 HTML5 / CSS3 / TailwindCSS / Material UI / Shadcn/ui / Semantic
                 UI / Radix UI
               </span>
             </li>
             <li className="flex items-center">
-              <span itemProp="itemListElement">
-                Ember.js / Ember Data / Ember Table / Ember Calendar
-              </span>
+              <span className="font-semibold">Media & Streaming:</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
-                Grunt / react-table / videojs / HLS Streaming / tavus.io
+                videojs / HLS Streaming / tavus.io
               </span>
             </li>
             <li className="flex items-center">
+              <span className="font-semibold">Testing:</span>
+              <span className="mx-2">|</span>
               <span itemProp="itemListElement">
-                Unit, Integration and End-to-End Testing (Jest / React Testing
-                Library / RTL / Cypress / Storybook / Chromatic)
+                Jest / React Testing Library / Cypress / Storybook / Chromatic
               </span>
             </li>
             <li className="flex items-center">
-              <span>Agile Delivery</span>
+              <span className="font-semibold">DevOps & Tools:</span>
               <span className="mx-2">|</span>
-              <span>Cross-Functional Collaboration</span>
-              <span className="mx-2">|</span>
-              <span>Performance Optimization</span>
+              <span itemProp="itemListElement">
+                CI/CD / GitHub Actions / Docker / Sentry
+              </span>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Soft Skills:</span>
+                <span className="mx-2">|</span>
+                <span>
+                  Scalable System Design / Mentorship & Team Leadership / Agile
+                  Delivery / Cross-Functional Collaboration / Performance
+                  Optimization
+                </span>
+              </div>
             </li>
           </ul>
         </section>

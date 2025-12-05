@@ -64,6 +64,7 @@
         "Webpack Module Federation",
         "RESTful API",
         "Redux",
+        "Material UI",
         "Webpack",
         "Sentry",
         "Docker",
@@ -77,7 +78,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Designed micro-frontend architecture with React and TypeScript, migrated legacy code from Ember.js. Implemented Webpack Module Federation for runtime module sharing. Integrated RESTful API endpoints and managed state with Redux"
+      "technologyUsageDescription": "Designed micro-frontend architecture with React and TypeScript, migrated legacy code from Ember.js and styled with Material UI. Implemented Webpack Module Federation for runtime module sharing. Integrated RESTful API endpoints and managed state with Redux"
     },
     {
       "name": "Recruit Web Application & Candidate Web Application",
