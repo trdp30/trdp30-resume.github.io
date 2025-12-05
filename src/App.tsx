@@ -356,6 +356,15 @@ export const App = () => {
                 CI/CD / GitHub Actions / Docker / Sentry
               </span>
             </li>
+            <li className="flex items-center">
+              <span className="font-semibold">
+                AI-Assisted Development Tools:
+              </span>
+              <span className="mx-2">|</span>
+              <span itemProp="itemListElement">
+                Cursor / Windsurf / Claude Cloud / Codex
+              </span>
+            </li>
             <li className="flex items-start">
               <div>
                 <span className="font-semibold">Soft Skills:</span>
@@ -366,32 +375,6 @@ export const App = () => {
                   Optimization
                 </span>
               </div>
-            </li>
-          </ul>
-        </section>
-
-        {/* Prompt Engineering */}
-        <section className="mb-3 pb-3 border-b">
-          <h2 className="text-xl font-bold mb-2 text-black">
-            Prompt Engineering
-          </h2>
-          <ul className="text-sm space-y-1.5 text-black">
-            <li className="flex items-center">
-              <span>
-                <strong>Cursor</strong>
-              </span>
-              <span className="mx-2">|</span>
-              <span>
-                <strong>Windsurf</strong>
-              </span>
-              <span className="mx-2">|</span>
-              <span>
-                <strong>Claude Cloud</strong>
-              </span>
-              <span className="mx-2">|</span>
-              <span>
-                <strong>Codex</strong>
-              </span>
             </li>
           </ul>
         </section>
