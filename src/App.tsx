@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { ReactElement, useRef, useState } from "react";
 import DownloadButton from "./DownloadButton";
 import projectsData from "./projects.json";
 
@@ -10,12 +10,12 @@ let data = {
 };
 
 // if (process.env.NODE_ENV !== "production") {
-//   data = {
-//     name: "Test test Test",
-//     email: "test0@test.com",
-//     phone: "1234567890",
-//     location: "Address, Dist: Address, Assam, India",
-//   };
+data = {
+  name: "Test test Test",
+  email: "test0@test.com",
+  phone: "1234567890",
+  location: "Address, Dist: Address, Assam, India",
+};
 // }
 
 const role = [
@@ -28,6 +28,68 @@ export const App = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
   const [targetRoleIndex, setTargetRoleIndex] = useState(0);
+
+  // Helper function to bold technology names and accessibility terms in description
+  const boldTechnologies = (text: string, technologies: string[]) => {
+    if (!text) return text;
+
+    // Accessibility terms that should be bolded
+    const accessibilityTerms = [
+      "ARIA attributes",
+      "keyboard navigation",
+      "accessibility standards",
+      "accessible components",
+    ];
+
+    // Combine technologies and accessibility terms
+    const allTerms = [...(technologies || []), ...accessibilityTerms];
+
+    if (allTerms.length === 0) return text;
+
+    // Sort terms by length (longest first) to match longer names first
+    const sortedTerms = [...allTerms].sort((a, b) => b.length - a.length);
+
+    // Create a regex pattern that matches terms as whole words
+    const pattern = new RegExp(
+      `\\b(${sortedTerms
+        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
+        .join("|")})\\b`,
+      "gi"
+    );
+
+    const parts: (string | ReactElement)[] = [];
+    let lastIndex = 0;
+    let match;
+
+    // Reset regex
+    pattern.lastIndex = 0;
+    const matches: Array<{ index: number; length: number; text: string }> = [];
+
+    while ((match = pattern.exec(text)) !== null) {
+      matches.push({
+        index: match.index,
+        length: match[0].length,
+        text: match[0],
+      });
+    }
+
+    matches.forEach((match, idx) => {
+      // Add text before the match
+      if (match.index > lastIndex) {
+        parts.push(text.substring(lastIndex, match.index));
+      }
+      // Add the bold term
+      parts.push(<strong key={`term-${idx}`}>{match.text}</strong>);
+      lastIndex = match.index + match.length;
+    });
+
+    // Add remaining text
+    if (lastIndex < text.length) {
+      parts.push(text.substring(lastIndex));
+    }
+
+    return parts.length > 0 ? parts : text;
+  };
 
   const handleSwitchTargetRole = () => {
     let index = targetRoleIndex;
@@ -55,12 +117,12 @@ export const App = () => {
       >
         {/* Header Section */}
         <header
-          className="mb-4 pb-3 border-b border-black"
+          className="mb-3 pb-2 border-b border-black"
           itemScope
           itemType="https://schema.org/Person"
         >
           <h1
-            className="text-3xl font-bold mb-1 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100"
+            className="text-3xl font-bold mb-0.5 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100"
             itemProp="name"
           >
             {data.name.toUpperCase()}
@@ -76,7 +138,7 @@ export const App = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p
-            className="text-lg font-bold mb-2 text-black"
+            className="text-lg font-bold mb-1.5 text-black"
             onClick={handleSwitchTargetRole}
             itemProp="jobTitle"
           >
@@ -180,8 +242,8 @@ export const App = () => {
         </header>
 
         {/* Professional Summary */}
-        <section className="mb-4 pb-5 border-b relative">
-          <h2 className="text-xl font-bold mb-3 text-black">
+        <section className="mb-3 pb-3 border-b relative">
+          <h2 className="text-xl font-bold mb-2 text-black">
             Professional Summary
           </h2>
           <p className="text-sm leading-relaxed text-black">
@@ -213,15 +275,15 @@ export const App = () => {
 
         {/* Core Competencies */}
         <section
-          className="mb-4 pb-5 relative border-b"
+          className="mb-3 pb-3 relative border-b"
           itemScope
           itemType="https://schema.org/ItemList"
         >
-          <h2 className="text-xl font-bold mb-3 text-black">
+          <h2 className="text-xl font-bold mb-2 text-black">
             Core Competencies
           </h2>
           <meta itemProp="name" content="Core Competencies" />
-          <ul className="text-sm space-y-2 text-black">
+          <ul className="text-sm space-y-1.5 text-black">
             <li className="flex items-start">
               <div>
                 <span className="font-semibold">
@@ -232,7 +294,7 @@ export const App = () => {
                 <span itemProp="itemListElement">
                   React / Ember.js / Backbone.js / React Native / TypeScript /
                   JavaScript / Webpack / Vite / Nx Monorepo / Micro-Frontend /
-                  Webpack Module Federation / Monorepo
+                  Webpack Module Federation
                 </span>
               </div>
             </li>
@@ -261,7 +323,7 @@ export const App = () => {
               </span>
             </li>
             <li className="flex items-center">
-              <span itemProp="itemListElement">Node.js / Hasura</span>
+              <span itemProp="itemListElement">Node.js</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
                 Firebase Console / GCP Cloud Run
@@ -299,11 +361,11 @@ export const App = () => {
         </section>
 
         {/* Prompt Engineering */}
-        <section className="mb-4 pb-5 relative border-b">
-          <h2 className="text-xl font-bold mb-3 text-black">
+        <section className="mb-3 pb-3 border-b">
+          <h2 className="text-xl font-bold mb-2 text-black">
             Prompt Engineering
           </h2>
-          <ul className="text-sm space-y-2 text-black">
+          <ul className="text-sm space-y-1.5 text-black">
             <li className="flex items-center">
               <span>
                 <strong>Cursor</strong>
@@ -325,13 +387,13 @@ export const App = () => {
         </section>
 
         {/* Professional Experience */}
-        <section className="mb-4 pb-5 border-b relative">
-          <h2 className="text-xl font-bold mb-3 text-black">
+        <section className="mb-3 pb-3 border-b">
+          <h2 className="text-xl font-bold mb-2 text-black">
             Professional Experience
           </h2>
 
           <div
-            className="mb-4"
+            className="mb-3"
             itemScope
             itemType="https://schema.org/OrganizationRole"
           >
@@ -339,7 +401,7 @@ export const App = () => {
               className="text-lg font-semibold text-black"
               itemProp="jobTitle"
             >
-              Staff Software Engineer - Frontend
+              Staff Frontend Engineer
             </h3>
             <div
               itemProp="worksFor"
@@ -348,13 +410,12 @@ export const App = () => {
             >
               <meta itemProp="name" content="Talview" />
             </div>
-            <p className="text-sm italic mb-3 text-black">
-              <span itemProp="worksFor">Talview</span> |
+            <p className="text-sm italic mb-2 text-black">
+              <span itemProp="worksFor">Talview</span> |{" "}
               <span itemProp="startDate" content="2018-06">
-                {" "}
                 June 2018
               </span>{" "}
-              -<span itemProp="endDate"> Present</span> |
+              - <span itemProp="endDate">Present</span> |
               <span
                 itemProp="jobLocation"
                 itemScope
@@ -371,17 +432,17 @@ export const App = () => {
               </span>
             </p>
 
-            <div className="mb-3">
-              <h4 className="font-semibold text-base mb-2 text-black">
+            <div className="mb-2">
+              <h4 className="font-semibold text-base mb-1.5 text-black">
                 Leadership & Architecture:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
                   Lead <strong>frontend architecture</strong> and development
                   across multiple
                   <strong> SaaS platforms</strong>, ensuring{" "}
                   <strong>scalability, maintainability</strong>, and
-                  <strong> optimized performance</strong>.
+                  <strong> enhanced performance</strong>.
                 </li>
                 <li>
                   Defined reusable <strong>design systems</strong> and{" "}
@@ -396,14 +457,15 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-3">
-              <h4 className="font-semibold text-base mb-2 text-black">
+            <div className="mb-2">
+              <h4 className="font-semibold text-base mb-1.5 text-black">
                 Performance & Quality:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
-                  Optimized <strong>application architecture</strong>, achieving
-                  a <strong>40% reduction in load time</strong> and enhanced
+                  Streamlined <strong>application architecture</strong>,
+                  achieving a <strong>40% reduction in load time</strong> and
+                  enhanced
                   <strong> system stability</strong>.
                 </li>
                 <li>
@@ -414,17 +476,17 @@ export const App = () => {
                   <strong>85%+</strong>.
                 </li>
                 <li>
-                  Introduced <strong>automated deployment pipelines</strong> via{" "}
-                  <strong>GitHub Actions</strong>.
+                  Introduced <strong>systematized deployment pipelines</strong>{" "}
+                  via <strong>GitHub Actions</strong>.
                 </li>
               </ul>
             </div>
 
-            <div className="mb-3">
-              <h4 className="font-semibold text-base mb-2 text-black">
+            <div className="mb-2">
+              <h4 className="font-semibold text-base mb-1.5 text-black">
                 Mentorship & Delivery:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
                   Mentored <strong>junior and mid-level engineers</strong>,
                   improving <strong>team productivity</strong> and{" "}
@@ -441,11 +503,11 @@ export const App = () => {
               </ul>
             </div>
 
-            <div className="mb-3">
-              <h4 className="font-semibold text-base mb-2 text-black">
+            <div className="mb-2">
+              <h4 className="font-semibold text-base mb-1.5 text-black">
                 Key Achievements:
               </h4>
-              <ul className="list-disc list-inside text-sm space-y-2 text-black">
+              <ul className="list-disc list-inside text-sm space-y-1 text-black">
                 <li>
                   Recognized as Production Engineering Champion, Annual
                   Champion, and Engineering Champion.
@@ -460,55 +522,64 @@ export const App = () => {
             </div>
           </div>
 
-          <div className="mb-3">
-            <h3 className="text-lg font-semibold mb-3 text-black">
+          <div className="mb-2">
+            <h3 className="text-lg font-semibold mb-2 text-black">
               Key Projects
             </h3>
 
             {projectsData.projects.map((project, index) => (
               <div
                 key={index}
-                className="mb-3"
+                className="mb-2"
                 itemScope
                 itemType="https://schema.org/SoftwareApplication"
               >
                 <h4
-                  className="font-semibold text-base text-black mb-2"
+                  className="font-semibold text-base text-black mb-1.5"
                   itemProp="name"
                 >
                   {project.name}
                 </h4>
-                <meta itemProp="description" content={project.description} />
-                <div
-                  className="hidden print:hidden"
-                  itemProp="applicationCategory"
-                  content="WebApplication"
+                <p
+                  className="text-sm text-black mb-1 print:text-xs"
+                  itemProp="description"
                 >
-                  <span itemProp="operatingSystem">Web Browser</span>
-                </div>
-                {project.technologies && project.technologies.length > 0 && (
-                  <div className="hidden print:hidden">
+                  {project.description}
+                </p>
+                {/* {project.technologies && project.technologies.length > 0 && (
+                  <div className="mb-1 print:mb-0.5">
                     <meta
                       itemProp="keywords"
                       content={project.technologies.join(", ")}
                     />
-                    <span className="sr-only">
-                      Technologies: {project.technologies.join(", ")}
+                    <span className="text-xs text-black print:text-[10px]">
+                      <strong>Technologies:</strong>{" "}
+                      {project.technologies.join(", ")}
                     </span>
                   </div>
-                )}
+                )} */}
                 {project.technologyUsageDescription && (
-                  <ul className="list-disc list-inside text-sm space-y-1 text-black">
+                  <ul className="list-disc list-inside text-sm space-y-0.5 text-black print:text-xs print:space-y-0">
                     {project.technologyUsageDescription
                       .split(". ")
                       .filter((sentence) => sentence.trim().length > 0)
-                      .map((sentence, idx) => (
-                        <li key={idx} itemProp="description">
-                          {sentence.trim().endsWith(".")
-                            ? sentence.trim()
-                            : `${sentence.trim()}.`}
-                        </li>
-                      ))}
+                      .map((sentence, idx) => {
+                        const sentenceText = sentence.trim().endsWith(".")
+                          ? sentence.trim()
+                          : `${sentence.trim()}.`;
+                        return (
+                          <li
+                            key={idx}
+                            itemProp="description"
+                            className="print:mb-0.5"
+                          >
+                            {boldTechnologies(
+                              sentenceText,
+                              project.technologies || []
+                            )}
+                          </li>
+                        );
+                      })}
                   </ul>
                 )}
               </div>
@@ -522,7 +593,7 @@ export const App = () => {
           itemScope
           itemType="https://schema.org/EducationalOccupationalCredential"
         >
-          <h2 className="text-xl font-bold mb-3 uppercase text-black">
+          <h2 className="text-xl font-bold mb-2 uppercase text-black">
             Education
           </h2>
           <div itemScope itemType="https://schema.org/EducationalOrganization">
@@ -536,12 +607,10 @@ export const App = () => {
               </span>{" "}
               |
               <span itemProp="dateCreated" content="2015">
-                {" "}
                 2015
               </span>{" "}
-              -
+              -{" "}
               <span itemProp="dateModified" content="2018">
-                {" "}
                 2018
               </span>
             </p>

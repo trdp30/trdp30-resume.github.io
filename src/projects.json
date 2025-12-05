@@ -1,46 +1,15 @@
 {
   "projects": [
     {
-      "name": "Workflow Tool",
-      "description": "A tool for managing the workflow of the candidates and the interviewers",
+      "name": "Workflow Tool & Candidate Web Application V3",
+      "description": "A platform for managing candidate workflows, interviews, and availability, enabling candidates to take tests and live interviews",
       "technologies": [
         "React",
         "TypeScript",
         "GraphQL",
-        "Monorepo",
         "Redux",
         "Redux-Saga",
         "TailwindCSS",
-        "Apollo Client",
-        "Hasura Subscriptions",
-        "Nx Monorepo",
-        "Webpack",
-        "Sentry",
-        "Docker",
-        "GitHub Actions",
-        "Jest",
-        "React Testing Library"
-      ],
-      "myContribution": [
-        "Lead Architecture design and development from design to production",
-        "Implement new features",
-        "Maintain the application",
-        "Code review",
-        "Manage deployment pipeline",
-        "Collaborate with the backend team for the integration of the features",
-        "Collaborate with product team, CS team and other stakeholders for the roadmap planning and feature development"
-      ],
-      "technologyUsageDescription": "Led architecture design and development from design to production to build using Nx Monorepo (monorepo architecture) with React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and lazy loading. Implemented new features consuming Hasura GraphQL server with Apollo Client and maintained client data in Redux reducer/slice processed through Redux-Saga. Utilized Hasura Subscriptions through WebSocket for real-time updates. Maintained the application by conducting code reviews and wrote unit tests with Jest and React Testing Library. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking and monitoring with Sentry. Collaborated with backend team for feature integration and with product team, CS team and stakeholders for roadmap planning and feature development"
-    },
-    {
-      "name": "Candidate Web Application V3",
-      "description": "A platform where candidates can take the test and live interview and manage their availability",
-      "technologies": [
-        "React",
-        "TypeScript",
-        "TailwindCSS",
-        "Monorepo",
-        "GraphQL",
         "Apollo Client",
         "Hasura Subscriptions",
         "Nx Monorepo",
@@ -58,9 +27,10 @@
         "Maintain the application",
         "Code review",
         "Manage deployment pipeline",
+        "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team, CS team and other stakeholders for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Led architecture design and development from design to production to build with Nx Monorepo (monorepo architecture) using React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and optimization. Implemented new features consuming Hasura GraphQL server with Apollo Client for data fetching and caching, and utilized Hasura Subscriptions through WebSocket for real-time updates. Integrated tavus.io for AI-powered asynchronous video interviews. Maintained the application by conducting code reviews and wrote unit tests with Jest and React Testing Library. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with product team, CS team and stakeholders for roadmap planning and feature development"
+      "technologyUsageDescription": "Designed architecture using Nx Monorepo with React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and optimization. Built features integrating Hasura GraphQL with Apollo Client, managed state with Redux and Redux-Saga, and implemented Hasura Subscriptions via WebSocket for real-time updates. Integrated tavus.io for AI-powered video interviews. Wrote unit tests with Jest and React Testing Library. Deployed applications with Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry"
     },
     {
       "name": "Teserra Components Library",
@@ -82,7 +52,7 @@
         "Lead Architecture design and setup",
         "Review and approve the components"
       ],
-      "technologyUsageDescription": "Led architecture design and setup to build reusable component library with React and TypeScript in monorepo structure. Styled components with TailwindCSS and built accessible components using Shadcn/ui on top of Radix UI primitives. Documented components in Storybook with interactive examples and automated visual regression testing with Chromatic. Wrote unit tests with Jest and React Testing Library, and end-to-end tests with Cypress for component integration scenarios. Reviewed and approved components"
+      "technologyUsageDescription": "Designed architecture for reusable component library with React and TypeScript using monorepo. Styled components with TailwindCSS and built accessible components using Shadcn/ui on Radix UI primitives. Implemented accessibility standards with ARIA attributes and keyboard navigation for all component elements. Documented components in Storybook and automated visual regression testing with Chromatic. Wrote unit tests with Jest and React Testing Library, and end-to-end tests with Cypress"
     },
     {
       "name": "Candidate Web Application V2",
@@ -107,11 +77,11 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Designed and developed architecture from design to production to architect micro-frontend application with React and TypeScript, migrated legacy code from Ember.js and JavaScript to new architecture. Managed micro-frontend architecture with Webpack Module Federation for runtime module sharing between independent deployable frontend modules. Integrated RESTful API endpoints for candidate data, test results and scheduling, and managed state in each micro-frontends with Redux. Managed deployment pipeline by containerizing individual micro-frontend applications with Docker and setting up CI/CD pipelines with GitHub Actions for independent deployments. Implemented error monitoring with Sentry. Collaborated with backend team for feature integration and with product team for roadmap planning and feature development."
+      "technologyUsageDescription": "Designed micro-frontend architecture with React and TypeScript, migrated legacy code from Ember.js. Implemented Webpack Module Federation for runtime module sharing. Integrated RESTful API endpoints and managed state with Redux"
     },
     {
-      "name": "Recruit Web Application",
-      "description": "A platform for orchestrating and managing the flow of data between different systems.",
+      "name": "Recruit Web Application & Candidate Web Application",
+      "description": "A platform for orchestrating and managing data flow between systems, enabling recruiters to manage candidates and allowing candidates to take tests, live interviews and manage their availability",
       "technologies": [
         "Ember.js",
         "JavaScript",
@@ -126,7 +96,7 @@
       ],
       "myContribution": [
         "Implement new features",
-        "Optimized performance",
+        "Enhanced performance",
         "Refactored legacy code in structured way",
         "Debugging and fixing issues",
         "Provide support to the CS team for the application",
@@ -134,33 +104,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the feature development"
       ],
-      "technologyUsageDescription": "Implemented new features to build single-page application with Ember.js framework for recruiter workflows. Developed application logic with JavaScript and integrated RESTful API endpoints for candidate management and interview scheduling. Optimized performance by managing data models and relationships with Ember Data, implementing data tables with Ember Table for candidate lists and schedules, and creating calendar views with Ember Calendar for interview scheduling. Refactored legacy code in structured way and styled interface with Semantic UI components. Debugged and fixed issues, provided support to CS team, and managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with backend team for feature integration and with product team for feature development."
-    },
-    {
-      "name": "Candidate Web Application",
-      "description": "A platform where candidates can take the tests, live interview and manage their availability.",
-      "technologies": [
-        "Ember.js",
-        "JavaScript",
-        "RESTful API",
-        "Ember Data",
-        "Ember Calendar",
-        "Semantic UI",
-        "Sentry",
-        "Docker",
-        "GitHub Actions"
-      ],
-      "myContribution": [
-        "Implement new features",
-        "Optimized performance",
-        "Refactored legacy code in structured way",
-        "Debugging and fixing issues",
-        "Provide support to the CS team for the application",
-        "Manage deployment pipeline",
-        "Collaborate with the backend team for the integration of the features",
-        "Collaborate with product team for the feature development"
-      ],
-      "technologyUsageDescription": "Implemented new features to develop candidate-facing application with Ember.js for test-taking and interview management. Implemented test logic and scheduling features with JavaScript, fetched test questions, submitted answers and managed candidate availability through RESTful API. Styled candidate interface with Semantic UI components. Refactored legacy code in structured way, debugged and fixed issues, and provided support to CS team. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error monitoring with Sentry. Collaborated with backend team for feature integration and with product team for feature development."
+      "technologyUsageDescription": "Built single-page applications with Ember.js for recruiter workflows and candidate interfaces. Implemented business logic with JavaScript and integrated RESTful API for candidate management, scheduling, and test-taking. Optimized performance using Ember Data, implemented Ember Table for data tables and Ember Calendar for scheduling. Refactored legacy code and styled with Semantic UI"
     },
     {
       "name": "Proview Live Proctor",
@@ -184,12 +128,12 @@
       "myContribution": [
         "Architecture design and development from design to production",
         "Implement new features",
-        "Optimized performance",
+        "Enhanced performance",
         "Manage deployment pipeline",
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the feature development"
       ],
-      "technologyUsageDescription": "Led architecture design and development from design to production to build real-time proctoring dashboard with React and JavaScript for invigilators to monitor candidates activity collected from the Proview Client. Pulled that through RESTful API including monitoring logic and activity tracking, displayed candidate data in sortable, filterable tables with react-table and styled with Semantic UI. Integrated videojs for streaming HLS Streaming video for live monitoring, and enabled real-time bidirectional communication chat-bot with Getstream.io (WebSocket). Bundled application with Webpack. Managed deployment pipeline with containerized deployment using Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry. Collaborated with backend, media team, product team for feature integration and feature development"
+      "technologyUsageDescription": "Designed architecture for real-time proctoring dashboard with React and JavaScript. Integrated RESTful API for monitoring and activity tracking, implemented sortable tables with react-table and styled with Semantic UI. Integrated videojs for HLS streaming and implemented real-time chat with Getstream.io via WebSocket. Bundled application with Webpack"
     },
     {
       "name": "Proview Client",
@@ -211,7 +155,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the feature development"
       ],
-      "technologyUsageDescription": "Implemented new features to monitor through event tracking and candidate behavior monitoring logic with JavaScript/Jquery on Backbone.js and Grunt and sent those data and received monitoring configurations via RESTful API. Integrated React component for chat-bot functionality with Getstream.io compiling with babel/preset-react and browserify along with Grunt."
+      "technologyUsageDescription": "Implemented event tracking and candidate behavior monitoring with JavaScript/jQuery on Backbone.js and Grunt. Integrated RESTful API for data transmission and configuration management. Built React component for chat-bot with Getstream.io using babel/preset-react and browserify"
     }
   ]
 }
