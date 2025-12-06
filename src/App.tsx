@@ -10,12 +10,12 @@ let data = {
 };
 
 // if (process.env.NODE_ENV !== "production") {
-data = {
-  name: "Test test Test",
-  email: "test0@test.com",
-  phone: "1234567890",
-  location: "Address, Dist: Address, Assam, India",
-};
+// data = {
+//   name: "Test test Test",
+//   email: "test0@test.com",
+//   phone: "1234567890",
+//   location: "Address, Dist: Address, Assam, India",
+// };
 // }
 
 const role = [
@@ -310,21 +310,22 @@ export const App = () => {
             <li className="flex items-center">
               <span className="font-semibold">State Management:</span>
               <span className="mx-2">|</span>
-              <span itemProp="itemListElement">Redux / Redux-Saga</span>
+              <span itemProp="itemListElement">
+                Redux / Redux-Saga / RTK Query
+              </span>
             </li>
             <li className="flex items-center">
               <span className="font-semibold">Data Fetching & APIs:</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
-                GraphQL / Apollo Client / Hasura / Hasura Subscriptions /
-                RESTful API / Axios
+                GraphQL / Apollo Client / Hasura / RESTful API / Axios
               </span>
             </li>
             <li className="flex items-center">
               <span className="font-semibold">Real-time Communication:</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
-                WebSocket / WebRTC / Getstream.io
+                WebSocket / WebRTC / Getstream.io / Hasura Subscriptions
               </span>
             </li>
             <li className="flex items-center">
@@ -339,7 +340,7 @@ export const App = () => {
               <span className="font-semibold">Media & Streaming:</span>
               <span className="mx-2">|</span>
               <span itemProp="itemListElement">
-                videojs / HLS Streaming / tavus.io
+                videojs / HLS Streaming / tavus.io / WebRTC / AudioContext
               </span>
             </li>
             <li className="flex items-center">
@@ -502,8 +503,15 @@ export const App = () => {
               </h4>
               <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
                 <li>
-                  Recognized as Production Engineering Champion, Annual
-                  Champion, and Engineering Champion.
+                  Recognized as <b>Production Engineering Champion</b>,{" "}
+                  <b>Annual Champion</b>, and <b>Engineering Champion</b>{" "}
+                  multiple times.
+                </li>
+                <li>
+                  Promoted <strong>junior engineers to senior roles</strong> and
+                  allocated{" "}
+                  <strong>interns to work under their mentorship</strong>,
+                  fostering a culture of growth and knowledge transfer.
                 </li>
                 <li>
                   Instrumental in driving{" "}
