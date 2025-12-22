@@ -22,6 +22,7 @@ const role = [
   "Lead Frontend Engineer",
   "Staff Frontend Engineer",
   "UI Manager",
+  "Senior Reactjs Developer",
 ];
 
 export const App = () => {
@@ -93,7 +94,7 @@ export const App = () => {
 
   const handleSwitchTargetRole = () => {
     let index = targetRoleIndex;
-    if (index === 2) {
+    if (index === role.length - 1) {
       index = 0;
       setTargetRoleIndex(index);
     } else {
