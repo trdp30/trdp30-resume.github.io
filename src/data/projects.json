@@ -19,7 +19,9 @@
         "GitHub Actions",
         "tavus.io",
         "Jest",
-        "React Testing Library"
+        "React Testing Library",
+        "Blocknote",
+        "EditorJs"
       ],
       "myContribution": [
         "Lead Architecture design and development from design to production",
@@ -30,7 +32,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team, CS team and other stakeholders for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Designed architecture using Nx Monorepo with React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting and optimization. Built features integrating Hasura GraphQL with Apollo Client, managed state with Redux and Redux-Saga, and implemented Hasura Subscriptions via WebSocket for real-time updates. Integrated tavus.io for AI-powered video interviews. Wrote unit tests with Jest and React Testing Library. Deployed applications with Docker and automated CI/CD with GitHub Actions. Implemented error tracking with Sentry"
+      "technologyUsageDescription": "Designed architecture using Nx Monorepo with React, TypeScript and TailwindCSS, bundled with Webpack for code-splitting, caching strategies, and performance optimization. Built collaborative content management features using Blocknote and EditorJs editors for rich text editing. Integrated Hasura GraphQL with Apollo Client, managed state with Redux and Redux-Saga, and implemented Hasura Subscriptions via WebSocket for real-time updates. Integrated tavus.io for AI-powered video interviews. Implemented performance improvements through code-splitting, lazy loading, and bundling optimizations. Wrote unit tests with Jest and React Testing Library. Deployed applications with Docker and automated CI/CD pipelines with GitHub Actions. Implemented error tracking with Sentry"
     },
     {
       "name": "Teserra Components Library",
@@ -44,6 +46,8 @@
         "TailwindCSS",
         "Shadcn/ui",
         "Radix UI",
+        "Blocknote",
+        "ProseMinor",
         "Cypress",
         "Jest",
         "React Testing Library"
@@ -52,7 +56,7 @@
         "Lead Architecture design and setup",
         "Review and approve the components"
       ],
-      "technologyUsageDescription": "Designed architecture for reusable component library with React and TypeScript using monorepo. Styled components with TailwindCSS and built accessible components using Shadcn/ui on Radix UI primitives. Implemented accessibility standards with ARIA attributes and keyboard navigation for all component elements. Documented components in Storybook and automated visual regression testing with Chromatic. Wrote unit tests with Jest and React Testing Library, and end-to-end tests with Cypress"
+      "technologyUsageDescription": "Designed architecture for reusable component library with React and TypeScript using monorepo. Styled components with TailwindCSS and built accessible components using Shadcn/ui on Radix UI primitives. Integrated Blocknote and ProseMinor editors as reusable editor components for rich text editing. Implemented accessibility standards with ARIA attributes and keyboard navigation for all component elements. Documented components in Storybook and automated visual regression testing with Chromatic. Wrote unit tests with Jest and React Testing Library, and end-to-end tests with Cypress"
     },
     {
       "name": "Candidate Web Application V2",
@@ -78,7 +82,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the roadmap planning and feature development"
       ],
-      "technologyUsageDescription": "Designed micro-frontend architecture with React and TypeScript, migrated legacy code from Ember.js and styled with Material UI. Implemented Webpack Module Federation for runtime module sharing. Integrated RESTful API endpoints and managed state with Redux"
+      "technologyUsageDescription": "Designed micro-frontend architecture with React and TypeScript, migrated legacy code from Ember.js and styled with Material UI. Implemented Webpack Module Federation for runtime module sharing. Optimized performance through bundling improvements, caching strategies, and code-splitting. Integrated RESTful API endpoints and managed state with Redux. Deployed with Docker and automated CI/CD with GitHub Actions"
     },
     {
       "name": "Recruit Web Application & Candidate Web Application",
@@ -91,6 +95,7 @@
         "Ember Data",
         "Ember Table",
         "Ember Calendar",
+        "EditorJs",
         "Sentry",
         "Docker",
         "GitHub Actions"
@@ -105,7 +110,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the feature development"
       ],
-      "technologyUsageDescription": "Built single-page applications with Ember.js for recruiter workflows and candidate interfaces. Implemented business logic with JavaScript and integrated RESTful API for candidate management, scheduling, and test-taking. Optimized performance using Ember Data, implemented Ember Table for data tables and Ember Calendar for scheduling. Refactored legacy code and styled with Semantic UI"
+      "technologyUsageDescription": "Built single-page applications with Ember.js for recruiter workflows and candidate interfaces. Implemented business logic with JavaScript and integrated RESTful API for candidate management, scheduling, and test-taking. Integrated EditorJs for rich text editing capabilities. Optimized performance using Ember Data, implemented Ember Table for data tables and Ember Calendar for scheduling. Refactored legacy code and styled with Semantic UI"
     },
     {
       "name": "Proview Live Proctor",
@@ -134,7 +139,7 @@
         "Collaborate with the backend team for the integration of the features",
         "Collaborate with product team for the feature development"
       ],
-      "technologyUsageDescription": "Designed architecture for real-time proctoring dashboard with React and JavaScript. Integrated RESTful API for monitoring and activity tracking, implemented sortable tables with react-table and styled with Semantic UI. Integrated videojs for HLS streaming and implemented real-time chat with Getstream.io via WebSocket. Bundled application with Webpack"
+      "technologyUsageDescription": "Designed architecture for real-time proctoring dashboard with React and JavaScript. Integrated RESTful API for monitoring and activity tracking, implemented sortable tables with react-table and styled with Semantic UI. Integrated Video.js for HLS live streaming, video playback, and streaming enhancements with custom plugins and optimizations. Implemented real-time chat with Getstream.io via WebSocket. Bundled application with Webpack for performance optimization and code-splitting"
     },
     {
       "name": "Proview Client",

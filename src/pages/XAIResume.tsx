@@ -1,6 +1,6 @@
 import { ReactElement, useRef, useState } from "react";
-import DownloadButton from "./DownloadButton";
-import projectsData from "./projects.json";
+import DownloadButton from "../components/DownloadButton";
+import projectsData from "../data/projects.json";
 
 let data = {
   name: "Trideep Kumar Das",
@@ -9,26 +9,9 @@ let data = {
   location: "Bengaluru, India",
 };
 
-// if (process.env.NODE_ENV !== "production") {
-// data = {
-//   name: "Test test Test",
-//   email: "test0@test.com",
-//   phone: "1234567890",
-//   location: "Address, Dist: Address, Assam, India",
-// };
-// }
-
-const role = [
-  "Lead Frontend Engineer",
-  "Staff Frontend Engineer",
-  "UI Manager",
-  "Senior Reactjs Developer",
-];
-
-export const App = () => {
+export const XAIResume = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
-  const [targetRoleIndex, setTargetRoleIndex] = useState(0);
 
   // Helper function to bold technology names and accessibility terms in description
   const boldTechnologies = (text: string, technologies: string[]) => {
@@ -37,9 +20,12 @@ export const App = () => {
     // Accessibility terms that should be bolded
     const accessibilityTerms = [
       "ARIA attributes",
+      "ARIA roles",
       "keyboard navigation",
       "accessibility standards",
+      "WCAG 2.1+",
       "accessible components",
+      "semantic HTML",
     ];
 
     // Combine technologies and accessibility terms
@@ -92,17 +78,6 @@ export const App = () => {
     return parts.length > 0 ? parts : text;
   };
 
-  const handleSwitchTargetRole = () => {
-    let index = targetRoleIndex;
-    if (index === role.length - 1) {
-      index = 0;
-      setTargetRoleIndex(index);
-    } else {
-      index += 1;
-      setTargetRoleIndex(index);
-    }
-  };
-
   const handleDownloadPDF = async () => {
     setLoading(true);
     await window.print();
@@ -140,11 +115,10 @@ export const App = () => {
           </div>
           <p
             className="text-lg font-bold mb-1.5 text-black"
-            onClick={handleSwitchTargetRole}
             itemProp="jobTitle"
           >
-            {role[targetRoleIndex]} | React & TypeScript Expert | Scalable
-            System Architect
+            Frontend Engineering Specialist | React & TypeScript Expert | 7+
+            Years Professional Frontend Development Experience
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -242,39 +216,41 @@ export const App = () => {
           </div>
         </header>
 
-        {/* Professional Summary */}
+        {/* Professional Summary - ATS Optimized */}
         <section className="mb-1.5 pb-1.5 border-b relative">
           <h2 className="text-xl font-bold mb-1 text-black">
             Professional Summary
           </h2>
           <p className="text-sm leading-tight text-black">
-            Seasoned <strong>Frontend Engineering Leader</strong> with{" "}
-            <strong>7+ years of experience</strong> in architecting and
-            delivering{" "}
-            <strong>high-performance, scalable web applications</strong> across{" "}
-            <strong>SaaS and enterprise platforms</strong>. Currently serving as{" "}
-            <strong>Staff Frontend Engineer</strong> at Talview, leading a team
-            of <strong>7-10 engineers</strong> and driving{" "}
-            <strong>end-to-end frontend initiatives</strong> from design to
-            production deployment. Adept at building{" "}
-            <strong>modular architectures</strong> using
+            <strong>Frontend Engineering Specialist</strong> with{" "}
             <strong>
-              {" "}
-              React, TypeScript, GraphQL/RESTful API, and Webpack
-            </strong>
-            , and integrating <strong>CI/CD pipelines</strong> with{" "}
-            <strong>Docker</strong>. Proven success in improving application
-            performance by <strong>40%</strong>, boosting user engagement by{" "}
-            <strong>30%</strong>, and achieving{" "}
-            <strong>85%+ test coverage</strong>. Recognized for{" "}
-            <strong>technical leadership</strong>,
-            <strong> cross-functional collaboration</strong>, and{" "}
-            <strong>mentorship excellence</strong>, consistently aligning
-            engineering strategy with organizational growth and innovation.
+              7+ years of professional front-end development experience
+            </strong>{" "}
+            building <strong>responsive, user-facing web applications</strong>.
+            Expert in <strong>React</strong> (<strong>React hooks</strong>,{" "}
+            <strong>React context</strong>, <strong>component lifecycle</strong>
+            ), <strong>TypeScript</strong>, <strong>JavaScript (ES6+)</strong>,{" "}
+            <strong>modern state management</strong> (Redux, RTK Query),{" "}
+            <strong>CSS</strong>, <strong>Tailwind CSS</strong>, and{" "}
+            <strong>responsive design</strong>. Proven{" "}
+            <strong>performance optimization</strong> expertise (
+            <strong>lazy loading</strong>, <strong>code splitting</strong>,{" "}
+            <strong>caching strategies</strong>) achieving{" "}
+            <strong>40% reduction in load time</strong>. Extensive{" "}
+            <strong>accessibility standards (WCAG 2.1+)</strong>,{" "}
+            <strong>ARIA roles</strong>, <strong>semantic HTML</strong>,{" "}
+            <strong>keyboard navigation</strong>. Strong{" "}
+            <strong>debugging</strong> and <strong>profiling</strong> with{" "}
+            <strong>browser DevTools</strong>. Hands-on with{" "}
+            <strong>testing frameworks</strong> (<strong>Jest</strong>,{" "}
+            <strong>React Testing Library</strong>, <strong>Cypress</strong>),{" "}
+            <strong>REST</strong>/<strong>GraphQL APIs</strong>,{" "}
+            <strong>Docker</strong>, and <strong>CI/CD</strong>. Currently{" "}
+            <strong>Staff Frontend Engineer</strong> leading 7-10 engineers.
           </p>
         </section>
 
-        {/* Core Competencies */}
+        {/* Core Competencies - ATS Optimized */}
         <section
           className="mb-1.5 pb-1.5 relative border-b"
           itemScope
@@ -292,80 +268,74 @@ export const App = () => {
                 </span>
                 <span className="mx-2">|</span>
                 <span itemProp="itemListElement">
-                  React / Ember.js / Backbone.js / TypeScript / JavaScript
+                  React (React Hooks, React Context, Component Lifecycle) /
+                  TypeScript / JavaScript (ES6+) / Ember.js / Backbone.js
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Modern State Management:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Redux / Redux-Saga / RTK Query / Context API
                 </span>
               </div>
             </li>
             <li className="flex items-start">
               <div>
                 <span className="font-semibold">
-                  Build Tools & Architecture:
+                  Styling & Responsive Design:
                 </span>
                 <span className="mx-2">|</span>
                 <span itemProp="itemListElement">
-                  Webpack / Nx Monorepo / Micro-Frontend / Webpack Module
-                  Federation / Grunt / Node.js
+                  CSS / Tailwind CSS / HTML5 / Responsive Design / UI
+                  Interactions / Animations
                 </span>
               </div>
             </li>
-            <li className="flex items-center">
-              <span className="font-semibold">State Management:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                Redux / Redux-Saga / RTK Query
-              </span>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Performance Optimization:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Lazy Loading / Code Splitting / Caching Strategies / Asset
+                  Optimization / Browser DevTools / Performance Monitoring Tools
+                </span>
+              </div>
             </li>
-            <li className="flex items-center">
-              <span className="font-semibold">Data Fetching & APIs:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                GraphQL / Apollo Client / Hasura / RESTful API / Axios
-              </span>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Accessibility Standards:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  WCAG 2.1+ / ARIA Roles / Semantic HTML / Keyboard Navigation /
+                  Accessible Components
+                </span>
+              </div>
             </li>
-            <li className="flex items-center">
-              <span className="font-semibold">Real-time Communication:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                WebSocket / WebRTC / Getstream.io / Hasura Subscriptions
-              </span>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">
+                  APIs, Testing & Build Tools:
+                </span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  GraphQL / REST / Apollo Client / Jest / React Testing Library
+                  / Cypress / Webpack / Nx Monorepo / Micro-Frontend / Node.js /
+                  WebSocket / WebRTC
+                </span>
+              </div>
             </li>
-            <li className="flex items-center">
-              <span className="font-semibold">Styling & UI Libraries:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                HTML5 / CSS3 / TailwindCSS / Material UI / Shadcn/ui / Semantic
-                UI / Radix UI
-              </span>
-            </li>
-            <li className="flex items-center">
-              <span className="font-semibold">Media & Streaming:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                videojs / HLS Streaming / tavus.io / WebRTC / AudioContext
-              </span>
-            </li>
-            <li className="flex items-center">
-              <span className="font-semibold">Testing:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                Jest / React Testing Library / Cypress / Storybook / Chromatic
-              </span>
-            </li>
-            <li className="flex items-center">
-              <span className="font-semibold">DevOps & Tools:</span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                CI/CD / GitHub Actions / Docker / Sentry
-              </span>
-            </li>
-            <li className="flex items-center">
-              <span className="font-semibold">
-                AI-Assisted Development Tools:
-              </span>
-              <span className="mx-2">|</span>
-              <span itemProp="itemListElement">
-                Cursor / Windsurf / Claude Cloud / Codex
-              </span>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">DevOps & Tools:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Docker / CI/CD / GitHub Actions / Node.js / SEO Best Practices
+                  / Single-Page Applications (SPA) / Sentry
+                </span>
+              </div>
             </li>
             <li className="flex items-start">
               <div>
@@ -374,14 +344,14 @@ export const App = () => {
                 <span>
                   Scalable System Design / Mentorship & Team Leadership / Agile
                   Delivery / Cross-Functional Collaboration / Performance
-                  Optimization
+                  Optimization / Debugging & Profiling
                 </span>
               </div>
             </li>
           </ul>
         </section>
 
-        {/* Professional Experience */}
+        {/* Professional Experience - ATS Optimized */}
         <section className="mb-1.5 pb-1.5 border-b">
           <h2 className="text-xl font-bold mb-1 text-black">
             Professional Experience
@@ -427,101 +397,44 @@ export const App = () => {
               </span>
             </p>
 
-            <div className="mb-1">
-              <h4 className="font-semibold text-base mb-0.5 text-black">
-                Leadership & Architecture:
-              </h4>
-              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
-                <li>
-                  Lead <strong>frontend architecture</strong> and development
-                  across multiple
-                  <strong> SaaS platforms</strong>, ensuring{" "}
-                  <strong>scalability, maintainability</strong>, and
-                  <strong> enhanced performance</strong>.
-                </li>
-                <li>
-                  Defined reusable <strong>design systems</strong> and{" "}
-                  <strong>component libraries</strong>, reducing redundant code
-                  and improving development velocity by <strong>35%</strong>.
-                </li>
-                <li>
-                  Collaborated with <strong>product managers</strong>,{" "}
-                  <strong>backend engineers</strong>, and{" "}
-                  <strong>UX teams</strong>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-1">
-              <h4 className="font-semibold text-base mb-0.5 text-black">
-                Performance & Quality:
-              </h4>
-              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
-                <li>
-                  Streamlined <strong>application architecture</strong>,
-                  achieving a <strong>40% reduction in load time</strong> and
-                  enhanced
-                  <strong> system stability</strong>.
-                </li>
-                <li>
-                  Established comprehensive{" "}
-                  <strong>unit and integration testing frameworks</strong> using{" "}
-                  <strong>Jest</strong> and{" "}
-                  <strong>React Testing Library</strong>, increasing coverage to{" "}
-                  <strong>85%+</strong>.
-                </li>
-                <li>
-                  Introduced <strong>systematized deployment pipelines</strong>{" "}
-                  via <strong>GitHub Actions</strong>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-1">
-              <h4 className="font-semibold text-base mb-0.5 text-black">
-                Mentorship & Delivery:
-              </h4>
-              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
-                <li>
-                  Mentored <strong>junior and mid-level engineers</strong>,
-                  improving <strong>team productivity</strong> and{" "}
-                  <strong>code quality</strong>.
-                </li>
-                <li>
-                  Standardized <strong>coding guidelines</strong> and{" "}
-                  <strong>code-review processes</strong>.
-                </li>
-                <li>
-                  Delivered multiple{" "}
-                  <strong>enterprise-grade web applications</strong>.
-                </li>
-              </ul>
-            </div>
-
-            <div className="mb-1">
-              <h4 className="font-semibold text-base mb-0.5 text-black">
-                Key Achievements:
-              </h4>
-              <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
-                <li>
-                  Recognized as <b>Production Engineering Champion</b>,{" "}
-                  <b>Annual Champion</b>, and <b>Engineering Champion</b>{" "}
-                  multiple times.
-                </li>
-                <li>
-                  Promoted <strong>junior engineers to senior roles</strong> and
-                  allocated{" "}
-                  <strong>interns to work under their mentorship</strong>,
-                  fostering a culture of growth and knowledge transfer.
-                </li>
-                <li>
-                  Instrumental in driving{" "}
-                  <strong>30% growth in user engagement</strong> through{" "}
-                  <strong>UI/UX enhancements</strong> and{" "}
-                  <strong>feature optimization</strong>.
-                </li>
-              </ul>
-            </div>
+            <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
+              <li>
+                Architected{" "}
+                <strong>responsive, user-facing web applications</strong> using{" "}
+                <strong>React</strong> (<strong>React hooks</strong>,{" "}
+                <strong>React context</strong>,{" "}
+                <strong>component lifecycle</strong>),{" "}
+                <strong>TypeScript</strong>, and{" "}
+                <strong>modern state management</strong> (Redux, RTK Query),
+                improving development velocity by <strong>35%</strong>.
+              </li>
+              <li>
+                Achieved <strong>40% reduction in load time</strong> via{" "}
+                <strong>performance optimization</strong> (
+                <strong>lazy loading</strong>, <strong>code splitting</strong>,{" "}
+                <strong>caching strategies</strong>). Utilized{" "}
+                <strong>browser DevTools</strong> for <strong>debugging</strong>{" "}
+                and <strong>profiling</strong>, integrated{" "}
+                <strong>performance monitoring tools</strong> (Sentry).
+              </li>
+              <li>
+                Implemented <strong>accessibility standards (WCAG 2.1+)</strong>{" "}
+                with <strong>ARIA roles</strong>, <strong>semantic HTML</strong>
+                , <strong>keyboard navigation</strong>. Built{" "}
+                <strong>responsive design</strong> with <strong>CSS</strong>/
+                <strong>Tailwind CSS</strong>, <strong>UI interactions</strong>,
+                and <strong>animations</strong>.
+              </li>
+              <li>
+                Established <strong>testing frameworks</strong> (
+                <strong>Jest</strong>, <strong>React Testing Library</strong>,{" "}
+                <strong>Cypress</strong>) achieving{" "}
+                <strong>85%+ test coverage</strong>. Integrated{" "}
+                <strong>REST</strong>/<strong>GraphQL APIs</strong>. Implemented{" "}
+                <strong>Docker</strong> and <strong>CI/CD pipelines</strong> (
+                <strong>GitHub Actions</strong>). Led team of 7-10 engineers.
+              </li>
+            </ul>
           </div>
 
           <div className="mb-1">
@@ -548,18 +461,6 @@ export const App = () => {
                 >
                   {project.description}
                 </p>
-                {/* {project.technologies && project.technologies.length > 0 && (
-                  <div className="mb-1 print:mb-0.5">
-                    <meta
-                      itemProp="keywords"
-                      content={project.technologies.join(", ")}
-                    />
-                    <span className="text-xs text-black print:text-[10px]">
-                      <strong>Technologies:</strong>{" "}
-                      {project.technologies.join(", ")}
-                    </span>
-                  </div>
-                )} */}
                 {project.technologyUsageDescription && (
                   <ul className="list-disc list-inside text-sm space-y-0.5 text-black print:text-xs print:space-y-0">
                     {project.technologyUsageDescription
@@ -623,4 +524,4 @@ export const App = () => {
   );
 };
 
-export default App;
+export default XAIResume;
