@@ -310,6 +310,12 @@ export const FAANGResume = () => {
                 Scalable Architecture, High-Performance Systems, Distributed Systems, Real-time Systems
               </span>
             </p>
+            <p>
+              <span className="font-semibold">AI/LLM Development Tools:</span>{" "}
+              <span itemProp="itemListElement">
+                Cursor, Codex, Windsurf, Claude Code
+              </span>
+            </p>
           </div>
         </section>
 
@@ -417,6 +423,9 @@ export const FAANGResume = () => {
                 Collaborated cross-functionally with <strong>product managers</strong>, <strong>backend engineers</strong>,{" "}
                 <strong>UX/UI designers</strong>, and <strong>QA teams</strong> to deliver end-to-end features, ensuring{" "}
                 alignment between technical implementation and business requirements while maintaining high code quality standards.
+              </li>
+              <li>
+                Integrated <strong>AI/LLM development tools</strong> (<strong>Cursor</strong>, <strong>Codex</strong>) into development workflows, reducing development time by <strong>40%</strong> while maintaining full ownership of code quality through both <strong>manual code review</strong> and <strong>agentic review processes</strong> for AI-generated code, ensuring security, performance, and adherence to engineering standards.
               </li>
               <li>
                 Recognized as <strong>Production Engineering Champion</strong>,{" "}
