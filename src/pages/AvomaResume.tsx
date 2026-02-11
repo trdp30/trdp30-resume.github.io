@@ -232,7 +232,7 @@ export const AvomaResume = () => {
           <p className="text-sm leading-tight text-black">
             <strong>Lead Frontend Engineer</strong> with{" "}
             <strong>
-              7+ years of professional front-end development experience
+              7.5+ years of professional front-end development experience
             </strong>{" "}
             building <strong>consumer app-grade UI</strong> and{" "}
             <strong>responsive, user-facing web applications</strong>. Expert in{" "}

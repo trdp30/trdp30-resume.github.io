@@ -14,6 +14,7 @@ const navItems: NavItem[] = [
   { path: "/avoma-resume", label: "Avoma Resume", color: "bg-purple-600 hover:bg-purple-700" },
   { path: "/arcana-resume", label: "Arcana Resume", color: "bg-orange-600 hover:bg-orange-700" },
   { path: "/faang-resume", label: "FAANG Resume", color: "bg-red-600 hover:bg-red-700" },
+  { path: "/light-resume", label: "Light Resume", color: "bg-teal-600 hover:bg-teal-700" },
 ];
 
 export const NavBar = () => {

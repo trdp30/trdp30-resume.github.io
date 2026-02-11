@@ -157,7 +157,7 @@ export const ArcanaResume = () => {
             className="text-lg font-bold mb-1.5 text-black"
             itemProp="jobTitle"
           >
-            Frontend Engineer | React & TypeScript Expert | 7+ Years Frontend Development Experience
+            Frontend Engineer | React & TypeScript Expert | 7.5+ Years Frontend Development Experience
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -262,7 +262,7 @@ export const ArcanaResume = () => {
           </h2>
           <p className="text-sm leading-tight text-black">
             Experienced <strong>Frontend Engineer</strong> with{" "}
-            <strong>7+ years of professional frontend development experience</strong>{" "}
+            <strong>7.5+ years of professional frontend development experience</strong>{" "}
             specializing in building <strong>scalable, responsive web applications</strong>{" "}
             using <strong>React</strong>, <strong>TypeScript</strong>, and{" "}
             <strong>JavaScript (ES6+)</strong>. Expert in <strong>component-based architecture</strong>,{" "}

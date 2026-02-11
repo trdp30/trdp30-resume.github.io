@@ -249,7 +249,7 @@ export const App = () => {
           </h2>
           <p className="text-sm leading-tight text-black">
             Seasoned <strong>Frontend Engineering Leader</strong> with{" "}
-            <strong>7+ years of experience</strong> in architecting and
+            <strong>7.5+ years of experience</strong> in architecting and
             delivering{" "}
             <strong>high-performance, scalable web applications</strong> across{" "}
             <strong>SaaS and enterprise platforms</strong>. Currently serving as{" "}
@@ -586,6 +586,79 @@ export const App = () => {
                 )}
               </div>
             ))}
+          </div>
+        </section>
+
+        {/* Personal Projects */}
+        <section className="mb-1.5 pb-1.5 border-b">
+          <h2 className="text-xl font-bold mb-1 text-black">
+            Personal Projects
+          </h2>
+
+          {/* Jatayat Project */}
+          <div className="mb-1">
+            <div className="flex flex-wrap items-baseline gap-2 mb-0.5">
+              <h3 className="text-base font-semibold text-black">
+                Jatayat - Real-Time Transportation Tracking
+              </h3>
+              <span className="text-xs text-black italic">
+                React Native, GraphQL, Firebase, PostgreSQL, Native Android
+                (Kotlin)
+              </span>
+            </div>
+            <ul className="list-disc list-inside text-sm space-y-0.5 text-black ml-2">
+              <li>
+                Built{" "}
+                <strong>real-time vehicle tracking platform</strong> with{" "}
+                <strong>React Native</strong> mobile apps (iOS/Android) and{" "}
+                <strong>GraphQL</strong> backend, processing vehicle fleets with
+                sub-second location updates using{" "}
+                <strong>native Android geospatial modules</strong> for
+                high-performance calculations.
+              </li>
+              <li>
+                Architected{" "}
+                <strong>native Android modules (Kotlin)</strong> for{" "}
+                <strong>high-performance geospatial calculations</strong> with{" "}
+                <strong>parallel batch processing</strong> using thread pool
+                executors, supporting large-scale concurrent users with{" "}
+                <strong>background location tracking</strong> and automatic
+                permission management.
+              </li>
+            </ul>
+          </div>
+
+          {/* Appointment Booking Project */}
+          <div className="mb-1">
+            <div className="flex flex-wrap items-baseline gap-2 mb-0.5">
+              <h3 className="text-base font-semibold text-black">
+                Appointment Booking System - Multi-Tenant Clinic Management
+              </h3>
+              <span className="text-xs text-black italic">
+                React, Module Federation, Hasura DDN, PostgreSQL, Node.js,
+                Firebase
+              </span>
+            </div>
+            <ul className="list-disc list-inside text-sm space-y-0.5 text-black ml-2">
+              <li>
+                Developed{" "}
+                <strong>multi-tenant appointment booking system</strong> using{" "}
+                <strong>Module Federation</strong> (Rsbuild) and{" "}
+                <strong>Hasura DDN</strong>, implementing{" "}
+                <strong>real-time queue management</strong> with{" "}
+                <strong>PostgreSQL triggers</strong> for automatic position
+                calculation and supporting high-volume concurrent bookings.
+              </li>
+              <li>
+                Built <strong>GraphQL backend</strong> with{" "}
+                <strong>Hasura DDN</strong> and{" "}
+                <strong>Node.js Lambda connectors</strong> for custom business
+                logic, including booking validation, queue calculation, and{" "}
+                <strong>multi-tenant data isolation</strong>, with{" "}
+                <strong>Express.js authentication service</strong> deployed on{" "}
+                <strong>Google Cloud Run</strong>.
+              </li>
+            </ul>
           </div>
         </section>
 

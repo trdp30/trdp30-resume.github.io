@@ -224,7 +224,7 @@ export const XAIResume = () => {
           <p className="text-sm leading-tight text-black">
             <strong>Frontend Engineering Specialist</strong> with{" "}
             <strong>
-              7+ years of professional front-end development experience
+              7.5+ years of professional front-end development experience
             </strong>{" "}
             building <strong>responsive, user-facing web applications</strong>.
             Expert in <strong>React</strong> (<strong>React hooks</strong>,{" "}

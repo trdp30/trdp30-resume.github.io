@@ -8,65 +8,20 @@ let data = {
   location: "Bengaluru, India",
 };
 
-export const FAANGResume = () => {
+export const LightResume = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
 
-  // Helper function to bold technology names and key terms in description
+  // Helper function to bold technology names
   const boldTechnologies = (text: string, technologies: string[]) => {
     if (!text) return text;
 
-    // Key terms that should be bolded for FAANG resume
-    const keyTerms = [
-      "React",
-      "React Native",
-      "TypeScript",
-      "JavaScript",
-      "ES6+",
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-      "Redux",
-      "GraphQL",
-      "REST API",
-      "Webpack",
-      "Docker",
-      "CI/CD",
-      "Jest",
-      "Cypress",
-      "performance optimization",
-      "code splitting",
-      "lazy loading",
-      "scalable",
-      "architecture",
-      "system design",
-      "microservices",
-      "monorepo",
-      "micro-frontend",
-      "Module Federation",
-      "Hasura DDN",
-      "PostgreSQL",
-      "Firebase",
-      "Kotlin",
-      "native Android",
-      "geospatial",
-      "multi-tenant",
-      "real-time",
-      "PostgreSQL triggers",
-      "Lambda connectors",
-      "Express.js",
-      "Google Cloud Run",
-    ];
-
-    // Combine technologies and key terms
-    const allTerms = [...(technologies || []), ...keyTerms];
+    const allTerms = [...(technologies || [])];
 
     if (allTerms.length === 0) return text;
 
-    // Sort terms by length (longest first) to match longer names first
     const sortedTerms = [...allTerms].sort((a, b) => b.length - a.length);
 
-    // Create a regex pattern that matches terms as whole words
     const pattern = new RegExp(
       `\\b(${sortedTerms
         .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
@@ -78,7 +33,6 @@ export const FAANGResume = () => {
     let lastIndex = 0;
     let match;
 
-    // Reset regex
     pattern.lastIndex = 0;
     const matches: Array<{ index: number; length: number; text: string }> = [];
 
@@ -91,16 +45,13 @@ export const FAANGResume = () => {
     }
 
     matches.forEach((match, idx) => {
-      // Add text before the match
       if (match.index > lastIndex) {
         parts.push(text.substring(lastIndex, match.index));
       }
-      // Add the bold term
       parts.push(<strong key={`term-${idx}`}>{match.text}</strong>);
       lastIndex = match.index + match.length;
     });
 
-    // Add remaining text
     if (lastIndex < text.length) {
       parts.push(text.substring(lastIndex));
     }
@@ -123,12 +74,12 @@ export const FAANGResume = () => {
       >
         {/* Header Section */}
         <header
-          className="mb-2 pb-2 border-b-2 border-black"
+          className="mb-1.5 pb-1 border-b border-black"
           itemScope
           itemType="https://schema.org/Person"
         >
           <h1
-            className="text-3xl font-bold mb-1 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100"
+            className="text-3xl font-bold mb-0.5 uppercase tracking-tight text-black opacity-[0.8] print:opacity-100"
             itemProp="name"
           >
             {data.name.toUpperCase()}
@@ -144,10 +95,10 @@ export const FAANGResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p
-            className="text-lg font-bold mb-2 text-black"
+            className="text-lg font-bold mb-1.5 text-black"
             itemProp="jobTitle"
           >
-            Frontend Engineer | React & TypeScript Expert | 7.5+ Years Building Scalable Systems
+            Staff Frontend Engineer | React & TypeScript Expert | 7.5+ Years Experience
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -245,107 +196,118 @@ export const FAANGResume = () => {
           </div>
         </header>
 
-        {/* Professional Summary - FAANG Style */}
-        <section className="mb-2 pb-2 border-b border-black">
+        {/* Professional Summary - Lighter Version */}
+        <section className="mb-1.5 pb-1.5 border-b relative">
           <h2 className="text-xl font-bold mb-1 text-black">
-            Summary
+            Professional Summary
           </h2>
-          <p className="text-sm leading-relaxed text-black">
-            <strong>Seasoned Frontend Engineer</strong> with <strong>7.5+ years</strong> of experience architecting 
-            <strong> high-performance, scalable web applications</strong> across SaaS and enterprise platforms. 
-            Currently serving as <strong>Staff Frontend Engineer</strong> at Talview, leading a team of <strong>7-10 engineers</strong> and driving end-to-end frontend initiatives from design to production deployment. Expert in <strong>React</strong>, <strong>TypeScript</strong>, <strong>GraphQL/RESTful APIs</strong>, <strong>Webpack</strong>, <strong>CI/CD</strong>, and <strong>Docker</strong>. Delivered measurable impact: <strong>40% performance improvement</strong>, <strong>30% user engagement boost</strong>, and <strong>85%+ test coverage</strong>. Recognized for <strong>technical leadership</strong>, <strong>cross-functional collaboration</strong>, and <strong>mentorship excellence</strong>.
+          <p className="text-sm leading-tight text-black">
+            <strong>Staff Frontend Engineer</strong> with <strong>7.5+ years</strong> of experience 
+            architecting and building <strong>scalable web applications</strong> using <strong>React</strong>, 
+            <strong>TypeScript</strong>, and modern frontend technologies. Expert in <strong>system design</strong>, 
+            <strong>performance optimization</strong>, and leading engineering teams. Proven track record of 
+            delivering high-quality solutions and driving technical excellence.
           </p>
         </section>
 
-        {/* Technical Skills - FAANG Style */}
+        {/* Core Competencies - Lighter Version */}
         <section
-          className="mb-2 pb-2 border-b border-black"
+          className="mb-1.5 pb-1.5 relative border-b"
           itemScope
           itemType="https://schema.org/ItemList"
         >
           <h2 className="text-xl font-bold mb-1 text-black">
-            Technical Skills
+            Core Competencies
           </h2>
-          <meta itemProp="name" content="Technical Skills" />
-          <div className="text-sm text-black space-y-0.5">
-            <p>
-              <span className="font-semibold">Languages & Frameworks:</span>{" "}
-              <span itemProp="itemListElement">
-                React, React Native, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Ember.js, Backbone.js, Kotlin
-              </span>
-            </p>
-            <p>
-              <span className="font-semibold">State Management & Architecture:</span>{" "}
-              <span itemProp="itemListElement">
-                Redux, Redux-Saga, RTK Query, Context API, Micro-Frontend, Module Federation, Monorepo, Component-Based Architecture
-              </span>
-            </p>
-            <p>
-              <span className="font-semibold">Performance & Optimization:</span>{" "}
-              <span itemProp="itemListElement">
-                Code Splitting, Lazy Loading, Webpack, Bundle Optimization, Caching Strategies, Performance Profiling
-              </span>
-            </p>
-            <p>
-              <span className="font-semibold">Testing & Quality:</span>{" "}
-              <span itemProp="itemListElement">
-                Jest, React Testing Library, Cypress, Unit Testing, Integration Testing, E2E Testing
-              </span>
-            </p>
-            <p>
-              <span className="font-semibold">APIs & Backend Integration:</span>{" "}
-              <span itemProp="itemListElement">
-                GraphQL, REST API, Apollo Client, WebSocket, WebRTC, Hasura, Hasura DDN, Real-time Subscriptions, Firebase, PostgreSQL, Prisma ORM
-              </span>
-            </p>
-            <p>
-              <span className="font-semibold">DevOps & Infrastructure:</span>{" "}
-              <span itemProp="itemListElement">
-                Docker, CI/CD, GitHub Actions, Git, Node.js, Nx Monorepo, Microservices Architecture
-              </span>
-            </p>
-            <p>
-              <span className="font-semibold">System Design & Scale:</span>{" "}
-              <span itemProp="itemListElement">
-                Scalable Architecture, High-Performance Systems, Distributed Systems, Real-time Systems
-              </span>
-            </p>
-          </div>
+          <meta itemProp="name" content="Core Competencies" />
+          <ul className="text-sm space-y-0.5 text-black">
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Frontend Technologies:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  React, React Native, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">State Management & Architecture:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Redux, RTK Query, Context API, Micro-Frontend, Module Federation, Monorepo
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Backend & APIs:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  GraphQL, REST API, Hasura, Hasura DDN, Node.js, PostgreSQL, Firebase
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Build Tools & DevOps:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Webpack, Docker, CI/CD, GitHub Actions, Git
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Testing & Quality:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  Jest, React Testing Library, Cypress
+                </span>
+              </div>
+            </li>
+            <li className="flex items-start">
+              <div>
+                <span className="font-semibold">Mobile Development:</span>
+                <span className="mx-2">|</span>
+                <span itemProp="itemListElement">
+                  React Native, Native Android (Kotlin)
+                </span>
+              </div>
+            </li>
+          </ul>
         </section>
 
-        {/* Professional Experience - FAANG Style with Quantified Impact */}
-        <section className="mb-2 pb-2 border-b border-black">
-          <h2 className="text-xl font-bold mb-1.5 text-black">
+        {/* Professional Experience - Streamlined */}
+        <section className="mb-1.5 pb-1.5 border-b">
+          <h2 className="text-xl font-bold mb-1 text-black">
             Professional Experience
           </h2>
 
           <div
-            className="mb-2"
+            className="mb-1.5"
             itemScope
             itemType="https://schema.org/OrganizationRole"
           >
-            <div className="flex justify-between items-start mb-0.5">
-              <h3
-                className="text-lg font-semibold text-black"
-                itemProp="jobTitle"
-              >
-                Staff Frontend Engineer
-              </h3>
-              <span className="text-sm text-black font-medium">
-                June 2018 - Present
-              </span>
-            </div>
+            <h3
+              className="text-lg font-semibold text-black"
+              itemProp="jobTitle"
+            >
+              Staff Frontend Engineer
+            </h3>
             <div
               itemProp="worksFor"
               itemScope
               itemType="https://schema.org/Organization"
             >
-              <p className="text-base font-semibold text-black mb-1" itemProp="name">
-                Talview
-              </p>
               <meta itemProp="name" content="Talview" />
             </div>
-            <p className="text-sm italic mb-1.5 text-black">
+            <p className="text-sm italic mb-1 text-black">
+              <span itemProp="worksFor">Talview</span> |{" "}
+              <span itemProp="startDate" content="2018-06">
+                June 2018
+              </span>{" "}
+              - <span itemProp="endDate">Present</span> |
               <span
                 itemProp="jobLocation"
                 itemScope
@@ -356,13 +318,13 @@ export const FAANGResume = () => {
                   itemScope
                   itemType="https://schema.org/PostalAddress"
                 >
-                  <span itemProp="addressLocality">Bengaluru</span>,{" "}
+                  <span itemProp="addressLocality">Bengaluru</span>,
                   <span itemProp="addressCountry">India</span>
                 </span>
               </span>
             </p>
 
-            <ul className="list-disc list-inside text-sm space-y-1 text-black">
+            <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
               <li>
                 Led <strong>frontend architecture</strong> and development across multiple{" "}
                 <strong>SaaS platforms</strong>, ensuring <strong>scalability</strong>,{" "}
@@ -411,29 +373,25 @@ export const FAANGResume = () => {
               <li>
                 Led team of <strong>7-10 engineers</strong>, establishing coding standards and conducting{" "}
                 <strong>code reviews</strong>, resulting in <strong>60% improvement in team productivity</strong>{" "}
-                and <strong>5,590 GitHub contributions</strong> in 2024 (highest in organization).
-              </li>
-              <li>
-                Collaborated cross-functionally with <strong>product managers</strong>, <strong>backend engineers</strong>,{" "}
-                <strong>UX/UI designers</strong>, and <strong>QA teams</strong> to deliver end-to-end features, ensuring{" "}
-                alignment between technical implementation and business requirements while maintaining high code quality standards.
+                and <strong>5,590 GitHub contributions</strong> in 2023 (highest in organization).
               </li>
               <li>
                 Recognized as <strong>Production Engineering Champion</strong>,{" "}
-                <strong>Annual Champion</strong>, and <strong>Engineering Champion</strong>.
+                <strong>Annual Champion</strong>, and <strong>Engineering Champion</strong> for sustained{" "}
+                technical impact and leadership.
               </li>
             </ul>
           </div>
         </section>
 
-        {/* Personal Projects - FAANG Style */}
-        <section className="mb-2 pb-2 border-b border-black">
+        {/* Personal Projects */}
+        <section className="mb-1.5 pb-1.5 border-b">
           <h2 className="text-xl font-bold mb-1 text-black">
             Personal Projects
           </h2>
-          
+
           {/* Jatayat Project */}
-          <div className="mb-2">
+          <div className="mb-1.5">
             <div className="flex flex-wrap items-baseline gap-2 mb-0.5">
               <h3 className="text-base font-semibold text-black">
                 Jatayat - Real-Time Transportation Tracking
@@ -444,20 +402,23 @@ export const FAANGResume = () => {
             </div>
             <ul className="list-disc list-inside text-sm space-y-0.5 text-black ml-2">
               <li>
-                Built <strong>real-time vehicle tracking platform</strong> with <strong>React Native</strong> mobile apps 
-                (iOS/Android) and <strong>GraphQL</strong> backend, processing vehicle fleets with sub-second location 
-                updates using <strong>native Android geospatial modules</strong> for high-performance calculations
+                Built <strong>real-time vehicle tracking platform</strong> with <strong>React Native</strong> 
+                mobile apps (iOS/Android) and <strong>GraphQL</strong> backend, processing vehicle fleets 
+                with sub-second location updates using <strong>native Android geospatial modules</strong> for 
+                high-performance calculations.
               </li>
               <li>
-                Architected <strong>native Android modules (Kotlin)</strong> for <strong>high-performance geospatial calculations </strong> 
-                with <strong>parallel batch processing</strong> using thread pool executors, supporting large-scale concurrent 
-                users with <strong>background location tracking</strong> and automatic permission management
+                Architected <strong>native Android modules (Kotlin)</strong> for 
+                <strong>high-performance geospatial calculations</strong> with 
+                <strong>parallel batch processing</strong> using thread pool executors, supporting 
+                large-scale concurrent users with <strong>background location tracking</strong> and 
+                automatic permission management.
               </li>
             </ul>
           </div>
 
           {/* Appointment Booking Project */}
-          <div className="mb-2">
+          <div className="mb-1.5">
             <div className="flex flex-wrap items-baseline gap-2 mb-0.5">
               <h3 className="text-base font-semibold text-black">
                 Appointment Booking System - Multi-Tenant Clinic Management
@@ -468,42 +429,19 @@ export const FAANGResume = () => {
             </div>
             <ul className="list-disc list-inside text-sm space-y-0.5 text-black ml-2">
               <li>
-                Developed <strong>multi-tenant appointment booking system</strong> using <strong>Module Federation</strong> 
-                (Rsbuild) and <strong>Hasura DDN</strong>, implementing <strong>real-time queue management</strong> with 
-                <strong> PostgreSQL triggers</strong> for automatic position calculation and supporting high-volume concurrent bookings
+                Developed <strong>multi-tenant appointment booking system</strong> using 
+                <strong>Module Federation</strong> (Rsbuild) and <strong>Hasura DDN</strong>, implementing 
+                <strong>real-time queue management</strong> with <strong>PostgreSQL triggers</strong> for 
+                automatic position calculation and supporting high-volume concurrent bookings.
               </li>
               <li>
-                Built <strong>GraphQL backend</strong> with <strong>Hasura DDN</strong> and <strong>Node.js Lambda connectors </strong> 
-                for custom business logic, including booking validation, queue calculation, and <strong>multi-tenant data isolation</strong>, 
-                with <strong>Express.js authentication service</strong> deployed on <strong>Google Cloud Run</strong>
+                Built <strong>GraphQL backend</strong> with <strong>Hasura DDN</strong> and 
+                <strong>Node.js Lambda connectors</strong> for custom business logic, including booking 
+                validation, queue calculation, and <strong>multi-tenant data isolation</strong>, with 
+                <strong>Express.js authentication service</strong> deployed on <strong>Google Cloud Run</strong>.
               </li>
             </ul>
           </div>
-        </section>
-
-        {/* Key Achievements - FAANG Style */}
-        <section className="mb-2 pb-2 border-b border-black">
-          <h2 className="text-xl font-bold mb-1 text-black">
-            Key Achievements & Recognition
-          </h2>
-          <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
-            <li>
-              <strong>5,590 GitHub contributions</strong> in 2024 (highest in organization), demonstrating 
-              consistent high-impact technical contributions
-            </li>
-            <li>
-              Multiple Engineering Awards: <strong>Production Engineering Champion</strong>, <strong>Annual Champion</strong>, 
-              and <strong>Engineering Champion</strong>
-            </li>
-            <li>
-              Achieved <strong>40% reduction in load time</strong> and <strong>60% reduction in server load</strong> through 
-              performance optimization and architecture improvements
-            </li>
-            <li>
-              Led successful migration of legacy codebase to modern React/TypeScript architecture, improving 
-              development velocity by <strong>35%</strong>
-            </li>
-          </ul>
         </section>
 
         {/* Education */}
@@ -540,5 +478,5 @@ export const FAANGResume = () => {
   );
 };
 
-export default FAANGResume;
+export default LightResume;
 

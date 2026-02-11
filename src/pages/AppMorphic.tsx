@@ -221,7 +221,7 @@ export const AppMorphic = () => {
           </h2>
           <p className="text-sm leading-tight text-black">
             Experienced <strong>Frontend Developer</strong> with{" "}
-            <strong>7+ years of experience</strong> in building{" "}
+            <strong>7.5+ years of experience</strong> in building{" "}
             <strong>high-performance, scalable web applications</strong> using{" "}
             <strong>React, TypeScript, and modern frontend technologies</strong>
             . Currently serving as <strong>Staff Frontend Engineer</strong> at
