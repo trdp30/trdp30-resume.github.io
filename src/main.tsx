@@ -7,7 +7,11 @@ import AppMorphic from "./pages/AppMorphic";
 import ArcanaResume from "./pages/ArcanaResume";
 import AvomaResume from "./pages/AvomaResume";
 import FAANGResume from "./pages/FAANGResume";
+import FullStackResume from "./pages/FullStackResume";
+import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
+import StaffEngineerResume from "./pages/StaffEngineerResume";
+import StaffEngineerResumeLite from "./pages/StaffEngineerResumeLite";
 import XAIResume from "./pages/XAIResume";
 import "./styles/index.css";
 
@@ -25,6 +29,10 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="avoma-resume" element={<AvomaResume />} />
           <Route path="arcana-resume" element={<ArcanaResume />} />
           <Route path="faang-resume" element={<FAANGResume />} />
+          <Route path="full-stack-resume" element={<FullStackResume />} />
+          <Route path="jjm-resume" element={<JJMResume />} />
+          <Route path="staff-engineer-resume" element={<StaffEngineerResume />} />
+          <Route path="staff-engineer-lite" element={<StaffEngineerResumeLite />} />
           <Route path="light-resume" element={<LightResume />} />
         </Route>
       </Routes>

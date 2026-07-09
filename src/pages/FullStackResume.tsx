@@ -8,7 +8,7 @@ let data = {
   location: "Bengaluru, India",
 };
 
-export const FAANGResume = () => {
+export const FullStackResume = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
 
@@ -16,7 +16,7 @@ export const FAANGResume = () => {
   const boldTechnologies = (text: string, technologies: string[]) => {
     if (!text) return text;
 
-    // Key terms that should be bolded for FAANG resume
+    // Key terms that should be bolded for full-stack resume
     const keyTerms = [
       "React",
       "React Native",
@@ -56,10 +56,11 @@ export const FAANGResume = () => {
       "Lambda connectors",
       "Express.js",
       "Google Cloud Run",
-      "ADR",
-      "Architecture Decision Records",
-      "spec-based development",
-      "LLM strategy",
+      "Node.js",
+      "backend",
+      "full-stack",
+      "API design",
+      "serverless",
     ];
 
     // Combine technologies and key terms
@@ -151,7 +152,7 @@ export const FAANGResume = () => {
             className="text-lg font-bold mb-2 text-black"
             itemProp="jobTitle"
           >
-            Frontend Engineer | React & TypeScript Expert | 7.5+ Years Building Scalable Systems
+            Full-Stack Developer | Frontend Focused | 7.5+ Years Building Scalable Systems
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -249,48 +250,24 @@ export const FAANGResume = () => {
           </div>
         </header>
 
-        {/* Professional Summary - FAANG Style */}
+        {/* Professional Summary - Full-Stack Style */}
         <section className="mb-2 pb-2 border-b border-black">
           <h2 className="text-xl font-bold mb-1 text-black">
             Summary
           </h2>
-          <div className="text-sm leading-relaxed text-black space-y-1">
-            <p>
-              <strong>Product-focused Staff Frontend Engineer</strong> with{" "}
-              <strong>7.5+ years</strong> of experience shipping{" "}
-              <strong>scalable SaaS applications</strong> from concept to
-              production. Specializes in building fast, reliable, and
-              user-centric frontend systems using <strong>React</strong> and{" "}
-              <strong>TypeScript</strong> while leading teams to deliver{" "}
-              <strong>high-impact features</strong> at startup speed.
-            </p>
-            <p>
-              At <strong>Talview</strong>, leads a frontend team of{" "}
-              <strong>7-10 engineers</strong>, owning{" "}
-              <strong>architecture decisions</strong>, performance optimization
-              initiatives, and rapid feature delivery cycles that resulted in{" "}
-              <strong>40% performance gains</strong> and{" "}
-              <strong>30% increase in user engagement</strong>. Passionate
-              about simplifying complex workflows, improving{" "}
-              <strong>developer velocity</strong>, and designing scalable React
-              applications with strong performance optimizations,{" "}
-              <strong>resilient error handling</strong>, and contributions to{" "}
-              <strong>automated CI/CD pipelines</strong> and{" "}
-              <strong>Docker-based deployment workflows</strong>.
-            </p>
-            <p>
-              Comfortable leading <strong>frontend initiatives</strong> in{" "}
-              <strong>fast-changing product environments</strong>, taking{" "}
-              <strong>end-to-end ownership</strong> from{" "}
-              <strong>problem discovery</strong> to{" "}
-              <strong>production delivery</strong> while collaborating closely
-              with <strong>product</strong>, <strong>design</strong>, and{" "}
-              <strong>backend teams</strong>.
-            </p>
-          </div>
+          <p className="text-sm leading-relaxed text-black">
+            <strong>Full-Stack Developer</strong> with <strong>7.5+ years</strong> of experience building 
+            <strong> end-to-end web applications</strong> across SaaS and enterprise platforms, with a strong focus on 
+            <strong> frontend architecture</strong> and <strong>user experience</strong>. Currently serving as <strong>Staff Frontend Engineer</strong> at Talview, 
+            leading a team of <strong>7-10 engineers</strong> and driving full-stack initiatives from design to production deployment. 
+            Expert in <strong>React</strong>, <strong>TypeScript</strong>, <strong>Node.js</strong>, <strong>GraphQL</strong>, <strong>PostgreSQL</strong>, 
+            <strong> RESTful APIs</strong>, <strong>Express.js</strong>, and <strong>serverless architectures</strong>. Delivered measurable impact: 
+            <strong> 40% performance improvement</strong>, <strong>30% user engagement boost</strong>, and <strong>85%+ test coverage</strong>. 
+            Recognized for <strong>technical leadership</strong>, <strong>cross-functional collaboration</strong>, and <strong>mentorship excellence</strong>.
+          </p>
         </section>
 
-        {/* Technical Skills - FAANG Style */}
+        {/* Technical Skills - Full-Stack Style */}
         <section
           className="mb-2 pb-2 border-b border-black"
           itemScope
@@ -302,9 +279,21 @@ export const FAANGResume = () => {
           <meta itemProp="name" content="Technical Skills" />
           <div className="text-sm text-black space-y-0.5">
             <p>
-              <span className="font-semibold">Languages & Frameworks:</span>{" "}
+              <span className="font-semibold">Frontend Languages & Frameworks:</span>{" "}
               <span itemProp="itemListElement">
-                React, React Native, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Ember.js, Backbone.js, Kotlin
+                React, React Native, TypeScript, JavaScript (ES6+), HTML5, CSS3, Tailwind CSS, Ember.js, Backbone.js
+              </span>
+            </p>
+            <p>
+              <span className="font-semibold">Backend & Server Technologies:</span>{" "}
+              <span itemProp="itemListElement">
+                Node.js, Express.js, GraphQL, REST API, Hasura, Hasura DDN, Serverless Functions, Lambda Connectors, Google Cloud Run
+              </span>
+            </p>
+            <p>
+              <span className="font-semibold">Databases & Data Management:</span>{" "}
+              <span itemProp="itemListElement">
+                PostgreSQL, Firebase, Prisma ORM, Database Triggers, Multi-tenant Data Isolation
               </span>
             </p>
             <p>
@@ -326,21 +315,21 @@ export const FAANGResume = () => {
               </span>
             </p>
             <p>
-              <span className="font-semibold">APIs & Backend Integration:</span>{" "}
+              <span className="font-semibold">Real-time & Communication:</span>{" "}
               <span itemProp="itemListElement">
-                GraphQL, REST API, Apollo Client, WebSocket, WebRTC, Hasura, Hasura DDN, Real-time Subscriptions, Firebase, PostgreSQL, Prisma ORM
+                WebSocket, WebRTC, Real-time Subscriptions, Apollo Client, Firebase Realtime
               </span>
             </p>
             <p>
               <span className="font-semibold">DevOps & Infrastructure:</span>{" "}
               <span itemProp="itemListElement">
-                Docker, CI/CD, GitHub Actions, Git, Node.js, Nx Monorepo, Microservices Architecture
+                Docker, CI/CD, GitHub Actions, Git, Nx Monorepo, Microservices Architecture
               </span>
             </p>
             <p>
-              <span className="font-semibold">System Design & Scale:</span>{" "}
+              <span className="font-semibold">Mobile & Native:</span>{" "}
               <span itemProp="itemListElement">
-                Scalable Architecture, High-Performance Systems, Distributed Systems, Real-time Systems
+                React Native, Native Android (Kotlin), Geospatial Calculations, Background Processing
               </span>
             </p>
             <p>
@@ -352,7 +341,7 @@ export const FAANGResume = () => {
           </div>
         </section>
 
-        {/* Professional Experience - FAANG Style with Quantified Impact */}
+        {/* Professional Experience - Full-Stack Style */}
         <section className="mb-2 pb-2 border-b border-black">
           <h2 className="text-xl font-bold mb-1.5 text-black">
             Professional Experience
@@ -403,15 +392,20 @@ export const FAANGResume = () => {
 
             <ul className="list-disc list-inside text-sm space-y-1 text-black">
               <li>
-                Led <strong>frontend architecture</strong> and development across multiple{" "}
-                <strong>SaaS platforms</strong>, ensuring <strong>scalability</strong>,{" "}
-                <strong>maintainability</strong>, and <strong>performance</strong>.
+                Led <strong>full-stack architecture</strong> and development across multiple{" "}
+                <strong>SaaS platforms</strong>, with primary focus on <strong>frontend systems</strong>, ensuring{" "}
+                <strong>scalability</strong>, <strong>maintainability</strong>, and <strong>performance</strong> across the entire stack.
               </li>
               <li>
                 Architected <strong>scalable frontend systems</strong> serving thousands of concurrent users,{" "}
                 achieving <strong>40% reduction in load time</strong> and{" "}
                 <strong>60% reduction in server load</strong> through <strong>code splitting</strong>,{" "}
                 <strong>lazy loading</strong>, and <strong>caching strategies</strong>.
+              </li>
+              <li>
+                Built <strong>GraphQL backends</strong> using <strong>Hasura DDN</strong> and <strong>Node.js Lambda connectors</strong> 
+                for custom business logic, including booking validation, queue calculation, and <strong>multi-tenant data isolation</strong>, 
+                with <strong>Express.js authentication services</strong> deployed on <strong>Google Cloud Run</strong>.
               </li>
               <li>
                 Designed direct-to-cloud file handling with <strong>direct-to-S3 multipart uploads</strong>,{" "}
@@ -461,9 +455,6 @@ export const FAANGResume = () => {
                 Integrated <strong>AI/LLM development tools</strong> (<strong>Cursor</strong>, <strong>Codex</strong>) into development workflows, reducing development time by <strong>40%</strong> while maintaining full ownership of code quality through both <strong>manual code review</strong> and <strong>agentic review processes</strong> for AI-generated code, ensuring security, performance, and adherence to engineering standards.
               </li>
               <li>
-                Implemented <strong>ADR (Architecture Decision Records)</strong> and <strong>spec-based development</strong> using <strong>LLM strategy</strong>, leveraging AI tools to generate comprehensive technical specifications, architecture documentation, and decision records, improving team alignment and reducing architectural inconsistencies by <strong>50%</strong>.
-              </li>
-              <li>
                 Recognized as <strong>Production Engineering Champion</strong>,{" "}
                 <strong>Annual Champion</strong>, and <strong>Engineering Champion</strong>.
               </li>
@@ -471,7 +462,7 @@ export const FAANGResume = () => {
           </div>
         </section>
 
-        {/* Personal Projects - FAANG Style */}
+        {/* Personal Projects - Full-Stack Style */}
         <section className="mb-2 pb-2 border-b border-black">
           <h2 className="text-xl font-bold mb-1 text-black">
             Personal Projects
@@ -489,8 +480,8 @@ export const FAANGResume = () => {
             </div>
             <ul className="list-disc list-inside text-sm space-y-0.5 text-black ml-2">
               <li>
-                Built <strong>real-time vehicle tracking platform</strong> with <strong>React Native</strong> mobile apps 
-                (iOS/Android) and <strong>GraphQL</strong> backend, processing vehicle fleets with sub-second location 
+                Built <strong>full-stack real-time vehicle tracking platform</strong> with <strong>React Native</strong> mobile apps 
+                (iOS/Android), <strong>GraphQL</strong> backend, and <strong>PostgreSQL</strong> database, processing vehicle fleets with sub-second location 
                 updates using <strong>native Android geospatial modules</strong> for high-performance calculations
               </li>
               <li>
@@ -513,7 +504,7 @@ export const FAANGResume = () => {
             </div>
             <ul className="list-disc list-inside text-sm space-y-0.5 text-black ml-2">
               <li>
-                Developed <strong>multi-tenant appointment booking system</strong> using <strong>Module Federation</strong> 
+                Developed <strong>full-stack multi-tenant appointment booking system</strong> using <strong>Module Federation</strong> 
                 (Rsbuild) and <strong>Hasura DDN</strong>, implementing <strong>real-time queue management</strong> with 
                 <strong> PostgreSQL triggers</strong> for automatic position calculation and supporting high-volume concurrent bookings
               </li>
@@ -526,7 +517,7 @@ export const FAANGResume = () => {
           </div>
         </section>
 
-        {/* Key Achievements - FAANG Style */}
+        {/* Key Achievements - Full-Stack Style */}
         <section className="mb-2 pb-2 border-b border-black">
           <h2 className="text-xl font-bold mb-1 text-black">
             Key Achievements & Recognition
@@ -534,7 +525,7 @@ export const FAANGResume = () => {
           <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
             <li>
               <strong>5,590 GitHub contributions</strong> in 2024 (highest in organization), demonstrating 
-              consistent high-impact technical contributions
+              consistent high-impact technical contributions across frontend and backend systems
             </li>
             <li>
               Multiple Engineering Awards: <strong>Production Engineering Champion</strong>, <strong>Annual Champion</strong>, 
@@ -542,7 +533,7 @@ export const FAANGResume = () => {
             </li>
             <li>
               Achieved <strong>40% reduction in load time</strong> and <strong>60% reduction in server load</strong> through 
-              performance optimization and architecture improvements
+              performance optimization and architecture improvements across full-stack systems
             </li>
             <li>
               Led successful migration of legacy codebase to modern React/TypeScript architecture, improving 
@@ -585,5 +576,5 @@ export const FAANGResume = () => {
   );
 };
 
-export default FAANGResume;
+export default FullStackResume;
 
