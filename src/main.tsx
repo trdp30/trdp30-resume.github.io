@@ -12,6 +12,8 @@ import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
 import StaffEngineerResume from "./pages/StaffEngineerResume";
 import StaffEngineerResumeLite from "./pages/StaffEngineerResumeLite";
+import StaffEngineerResumeDev from "./pages/StaffEngineerResumeDev";
+import StaffEngineerResumeEditor from "./pages/StaffEngineerResumeEditor";
 import XAIResume from "./pages/XAIResume";
 import "./styles/index.css";
 
@@ -33,6 +35,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="jjm-resume" element={<JJMResume />} />
           <Route path="staff-engineer-resume" element={<StaffEngineerResume />} />
           <Route path="staff-engineer-lite" element={<StaffEngineerResumeLite />} />
+          <Route path="staff-engineer-dev" element={<StaffEngineerResumeDev />} />
+          <Route path="staff-engineer-editor" element={<StaffEngineerResumeEditor />} />
           <Route path="light-resume" element={<LightResume />} />
         </Route>
       </Routes>

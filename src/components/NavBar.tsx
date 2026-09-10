@@ -18,6 +18,8 @@ const navItems: NavItem[] = [
   { path: "/jjm-resume", label: "JJM Resume", color: "bg-amber-600 hover:bg-amber-700" },
   { path: "/staff-engineer-resume", label: "Staff / AI Resume", color: "bg-cyan-600 hover:bg-cyan-700" },
   { path: "/staff-engineer-lite", label: "Staff / AI (Lite)", color: "bg-sky-600 hover:bg-sky-700" },
+  { path: "/staff-engineer-dev", label: "Staff / AI (Dev)", color: "bg-violet-600 hover:bg-violet-700" },
+  { path: "/staff-engineer-editor", label: "Staff / Editors", color: "bg-fuchsia-600 hover:bg-fuchsia-700" },
   { path: "/light-resume", label: "Light Resume", color: "bg-teal-600 hover:bg-teal-700" },
 ];
 
@@ -74,7 +76,7 @@ export const NavBar = () => {
 
   return (
     <nav
-      className={`hidden fixed top-0 left-0 right-0 z-50 print:hidden transition-transform duration-300 ${
+      className={`fixed top-0 left-0 right-0 z-50 print:hidden transition-transform duration-300 ${
         isVisible ? "translate-y-0" : "-translate-y-full"
       }`}
     >
