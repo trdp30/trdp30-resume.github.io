@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import DownloadButton from "../components/DownloadButton";
 
 let data = {
@@ -11,53 +11,6 @@ let data = {
 export const LightResume = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
-
-  // Helper function to bold technology names
-  const boldTechnologies = (text: string, technologies: string[]) => {
-    if (!text) return text;
-
-    const allTerms = [...(technologies || [])];
-
-    if (allTerms.length === 0) return text;
-
-    const sortedTerms = [...allTerms].sort((a, b) => b.length - a.length);
-
-    const pattern = new RegExp(
-      `\\b(${sortedTerms
-        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-        .join("|")})\\b`,
-      "gi"
-    );
-
-    const parts: (string | ReactElement)[] = [];
-    let lastIndex = 0;
-    let match;
-
-    pattern.lastIndex = 0;
-    const matches: Array<{ index: number; length: number; text: string }> = [];
-
-    while ((match = pattern.exec(text)) !== null) {
-      matches.push({
-        index: match.index,
-        length: match[0].length,
-        text: match[0],
-      });
-    }
-
-    matches.forEach((match, idx) => {
-      if (match.index > lastIndex) {
-        parts.push(text.substring(lastIndex, match.index));
-      }
-      parts.push(<strong key={`term-${idx}`}>{match.text}</strong>);
-      lastIndex = match.index + match.length;
-    });
-
-    if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
-    }
-
-    return parts.length > 0 ? parts : text;
-  };
 
   const handleDownloadPDF = async () => {
     setLoading(true);

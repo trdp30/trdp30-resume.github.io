@@ -1,4 +1,4 @@
-import { ReactElement, useRef, useState } from "react";
+import { useRef, useState } from "react";
 import DownloadButton from "../components/DownloadButton";
 
 let data = {
@@ -11,107 +11,6 @@ let data = {
 export const FullStackResume = () => {
   const contentRef = useRef<HTMLDivElement>(null);
   const [loading, setLoading] = useState(false);
-
-  // Helper function to bold technology names and key terms in description
-  const boldTechnologies = (text: string, technologies: string[]) => {
-    if (!text) return text;
-
-    // Key terms that should be bolded for full-stack resume
-    const keyTerms = [
-      "React",
-      "React Native",
-      "TypeScript",
-      "JavaScript",
-      "ES6+",
-      "HTML",
-      "CSS",
-      "Tailwind CSS",
-      "Redux",
-      "GraphQL",
-      "REST API",
-      "Webpack",
-      "Docker",
-      "CI/CD",
-      "Jest",
-      "Cypress",
-      "performance optimization",
-      "code splitting",
-      "lazy loading",
-      "scalable",
-      "architecture",
-      "system design",
-      "microservices",
-      "monorepo",
-      "micro-frontend",
-      "Module Federation",
-      "Hasura DDN",
-      "PostgreSQL",
-      "Firebase",
-      "Kotlin",
-      "native Android",
-      "geospatial",
-      "multi-tenant",
-      "real-time",
-      "PostgreSQL triggers",
-      "Lambda connectors",
-      "Express.js",
-      "Google Cloud Run",
-      "Node.js",
-      "backend",
-      "full-stack",
-      "API design",
-      "serverless",
-    ];
-
-    // Combine technologies and key terms
-    const allTerms = [...(technologies || []), ...keyTerms];
-
-    if (allTerms.length === 0) return text;
-
-    // Sort terms by length (longest first) to match longer names first
-    const sortedTerms = [...allTerms].sort((a, b) => b.length - a.length);
-
-    // Create a regex pattern that matches terms as whole words
-    const pattern = new RegExp(
-      `\\b(${sortedTerms
-        .map((term) => term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"))
-        .join("|")})\\b`,
-      "gi"
-    );
-
-    const parts: (string | ReactElement)[] = [];
-    let lastIndex = 0;
-    let match;
-
-    // Reset regex
-    pattern.lastIndex = 0;
-    const matches: Array<{ index: number; length: number; text: string }> = [];
-
-    while ((match = pattern.exec(text)) !== null) {
-      matches.push({
-        index: match.index,
-        length: match[0].length,
-        text: match[0],
-      });
-    }
-
-    matches.forEach((match, idx) => {
-      // Add text before the match
-      if (match.index > lastIndex) {
-        parts.push(text.substring(lastIndex, match.index));
-      }
-      // Add the bold term
-      parts.push(<strong key={`term-${idx}`}>{match.text}</strong>);
-      lastIndex = match.index + match.length;
-    });
-
-    // Add remaining text
-    if (lastIndex < text.length) {
-      parts.push(text.substring(lastIndex));
-    }
-
-    return parts.length > 0 ? parts : text;
-  };
 
   const handleDownloadPDF = async () => {
     setLoading(true);
