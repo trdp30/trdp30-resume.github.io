@@ -10,6 +10,7 @@ import FAANGResume from "./pages/FAANGResume";
 import FullStackResume from "./pages/FullStackResume";
 import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
+import PortfolioAnswer from "./pages/PortfolioAnswer";
 import StaffEngineerResume from "./pages/StaffEngineerResume";
 import StaffEngineerResumeLite from "./pages/StaffEngineerResumeLite";
 import StaffEngineerResumeDev from "./pages/StaffEngineerResumeDev";
@@ -38,6 +39,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="staff-engineer-dev" element={<StaffEngineerResumeDev />} />
           <Route path="staff-engineer-editor" element={<StaffEngineerResumeEditor />} />
           <Route path="light-resume" element={<LightResume />} />
+          <Route path="portfolio" element={<PortfolioAnswer />} />
         </Route>
       </Routes>
     </BrowserRouter>
