@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link, useLocation } from "react-router-dom";
 
 interface NavItem {
@@ -8,31 +8,42 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: "/", label: "Default Resume", color: "bg-gray-600 hover:bg-gray-700" },
-  { path: "/morphic", label: "Morphic Resume", color: "bg-blue-600 hover:bg-blue-700" },
-  { path: "/x-ai-resume", label: "xAI Resume", color: "bg-green-600 hover:bg-green-700" },
-  { path: "/avoma-resume", label: "Avoma Resume", color: "bg-purple-600 hover:bg-purple-700" },
-  { path: "/arcana-resume", label: "Arcana Resume", color: "bg-orange-600 hover:bg-orange-700" },
-  { path: "/faang-resume", label: "FAANG Resume", color: "bg-red-600 hover:bg-red-700" },
-  { path: "/full-stack-resume", label: "Full-Stack Resume", color: "bg-indigo-600 hover:bg-indigo-700" },
-  { path: "/jjm-resume", label: "JJM Resume", color: "bg-amber-600 hover:bg-amber-700" },
-  { path: "/staff-engineer-resume", label: "Staff / AI Resume", color: "bg-cyan-600 hover:bg-cyan-700" },
-  { path: "/staff-engineer-lite", label: "Staff / AI (Lite)", color: "bg-sky-600 hover:bg-sky-700" },
-  { path: "/staff-engineer-dev", label: "Staff / AI (Dev)", color: "bg-violet-600 hover:bg-violet-700" },
-  { path: "/staff-engineer-editor", label: "Staff / Editors", color: "bg-fuchsia-600 hover:bg-fuchsia-700" },
-  { path: "/light-resume", label: "Light Resume", color: "bg-teal-600 hover:bg-teal-700" },
+  { path: "/", label: "Default Resume", color: "bg-gray-600" },
+  { path: "/morphic", label: "Morphic Resume", color: "bg-blue-600" },
+  { path: "/x-ai-resume", label: "xAI Resume", color: "bg-green-600" },
+  { path: "/avoma-resume", label: "Avoma Resume", color: "bg-purple-600" },
+  { path: "/arcana-resume", label: "Arcana Resume", color: "bg-orange-600" },
+  { path: "/faang-resume", label: "FAANG Resume", color: "bg-red-600" },
+  { path: "/full-stack-resume", label: "Full-Stack Resume", color: "bg-indigo-600" },
+  { path: "/jjm-resume", label: "JJM Resume", color: "bg-amber-600" },
+  { path: "/staff-engineer-resume", label: "Staff / AI Resume", color: "bg-cyan-600" },
+  { path: "/staff-engineer-lite", label: "Staff / AI (Lite)", color: "bg-sky-600" },
+  { path: "/staff-engineer-dev", label: "Staff / AI (Dev)", color: "bg-violet-600" },
+  { path: "/staff-engineer-editor", label: "Staff / Editors", color: "bg-fuchsia-600" },
+  { path: "/light-resume", label: "Light Resume", color: "bg-teal-600" },
+  { path: "/portfolio", label: "Portfolio / What I Built", color: "bg-rose-600" },
 ];
+
+// Strip the GitHub Pages base path and any trailing slash so routes compare cleanly
+const normalizePath = (path: string) =>
+  path.replace(/\/trdp30-resume\.github\.io/, "").replace(/\/$/, "") || "/";
 
 export const NavBar = () => {
   const [isVisible, setIsVisible] = useState(true);
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isManuallyHidden, setIsManuallyHidden] = useState(false);
+  const menuRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
+
+  const currentPath = normalizePath(location.pathname);
+  const activeItem = navItems.find(
+    (item) => normalizePath(item.path) === currentPath
+  );
 
   // Hide navbar on scroll down, show on scroll up (only if not manually hidden)
   useEffect(() => {
     if (isManuallyHidden) return; // Don't auto-show/hide if manually controlled
-    
+
     let lastScrollY = window.scrollY;
     let ticking = false;
 
@@ -40,7 +51,7 @@ export const NavBar = () => {
       if (!ticking) {
         window.requestAnimationFrame(() => {
           const currentScrollY = window.scrollY;
-          
+
           // Show navbar at top of page or when scrolling up
           if (currentScrollY < 10) {
             setIsVisible(true);
@@ -50,9 +61,9 @@ export const NavBar = () => {
           } else if (currentScrollY > lastScrollY && currentScrollY > 100) {
             // Scrolling down and past 100px
             setIsVisible(false);
-            setIsExpanded(false);
+            setIsMenuOpen(false);
           }
-          
+
           lastScrollY = currentScrollY;
           ticking = false;
         });
@@ -64,14 +75,34 @@ export const NavBar = () => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, [isManuallyHidden]);
 
-  const toggleExpanded = () => {
-    setIsExpanded(!isExpanded);
-  };
+  // Close the dropdown on Escape or a click outside it
+  useEffect(() => {
+    if (!isMenuOpen) return;
+
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") setIsMenuOpen(false);
+    };
+
+    const handlePointerDown = (event: MouseEvent | TouchEvent) => {
+      if (!menuRef.current?.contains(event.target as Node)) {
+        setIsMenuOpen(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("mousedown", handlePointerDown);
+    document.addEventListener("touchstart", handlePointerDown);
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("mousedown", handlePointerDown);
+      document.removeEventListener("touchstart", handlePointerDown);
+    };
+  }, [isMenuOpen]);
 
   const toggleVisibility = () => {
     setIsManuallyHidden(!isManuallyHidden);
     setIsVisible(!isManuallyHidden);
-    setIsExpanded(false);
+    setIsMenuOpen(false);
   };
 
   return (
@@ -84,135 +115,139 @@ export const NavBar = () => {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16">
             {/* Logo/Brand */}
-            <div className="flex items-center">
+            <div className="flex min-w-0 items-center gap-3">
               <Link
                 to="/"
                 className="text-xl font-bold text-gray-800 hover:text-gray-600 transition-colors"
               >
                 Resume Portfolio
               </Link>
+              {activeItem && (
+                <span className="hidden truncate text-sm text-gray-500 sm:inline">
+                  {activeItem.label}
+                </span>
+              )}
             </div>
 
-            {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-2">
-              {navItems.map((item) => {
-                // Normalize pathname by removing base path and trailing slashes
-                const normalizedPath = location.pathname.replace(/\/trdp30-resume\.github\.io/, "").replace(/\/$/, "") || "/";
-                const normalizedItemPath = item.path.replace(/\/$/, "") || "/";
-                const isActive = normalizedPath === normalizedItemPath;
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    className={`${item.color} text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-all ${
-                      isActive ? "ring-2 ring-offset-2 ring-offset-white ring-gray-400" : ""
-                    }`}
-                    title={`View ${item.label}`}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
+            <div className="flex items-center gap-1">
               {/* Hide/Show Toggle Button */}
               <button
                 onClick={toggleVisibility}
-                className="bg-gray-500 hover:bg-gray-600 text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-all"
-                title={isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"}
-                aria-label={isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"}
+                className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
+                title={
+                  isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"
+                }
+                aria-label={
+                  isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"
+                }
               >
                 {isManuallyHidden ? (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                  </svg>
-                ) : (
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                )}
-              </button>
-            </div>
-
-            {/* Mobile Menu Buttons */}
-            <div className="md:hidden flex items-center gap-2">
-              <button
-                onClick={toggleVisibility}
-                className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-                title={isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"}
-                aria-label={isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"}
-              >
-                {isManuallyHidden ? (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
-                  </svg>
-                ) : (
-                  <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                  </svg>
-                )}
-              </button>
-              <button
-                onClick={toggleExpanded}
-                className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
-                aria-label="Toggle menu"
-                aria-expanded={isExpanded}
-              >
-                <svg
-                  className="w-6 h-6"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  {isExpanded ? (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M6 18L18 6M6 6l12 12"
-                    />
-                  ) : (
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth={2}
-                      d="M4 6h16M4 12h16M4 18h16"
-                    />
-                  )}
-                </svg>
-              </button>
-            </div>
-          </div>
-
-          {/* Mobile Navigation */}
-          <div
-            className={`md:hidden overflow-hidden transition-all duration-300 ${
-              isExpanded ? "max-h-96 pb-4" : "max-h-0"
-            }`}
-          >
-            <div className="flex flex-col gap-2 pt-2">
-              {navItems.map((item) => {
-                // Normalize pathname by removing base path and trailing slashes
-                const normalizedPath = location.pathname.replace(/\/trdp30-resume\.github\.io/, "").replace(/\/$/, "") || "/";
-                const normalizedItemPath = item.path.replace(/\/$/, "") || "/";
-                const isActive = normalizedPath === normalizedItemPath;
-                return (
-                  <Link
-                    key={item.path}
-                    to={item.path}
-                    onClick={() => setIsExpanded(false)}
-                    className={`${item.color} text-white font-semibold py-2 px-4 rounded-lg shadow-md transition-all text-center ${
-                      isActive ? "ring-2 ring-offset-2 ring-offset-white ring-gray-400" : ""
-                    }`}
-                    title={`View ${item.label}`}
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
                   >
-                    {item.label}
-                  </Link>
-                );
-              })}
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M5 15l7-7 7 7"
+                    />
+                  </svg>
+                ) : (
+                  <svg
+                    className="w-5 h-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M19 9l-7 7-7-7"
+                    />
+                  </svg>
+                )}
+              </button>
+
+              {/* Hamburger + dropdown */}
+              <div className="relative" ref={menuRef}>
+                <button
+                  onClick={() => setIsMenuOpen((open) => !open)}
+                  className="flex items-center gap-2 rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-100"
+                  aria-label="Toggle resume menu"
+                  aria-haspopup="menu"
+                  aria-expanded={isMenuOpen}
+                  aria-controls="resume-menu"
+                >
+                  <svg
+                    className="w-6 h-6"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    {isMenuOpen ? (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M6 18L18 6M6 6l12 12"
+                      />
+                    ) : (
+                      <path
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M4 6h16M4 12h16M4 18h16"
+                      />
+                    )}
+                  </svg>
+                  <span className="hidden text-sm font-semibold sm:inline">
+                    Resumes
+                  </span>
+                </button>
+
+                {isMenuOpen && (
+                  <div
+                    id="resume-menu"
+                    role="menu"
+                    aria-label="Resume versions"
+                    className="absolute right-0 top-full z-50 mt-2 max-h-[70vh] w-72 overflow-y-auto rounded-xl border border-gray-200 bg-white py-1 shadow-xl"
+                  >
+                    {navItems.map((item) => {
+                      const isActive = normalizePath(item.path) === currentPath;
+                      return (
+                        <Link
+                          key={item.path}
+                          to={item.path}
+                          role="menuitem"
+                          aria-current={isActive ? "page" : undefined}
+                          onClick={() => setIsMenuOpen(false)}
+                          className={`flex items-center gap-3 px-4 py-2.5 text-sm transition-colors ${
+                            isActive
+                              ? "bg-gray-100 font-semibold text-gray-900"
+                              : "text-gray-700 hover:bg-gray-50"
+                          }`}
+                          title={`View ${item.label}`}
+                        >
+                          <span
+                            className={`${item.color} h-2.5 w-2.5 shrink-0 rounded-full`}
+                            aria-hidden
+                          />
+                          <span className="truncate">{item.label}</span>
+                        </Link>
+                      );
+                    })}
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
       </div>
-      
+
       {/* Floating Show Button - appears when navbar is hidden */}
       {!isVisible && (
         <button
@@ -221,8 +256,18 @@ export const NavBar = () => {
           title="Show Navigation Bar"
           aria-label="Show Navigation Bar"
         >
-          <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 15l7-7 7 7" />
+          <svg
+            className="w-6 h-6"
+            fill="none"
+            stroke="currentColor"
+            viewBox="0 0 24 24"
+          >
+            <path
+              strokeLinecap="round"
+              strokeLinejoin="round"
+              strokeWidth={2}
+              d="M5 15l7-7 7 7"
+            />
           </svg>
         </button>
       )}
@@ -231,4 +276,3 @@ export const NavBar = () => {
 };
 
 export default NavBar;
-
