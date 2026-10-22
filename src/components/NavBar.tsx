@@ -14,17 +14,53 @@ const navItems: NavItem[] = [
   { path: "/avoma-resume", label: "Avoma Resume", color: "bg-purple-600" },
   { path: "/arcana-resume", label: "Arcana Resume", color: "bg-orange-600" },
   { path: "/faang-resume", label: "FAANG Resume", color: "bg-red-600" },
-  { path: "/full-stack-resume", label: "Full-Stack Resume", color: "bg-indigo-600" },
-  { path: "/senior-frontend-resume", label: "Senior Frontend (US)", color: "bg-lime-600" },
-  { path: "/sr-full-stack-resume", label: "Sr. Full Stack (UST)", color: "bg-emerald-600" },
-  { path: "/ge-healthcare-resume", label: "GE Healthcare (FE)", color: "bg-pink-600" },
+  {
+    path: "/full-stack-resume",
+    label: "Full-Stack Resume",
+    color: "bg-indigo-600",
+  },
+  {
+    path: "/senior-frontend-resume",
+    label: "Senior Frontend (US)",
+    color: "bg-lime-600",
+  },
+  {
+    path: "/sr-full-stack-resume",
+    label: "Sr. Full Stack (UST)",
+    color: "bg-emerald-600",
+  },
+  {
+    path: "/ge-healthcare-resume",
+    label: "GE Healthcare (FE)",
+    color: "bg-pink-600",
+  },
   { path: "/jjm-resume", label: "JJM Resume", color: "bg-amber-600" },
-  { path: "/staff-engineer-resume", label: "Staff / AI Resume", color: "bg-cyan-600" },
-  { path: "/staff-engineer-lite", label: "Staff / AI (Lite)", color: "bg-sky-600" },
-  { path: "/staff-engineer-dev", label: "Staff / AI (Dev)", color: "bg-violet-600" },
-  { path: "/staff-engineer-editor", label: "Staff / Editors", color: "bg-fuchsia-600" },
+  {
+    path: "/staff-engineer-resume",
+    label: "Staff / AI Resume",
+    color: "bg-cyan-600",
+  },
+  {
+    path: "/staff-engineer-lite",
+    label: "Staff / AI (Lite)",
+    color: "bg-sky-600",
+  },
+  {
+    path: "/staff-engineer-dev",
+    label: "Staff / AI (Dev)",
+    color: "bg-violet-600",
+  },
+  {
+    path: "/staff-engineer-editor",
+    label: "Staff / Editors",
+    color: "bg-fuchsia-600",
+  },
   { path: "/light-resume", label: "Light Resume", color: "bg-teal-600" },
-  { path: "/portfolio", label: "Portfolio / What I Built", color: "bg-rose-600" },
+  {
+    path: "/portfolio",
+    label: "Portfolio / What I Built",
+    color: "bg-rose-600",
+  },
 ];
 
 // Strip the GitHub Pages base path and any trailing slash so routes compare cleanly
@@ -40,7 +76,7 @@ export const NavBar = () => {
 
   const currentPath = normalizePath(location.pathname);
   const activeItem = navItems.find(
-    (item) => normalizePath(item.path) === currentPath
+    (item) => normalizePath(item.path) === currentPath,
   );
 
   // Hide navbar on scroll down, show on scroll up (only if not manually hidden)
@@ -138,10 +174,14 @@ export const NavBar = () => {
                 onClick={toggleVisibility}
                 className="p-2 rounded-lg text-gray-600 hover:bg-gray-100 transition-colors"
                 title={
-                  isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"
+                  isManuallyHidden
+                    ? "Show Navigation Bar"
+                    : "Hide Navigation Bar"
                 }
                 aria-label={
-                  isManuallyHidden ? "Show Navigation Bar" : "Hide Navigation Bar"
+                  isManuallyHidden
+                    ? "Show Navigation Bar"
+                    : "Hide Navigation Bar"
                 }
               >
                 {isManuallyHidden ? (

@@ -36,18 +36,33 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="arcana-resume" element={<ArcanaResume />} />
           <Route path="faang-resume" element={<FAANGResume />} />
           <Route path="full-stack-resume" element={<FullStackResume />} />
-          <Route path="senior-frontend-resume" element={<SeniorFrontendResume />} />
+          <Route
+            path="senior-frontend-resume"
+            element={<SeniorFrontendResume />}
+          />
           <Route path="sr-full-stack-resume" element={<SrFullStackResume />} />
           <Route path="ge-healthcare-resume" element={<GEHealthcareResume />} />
           <Route path="jjm-resume" element={<JJMResume />} />
-          <Route path="staff-engineer-resume" element={<StaffEngineerResume />} />
-          <Route path="staff-engineer-lite" element={<StaffEngineerResumeLite />} />
-          <Route path="staff-engineer-dev" element={<StaffEngineerResumeDev />} />
-          <Route path="staff-engineer-editor" element={<StaffEngineerResumeEditor />} />
+          <Route
+            path="staff-engineer-resume"
+            element={<StaffEngineerResume />}
+          />
+          <Route
+            path="staff-engineer-lite"
+            element={<StaffEngineerResumeLite />}
+          />
+          <Route
+            path="staff-engineer-dev"
+            element={<StaffEngineerResumeDev />}
+          />
+          <Route
+            path="staff-engineer-editor"
+            element={<StaffEngineerResumeEditor />}
+          />
           <Route path="light-resume" element={<LightResume />} />
           <Route path="portfolio" element={<PortfolioAnswer />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </React.StrictMode>
+  </React.StrictMode>,
 );
