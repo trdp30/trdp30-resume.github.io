@@ -15,6 +15,7 @@ const navItems: NavItem[] = [
   { path: "/arcana-resume", label: "Arcana Resume", color: "bg-orange-600" },
   { path: "/faang-resume", label: "FAANG Resume", color: "bg-red-600" },
   { path: "/full-stack-resume", label: "Full-Stack Resume", color: "bg-indigo-600" },
+  { path: "/sr-full-stack-resume", label: "Sr. Full Stack (UST)", color: "bg-emerald-600" },
   { path: "/jjm-resume", label: "JJM Resume", color: "bg-amber-600" },
   { path: "/staff-engineer-resume", label: "Staff / AI Resume", color: "bg-cyan-600" },
   { path: "/staff-engineer-lite", label: "Staff / AI (Lite)", color: "bg-sky-600" },
