@@ -12,6 +12,7 @@ import SrFullStackResume from "./pages/SrFullStackResume";
 import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
 import PortfolioAnswer from "./pages/PortfolioAnswer";
+import SeniorFrontendResume from "./pages/SeniorFrontendResume";
 import StaffEngineerResume from "./pages/StaffEngineerResume";
 import StaffEngineerResumeLite from "./pages/StaffEngineerResumeLite";
 import StaffEngineerResumeDev from "./pages/StaffEngineerResumeDev";
@@ -34,6 +35,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="arcana-resume" element={<ArcanaResume />} />
           <Route path="faang-resume" element={<FAANGResume />} />
           <Route path="full-stack-resume" element={<FullStackResume />} />
+          <Route path="senior-frontend-resume" element={<SeniorFrontendResume />} />
           <Route path="sr-full-stack-resume" element={<SrFullStackResume />} />
           <Route path="jjm-resume" element={<JJMResume />} />
           <Route path="staff-engineer-resume" element={<StaffEngineerResume />} />
