@@ -8,6 +8,7 @@ import ArcanaResume from "./pages/ArcanaResume";
 import AvomaResume from "./pages/AvomaResume";
 import FAANGResume from "./pages/FAANGResume";
 import FullStackResume from "./pages/FullStackResume";
+import GEHealthcareResume from "./pages/GEHealthcareResume";
 import SrFullStackResume from "./pages/SrFullStackResume";
 import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
@@ -37,6 +38,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="full-stack-resume" element={<FullStackResume />} />
           <Route path="senior-frontend-resume" element={<SeniorFrontendResume />} />
           <Route path="sr-full-stack-resume" element={<SrFullStackResume />} />
+          <Route path="ge-healthcare-resume" element={<GEHealthcareResume />} />
           <Route path="jjm-resume" element={<JJMResume />} />
           <Route path="staff-engineer-resume" element={<StaffEngineerResume />} />
           <Route path="staff-engineer-lite" element={<StaffEngineerResumeLite />} />
