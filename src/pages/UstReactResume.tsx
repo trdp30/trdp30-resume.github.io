@@ -257,7 +257,7 @@ export const UstReactResume = () => {
                 className="text-base font-semibold text-black"
                 itemProp="jobTitle"
               >
-                Founder &amp; Front-End Lead
+                Founder
               </h3>
               <span className="text-sm text-black font-medium">
                 2026 - Present
@@ -290,9 +290,19 @@ export const UstReactResume = () => {
                 resolution.
               </li>
               <li>
-                Set up <strong>Git</strong> workflows and{" "}
-                <strong>CI/CD pipelines</strong> (GitHub Actions) and shipped
-                releases on <strong>Google Cloud Platform (GCP)</strong>.
+                Built the <strong>Node.js</strong> backend (Express, Hono,
+                Fastify) and a unified <strong>GraphQL</strong> supergraph
+                (Hasura) over <strong>PostgreSQL</strong> with{" "}
+                <strong>Prisma</strong>, exposing <strong>REST</strong> and
+                GraphQL APIs consumed by the front-end.
+              </li>
+              <li>
+                Operate <strong>10+ containerized microservices</strong> (auth,
+                payments, feature flags) on <strong>Docker</strong> and{" "}
+                <strong>Google Cloud Platform (GCP)</strong> with{" "}
+                <strong>Git</strong> and <strong>CI/CD pipelines</strong>
+                (GitHub Actions), plus an <strong>AI/GenAI</strong> layer (MCP
+                tools and an agentic LLM chat server with RAG).
               </li>
             </ul>
           </div>
