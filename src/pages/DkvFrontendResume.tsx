@@ -289,8 +289,9 @@ export const DkvFrontendResume = () => {
               </li>
               <li>
                 Established <strong>security</strong> and{" "}
-                <strong>operational excellence</strong> — JWT / RBAC auth, secure
-                API boundaries, and <strong>observability</strong> via{" "}
+                <strong>operational excellence</strong> — JWT auth with
+                role-based access control (RBAC), secure API boundaries, and{" "}
+                <strong>observability</strong> via{" "}
                 <strong>Sentry</strong> and <strong>OpenTelemetry</strong> —
                 across <strong>Docker</strong> / <strong>GCP</strong> with{" "}
                 <strong>GitHub Actions CI/CD</strong>.
