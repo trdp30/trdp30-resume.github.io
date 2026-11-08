@@ -59,10 +59,6 @@ export const SrFullStackResume = () => {
 
           {/* Plain-text contact line — ATS parses text, not icons */}
           <p className="text-sm text-black leading-relaxed">
-            <span itemProp="telephone">{data.phone}</span>
-            {" | "}
-            <span itemProp="email">{data.email}</span>
-            {" | "}
             <span
               itemProp="address"
               itemScope
@@ -70,12 +66,18 @@ export const SrFullStackResume = () => {
             >
               <span itemProp="addressLocality">Bengaluru, India</span>
             </span>
-            {" | Open to Any UST Location | Immediate Joiner"}
+            {"  ·  "}
+            <span itemProp="telephone">{data.phone}</span>
+            {"  ·  "}
+            <span itemProp="email">{data.email}</span>
           </p>
           <p className="text-sm text-black leading-relaxed">
-            GitHub: {data.github}
-            {" | "}
-            LinkedIn: {data.linkedin}
+            <span itemProp="sameAs">{data.linkedin}</span>
+            {"  ·  "}
+            <span itemProp="sameAs">{data.github}</span>
+          </p>
+          <p className="text-xs italic text-gray-700 print:text-black mt-0.5">
+            Open to any UST location · Available to join immediately
           </p>
         </header>
 
