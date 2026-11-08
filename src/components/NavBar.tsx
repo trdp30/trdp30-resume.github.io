@@ -35,6 +35,11 @@ const navItems: NavItem[] = [
     color: "bg-pink-600",
   },
   {
+    path: "/dkv-frontend-resume",
+    label: "DKV Frontend Architect",
+    color: "bg-slate-600",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",
