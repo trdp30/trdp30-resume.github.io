@@ -54,21 +54,37 @@ export const GEHealthcareResume = () => {
             CSS | 8+ Years Building Responsive, Secure, High-Performance Web
             Applications
           </p>
-          {/* Plain-text contact line for reliable ATS parsing */}
-          <p className="text-sm text-black">
-            Email: {data.email} · Phone: +91 {data.phone} · Location:{" "}
-            {data.location} · GitHub:{" "}
+          {/* Clean, plain-text contact line — professional and ATS-parseable */}
+          <p className="text-sm text-black flex flex-wrap items-center gap-x-2.5 gap-y-0.5">
+            <span>{data.location}</span>
+            <span className="text-gray-300 print:text-gray-500" aria-hidden>
+              |
+            </span>
+            <a className="text-black hover:underline" href={`tel:+91${data.phone}`}>
+              +91 97060 55724
+            </a>
+            <span className="text-gray-300 print:text-gray-500" aria-hidden>
+              |
+            </span>
+            <a className="text-black hover:underline" href={`mailto:${data.email}`}>
+              {data.email}
+            </a>
+            <span className="text-gray-300 print:text-gray-500" aria-hidden>
+              |
+            </span>
             <a
-              className="text-black underline hover:no-underline"
+              className="text-black hover:underline"
               href={data.github}
               target="_blank"
               rel="noopener noreferrer"
             >
               github.com/trdp30
-            </a>{" "}
-            · LinkedIn:{" "}
+            </a>
+            <span className="text-gray-300 print:text-gray-500" aria-hidden>
+              |
+            </span>
             <a
-              className="text-black underline hover:no-underline"
+              className="text-black hover:underline"
               href={data.linkedin}
               target="_blank"
               rel="noopener noreferrer"
