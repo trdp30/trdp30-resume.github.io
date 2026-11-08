@@ -50,6 +50,11 @@ const navItems: NavItem[] = [
     color: "bg-violet-600",
   },
   {
+    path: "/interos-frontend-resume",
+    label: "Interos Frontend Lead",
+    color: "bg-stone-600",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",
