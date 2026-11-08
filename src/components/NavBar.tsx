@@ -40,6 +40,11 @@ const navItems: NavItem[] = [
     color: "bg-slate-600",
   },
   {
+    path: "/remote-full-stack-resume",
+    label: "Remote Full-Stack / Lead",
+    color: "bg-yellow-600",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",
