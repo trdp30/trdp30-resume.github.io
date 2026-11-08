@@ -63,8 +63,7 @@ export const RemoteFullStackResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
-            Full-Stack Developer &amp; Tech Lead | React · Node.js · TypeScript |
-            8 Years | 100% Remote
+            Full-Stack Developer &amp; Tech Lead | React · Node.js · TypeScript
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
