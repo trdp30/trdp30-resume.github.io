@@ -181,9 +181,9 @@ export const DkvFrontendResume = () => {
             <strong>frontend performance</strong>. Solid grounding in modern
             software architectures and <strong>distributed systems</strong> —{" "}
             <strong>microservices</strong>, <strong>API design</strong> (REST /
-            GraphQL), <strong>Backend-for-Frontend (BFF)</strong>, and{" "}
-            <strong>event-driven architectures</strong> — with hands-on{" "}
-            <strong>security</strong>, <strong>observability</strong> (Sentry,
+            GraphQL), and <strong>Backend-for-Frontend (BFF)</strong> — with
+            hands-on <strong>security</strong>,{" "}
+            <strong>observability</strong> (Sentry,
             OpenTelemetry), and operational excellence. Proven in{" "}
             <strong>leading and mentoring teams of 7-10 engineers</strong>,
             aligning technical roadmaps with product goals, and collaborating
@@ -218,9 +218,8 @@ export const DkvFrontendResume = () => {
               <span className="font-semibold">
                 Architecture &amp; Distributed Systems:
               </span>{" "}
-              Microservices, API Design (REST, GraphQL), Event-Driven
-              Architecture (Pub/Sub), Distributed Systems, Scalable System
-              Design
+              Microservices, API Design (REST, GraphQL), Distributed Systems,
+              Scalable System Design
             </p>
             <p>
               <span className="font-semibold">Engineering Excellence:</span>{" "}
@@ -284,9 +283,8 @@ export const DkvFrontendResume = () => {
               </li>
               <li>
                 Designed <strong>distributed systems</strong> — microservices
-                (auth, payments, commissions, feature flags),{" "}
-                <strong>event-driven</strong> flows (Cloud Pub/Sub), and a
-                unified <strong>GraphQL / REST API</strong> layer over{" "}
+                (auth, payments, commissions, feature flags) and a unified{" "}
+                <strong>GraphQL / REST API</strong> layer over{" "}
                 <strong>PostgreSQL</strong> with strict multi-tenant isolation.
               </li>
               <li>
