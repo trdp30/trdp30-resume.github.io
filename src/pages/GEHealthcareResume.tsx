@@ -191,71 +191,61 @@ export const GEHealthcareResume = () => {
           <div className="text-sm text-black space-y-0.5">
             <p>
               <span className="font-semibold">Languages &amp; Markup:</span>{" "}
-              TypeScript, JavaScript (ES6+), HTML5, CSS3, SCSS, Responsive &amp;
+              TypeScript, JavaScript (ES6+), HTML5, CSS3
+            </p>
+            <p>
+              <span className="font-semibold">Frameworks &amp; UI:</span> React
+              (and/or Angular), Reusable UI Components, Responsive &amp;
               Mobile-First Design
             </p>
             <p>
-              <span className="font-semibold">Frameworks &amp; UI:</span> React,
-              Next.js, React Native, Redux Toolkit, RTK Query, Redux-Saga, Context
-              API, Tailwind CSS, Shadcn/ui, Radix UI, Storybook, Reusable Component
-              Libraries (framework-agnostic; comfortable adopting Angular)
+              <span className="font-semibold">APIs, Real-Time &amp; Auth:</span>{" "}
+              REST API Integration, WebSocket Services, Authentication Mechanisms,
+              Real-Time &amp; Visualization-Rich Applications
             </p>
             <p>
-              <span className="font-semibold">APIs, Real-Time &amp; Auth:</span>{" "}
-              REST API integration, GraphQL (Apollo Client, Hasura), WebSocket
-              services, Real-time Subscriptions, WebRTC, HLS Streaming,
-              Authentication &amp; Authorization (OAuth2 / JWT, secure token
-              handling)
+              <span className="font-semibold">Testing &amp; Automation:</span>{" "}
+              Unit, Component &amp; Automated UI Testing (Jest, React Testing
+              Library, Cypress); Integration, API, System, Performance &amp;
+              Reliability Testing
+            </p>
+            <p>
+              <span className="font-semibold">Debugging &amp; Performance:</span>{" "}
+              Browser Developer Tools, Browser / UI / Network / Performance
+              Debugging, Root-Cause Analysis, Performance Analysis &amp;
+              Optimization, Scalability, Availability, Reliability, Fault Tolerance
             </p>
             <p>
               <span className="font-semibold">
-                Performance &amp; Accessibility:
+                Accessibility &amp; Secure Engineering:
               </span>{" "}
-              Code Splitting, Lazy Loading, Bundle Optimization, Caching,
-              Memoization, Core Web Vitals, WCAG 2.1 Accessibility (a11y)
-            </p>
-            <p>
-              <span className="font-semibold">Testing &amp; Debugging:</span> Jest,
-              React Testing Library, Cypress, Vitest; Unit, Component, Integration,
-              E2E &amp; Automated UI Testing; Chrome DevTools, Browser / Network /
-              Performance Debugging
-            </p>
-            <p>
-              <span className="font-semibold">Build &amp; Tooling:</span> Vite,
-              Webpack, Rspack / Rsbuild, Module Federation (Micro-Frontends), Nx
-              Monorepo, ESLint, Prettier
+              Accessibility, Application Security, Identity &amp; Access Management,
+              Encryption, Secrets Management, DevSecOps, Cybersecurity
             </p>
             <p>
               <span className="font-semibold">
                 Git, CI/CD &amp; Cloud-Native:
               </span>{" "}
-              Git, GitHub Actions, CI/CD Pipelines, Docker / Containers,
-              Cloud-Native Microservices (Cloud Run), Infrastructure as Code,
-              DevSecOps, Sentry Observability
+              Git, CI/CD, Agile Development, Code Reviews, Containers (Docker),
+              Production Observability, Second-/Third-Party SaaS Integration
             </p>
             <p>
               <span className="font-semibold">
-                Security &amp; Secure Engineering:
+                Healthcare &amp; Medical Device (domain knowledge):
               </span>{" "}
-              XSS / CSRF Mitigation, Content Security Policy, Input Sanitization,
-              Identity &amp; Access Management, Secrets Management, Secure Auth
-              Flows
+              Patient-Data Privacy &amp; Secure Handling of Clinical Information
+              (built a multi-tenant clinic platform); Regulated SDLC, PRD Process,
+              Risks &amp; FMEAs; Healthcare Interoperability &mdash; DICOM, HL7,
+              FHIR; Real-Time Clinical Data / Patient Monitoring / Device
+              Connectivity
             </p>
             <p>
               <span className="font-semibold">
-                Healthcare &amp; Domain:
+                Working Exposure (JD desired / common expectations):
               </span>{" "}
-              SDLC, Patient-Data Privacy &amp; PII Protection, Secure Handling of
-              Clinical Information, Multi-Tenant Clinic / Booking Platforms;
-              awareness of healthcare interoperability standards (DICOM, HL7, FHIR)
-            </p>
-            <p>
-              <span className="font-semibold">
-                Additional &amp; Working Exposure:
-              </span>{" "}
-              WebAssembly (Wasm), Qt / C++ and C# native component interop in web
-              applications, Cross-Platform / Mobile Development, AI-assisted
-              development (Cursor, Claude Code, Codex)
+              WebAssembly (Wasm), Qt / C++ &amp; C# Native Component Interop,
+              Cross-Platform / Mobile Development, Kubernetes, AWS Cloud-Native,
+              Infrastructure as Code, AI-DLC &amp; Software-Development Acceleration
             </p>
           </div>
         </section>
