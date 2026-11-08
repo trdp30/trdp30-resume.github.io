@@ -230,8 +230,9 @@ export const DkvFrontendResume = () => {
               <span className="font-semibold">
                 Security &amp; Observability:
               </span>{" "}
-              Secure Frontend (XSS/CSRF, CSP), Auth (JWT, RBAC), Sentry,
-              OpenTelemetry, Operational Excellence
+              Secure Frontend (XSS/CSRF, CSP), JWT Authentication, Role-Based
+              Access Control (RBAC), Sentry, OpenTelemetry, Operational
+              Excellence
             </p>
             <p>
               <span className="font-semibold">Cloud &amp; DevOps:</span> Google
