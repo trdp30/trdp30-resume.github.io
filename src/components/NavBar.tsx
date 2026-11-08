@@ -45,6 +45,11 @@ const navItems: NavItem[] = [
     color: "bg-yellow-600",
   },
   {
+    path: "/affirm-frontend-resume",
+    label: "Affirm Staff Frontend",
+    color: "bg-violet-600",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",

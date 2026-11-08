@@ -13,6 +13,7 @@ import SrFullStackResume from "./pages/SrFullStackResume";
 import UstReactResume from "./pages/UstReactResume";
 import DkvFrontendResume from "./pages/DkvFrontendResume";
 import RemoteFullStackResume from "./pages/RemoteFullStackResume";
+import AffirmFrontendResume from "./pages/AffirmFrontendResume";
 import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
 import PortfolioAnswer from "./pages/PortfolioAnswer";
@@ -47,6 +48,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="ust-react-resume" element={<UstReactResume />} />
           <Route path="dkv-frontend-resume" element={<DkvFrontendResume />} />
           <Route path="remote-full-stack-resume" element={<RemoteFullStackResume />} />
+          <Route path="affirm-frontend-resume" element={<AffirmFrontendResume />} />
           <Route path="ge-healthcare-resume" element={<GEHealthcareResume />} />
           <Route path="jjm-resume" element={<JJMResume />} />
           <Route
