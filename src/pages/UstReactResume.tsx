@@ -168,8 +168,8 @@ export const UstReactResume = () => {
             Professional Summary
           </h2>
           <p className="text-sm leading-relaxed text-black">
-            Senior <strong>React.js Developer</strong> and{" "}
-            <strong>Front-End Lead</strong> with <strong>8 years</strong> of
+            <strong>Staff Engineer – Front-End</strong> and Senior{" "}
+            <strong>React.js Developer</strong> with <strong>8 years</strong> of
             software development experience designing, developing, and
             maintaining responsive, high-performance web applications. Deep
             hands-on expertise in <strong>React.js</strong> and modern React
@@ -318,7 +318,7 @@ export const UstReactResume = () => {
                 className="text-base font-semibold text-black"
                 itemProp="jobTitle"
               >
-                Staff Front-End Engineer (React.js)
+                Staff Engineer – Front-End (React.js)
               </h3>
               <span className="text-sm text-black font-medium">
                 June 2018 - May 2026
