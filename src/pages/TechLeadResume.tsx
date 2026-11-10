@@ -312,14 +312,17 @@ export const TechLeadResume = () => {
                 Owned <strong>Agile/Scrum</strong> delivery —{" "}
                 <strong>sprint planning</strong>,{" "}
                 <strong>backlog grooming</strong>, <strong>code reviews</strong>,
-                and consistent <strong>on-time shipping</strong> — driving a{" "}
+                and consistent <strong>on-time shipping</strong> — and set{" "}
+                <strong>organization-wide coding and code-review standards</strong>{" "}
+                adopted by other teams, driving a{" "}
                 <strong>60% improvement in team productivity</strong>.
               </li>
               <li>
-                Stayed <strong>hands-on</strong>: built <strong>React /
-                TypeScript</strong> products and <strong>Node.js</strong> REST /
-                GraphQL APIs, led the Ember.js → React migration (
-                <strong>+35% velocity</strong>), and delivered{" "}
+                Stayed <strong>hands-on</strong> — developed and maintained{" "}
+                <strong>Talview's flagship product, its largest codebase</strong>
+                : built <strong>React / TypeScript</strong> products and{" "}
+                <strong>Node.js</strong> REST / GraphQL APIs, led the Ember.js →
+                React migration (<strong>+35% velocity</strong>), and delivered{" "}
                 <strong>40% faster loads</strong>,{" "}
                 <strong>85%+ coverage</strong>, and{" "}
                 <strong>70% fewer production bugs</strong>.
