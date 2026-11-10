@@ -308,7 +308,7 @@ export const FoundingEngineerResume = () => {
                 className="text-base font-semibold text-black"
                 itemProp="jobTitle"
               >
-                Staff Engineer – Full-Stack (Team Lead)
+                Staff Engineer – Full-Stack (Frontend Focus)
               </h3>
               <span className="text-sm text-black font-medium">
                 June 2018 - May 2026
