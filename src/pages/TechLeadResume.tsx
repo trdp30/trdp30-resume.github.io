@@ -332,10 +332,6 @@ export const TechLeadResume = () => {
                 <strong>85%+ coverage</strong>, and{" "}
                 <strong>70% fewer production bugs</strong>.
               </li>
-              <li>
-                Worked at a <strong>product SaaS company</strong>, bridging
-                engineering execution with product and business priorities.
-              </li>
             </ul>
           </div>
         </section>
