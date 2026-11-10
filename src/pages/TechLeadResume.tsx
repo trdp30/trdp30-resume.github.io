@@ -389,6 +389,11 @@ export const TechLeadResume = () => {
               round-trips per PR and issue-closure time.
             </li>
             <li>
+              Received <strong>multiple Engineering Champion awards</strong> —
+              both quarterly and annual (Production Engineering Champion and
+              Annual Champion).
+            </li>
+            <li>
               Founded and <strong>solo-built</strong> an AI-native product
               (React Native + web + Node.js), live on the Google Play Store.
             </li>
