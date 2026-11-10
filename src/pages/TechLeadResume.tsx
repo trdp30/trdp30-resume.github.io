@@ -183,7 +183,7 @@ export const TechLeadResume = () => {
             Strong across <strong>JavaScript</strong>,{" "}
             <strong>TypeScript</strong>, <strong>Node.js</strong>, and{" "}
             <strong>React Native</strong>. A <strong>founder</strong> who built a
-            product end-to-end — bridging hands-on engineering execution with
+            product end-to-end — bridging engineering execution with
             product and business priorities while keeping a focused team
             shipping.
           </p>
@@ -388,7 +388,7 @@ export const TechLeadResume = () => {
             </li>
             <li>
               <strong>5,590 GitHub contributions</strong> in 2024 — highest in
-              the organization — while staying hands-on in the codebase.
+              the organization — while leading the team.
             </li>
             <li>
               Founded and <strong>solo-built</strong> an AI-native product
