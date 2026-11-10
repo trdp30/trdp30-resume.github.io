@@ -245,7 +245,7 @@ export const TechLeadResume = () => {
                 className="text-base font-semibold text-black"
                 itemProp="jobTitle"
               >
-                Founder &amp; Hands-On Developer
+                Founder
               </h3>
               <span className="text-sm text-black font-medium">
                 2026 - Present
