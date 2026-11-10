@@ -285,7 +285,9 @@ export const TechLeadResume = () => {
                 of project-specific harnesses, custom skills, hooks, guards, and
                 review loops (Cursor, Claude Code) — that{" "}
                 <strong>any engineer can follow</strong> to ship safe,
-                high-quality code faster.
+                high-quality code faster — collapsing the{" "}
+                <strong>developer, reviewer, and tester</strong> loop into one
+                flow.
               </li>
             </ul>
           </div>
@@ -323,14 +325,14 @@ export const TechLeadResume = () => {
                 Owned <strong>Agile/Scrum</strong> delivery —{" "}
                 <strong>sprint planning</strong>,{" "}
                 <strong>backlog grooming</strong>, <strong>code reviews</strong>,
-                and consistent <strong>on-time delivery</strong> — driving a{" "}
-                <strong>60% improvement in team productivity</strong>.
+                and consistent <strong>on-time delivery</strong> —{" "}
+                <strong>cutting repeat review cycles per PR</strong> and
+                shortening issue-closure time.
               </li>
               <li>
                 Established <strong>coding and code-review standards adopted
-                organization-wide</strong> — beyond my own team — and partnered
-                with the <strong>CTO</strong> on new-feature direction and
-                roadmap.
+                across 3 teams</strong> organization-wide, and partnered with
+                the <strong>CTO</strong> on new-feature direction and roadmap.
               </li>
               <li>
                 Developed and maintained{" "}
@@ -383,8 +385,8 @@ export const TechLeadResume = () => {
           </h2>
           <ul className="list-disc list-inside text-sm space-y-0.5 text-black">
             <li>
-              Led a <strong>fully remote team of 7–10</strong>, driving a{" "}
-              <strong>60% improvement in team productivity</strong>.
+              Led a <strong>fully remote team of 7–10</strong>, reducing review
+              round-trips per PR and issue-closure time.
             </li>
             <li>
               <strong>5,590 GitHub contributions</strong> in 2024 — highest in
