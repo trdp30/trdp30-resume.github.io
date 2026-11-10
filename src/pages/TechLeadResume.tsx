@@ -64,7 +64,7 @@ export const TechLeadResume = () => {
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
             Tech Lead &amp; Senior Developer | Node.js · JavaScript · React
-            Native | Remote Team Lead (7–10) | 8 Years
+            Native | 8 Years
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
