@@ -332,6 +332,13 @@ export const TechLeadResume = () => {
                 <strong>85%+ coverage</strong>, and{" "}
                 <strong>70% fewer production bugs</strong>.
               </li>
+              <li>
+                With the team, <strong>delivered a brand-new application
+                end-to-end</strong> — shipped all required features{" "}
+                <strong>on time</strong> with{" "}
+                <strong>zero blocker, high, or medium-severity issues</strong>{" "}
+                and <strong>no rollbacks or rework</strong>.
+              </li>
             </ul>
           </div>
         </section>
