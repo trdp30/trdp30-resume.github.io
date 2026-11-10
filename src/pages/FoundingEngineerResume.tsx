@@ -168,7 +168,7 @@ export const FoundingEngineerResume = () => {
             Professional Summary
           </h2>
           <p className="text-sm leading-relaxed text-black">
-            <strong>Founding full-stack engineer</strong> with{" "}
+            <strong>Founding engineer</strong> with{" "}
             <strong>8 years</strong> building and scaling web and mobile
             products — and a <strong>founder</strong> who took a product from
             idea to a live app <strong>solo</strong>. Comfortable owning real
