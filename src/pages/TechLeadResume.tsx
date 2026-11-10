@@ -175,7 +175,7 @@ export const TechLeadResume = () => {
             development. As a{" "}
             <strong>Staff Software Engineer</strong> at Talview, led and mentored
             a <strong>fully remote engineering team of 7–10</strong> for{" "}
-            <strong>4+ years</strong> while staying hands-on —
+            <strong>4+ years</strong> while coding alongside the team —
             owning <strong>Agile/Scrum</strong> delivery,{" "}
             <strong>partnering with the CTO on new-feature direction and
             company-wide coding standards</strong>, and{" "}
@@ -259,8 +259,8 @@ export const TechLeadResume = () => {
 
             <ul className="list-disc list-inside text-sm space-y-1 text-black">
               <li>
-                <strong>Write production code daily</strong> as a hands-on
-                founder — built an AI-native SaaS end-to-end across{" "}
+                <strong>Write production code daily</strong>; built an AI-native
+                SaaS end-to-end across{" "}
                 <strong>React Native</strong> (mobile, on Google Play),{" "}
                 <strong>React</strong> (web), and{" "}
                 <strong>Node.js / TypeScript</strong> services.
@@ -272,7 +272,8 @@ export const TechLeadResume = () => {
                 microservices on Docker / GCP with CI/CD.
               </li>
               <li>
-                Invented and established an internal{" "}
+                Built a <strong>standardized, repeatable AI-assisted
+                development pipeline</strong> — an internal{" "}
                 <a
                   className="font-bold text-black underline hover:no-underline"
                   href="https://medium.com/@trdp30/closing-the-loop-7d2bfdb7180b"
@@ -281,12 +282,10 @@ export const TechLeadResume = () => {
                 >
                   &ldquo;software factory&rdquo;
                 </a>{" "}
-                — a standardized, repeatable{" "}
-                <strong>AI-assisted development pipeline</strong> of
-                project-specific harnesses, custom skills, hooks, guards, and
-                review loops (Cursor, Claude Code) that{" "}
-                <strong>any engineer can follow</strong> to accelerate delivery
-                while keeping output safe and high-quality.
+                of project-specific harnesses, custom skills, hooks, guards, and
+                review loops (Cursor, Claude Code) — that{" "}
+                <strong>any engineer can follow</strong> to ship safe,
+                high-quality code faster.
               </li>
             </ul>
           </div>
@@ -328,13 +327,13 @@ export const TechLeadResume = () => {
                 <strong>60% improvement in team productivity</strong>.
               </li>
               <li>
-                Partnered directly with the <strong>CTO</strong> on{" "}
-                <strong>new-feature discussions</strong> and roadmap direction,
-                and established <strong>coding and code-review standards adopted
-                across the organization</strong>.
+                Established <strong>coding and code-review standards adopted
+                organization-wide</strong> — beyond my own team — and partnered
+                with the <strong>CTO</strong> on new-feature direction and
+                roadmap.
               </li>
               <li>
-                Stayed <strong>hands-on</strong> — developed and maintained{" "}
+                Developed and maintained{" "}
                 <strong>Talview's flagship product, its largest codebase</strong>
                 : built <strong>React / TypeScript</strong> products and{" "}
                 <strong>Node.js</strong> REST / GraphQL APIs, led the Ember.js →
