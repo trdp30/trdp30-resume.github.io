@@ -250,7 +250,7 @@ export const TechLeadResume = () => {
                 Founder
               </h3>
               <span className="text-sm text-black font-medium">
-                2026 - Present
+                June 2026 - Present
               </span>
             </div>
             <p className="text-sm font-semibold text-black mb-1">
