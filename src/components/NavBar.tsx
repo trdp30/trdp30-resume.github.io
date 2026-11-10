@@ -55,6 +55,11 @@ const navItems: NavItem[] = [
     color: "bg-stone-600",
   },
   {
+    path: "/founding-engineer-resume",
+    label: "Founding Engineer (Pune)",
+    color: "bg-green-700",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",
