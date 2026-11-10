@@ -272,8 +272,11 @@ export const TechLeadResume = () => {
                 microservices on Docker / GCP with CI/CD.
               </li>
               <li>
-                Leverage <strong>AI tools</strong> (Cursor, Claude Code) to
-                accelerate development without compromising code quality.
+                Leverage and extend <strong>AI tools</strong> (Cursor, Claude
+                Code) to accelerate development — building{" "}
+                <strong>project-specific harnesses, custom skills, hooks,
+                guards, and review loops</strong> that keep AI-assisted output
+                safe and high-quality.
               </li>
             </ul>
           </div>
