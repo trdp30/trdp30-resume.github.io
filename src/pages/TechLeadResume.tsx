@@ -170,23 +170,22 @@ export const TechLeadResume = () => {
           <p className="text-sm leading-relaxed text-black">
             Hands-on <strong>Tech Lead</strong> and{" "}
             <strong>Senior Developer</strong> with <strong>8 years</strong> of
-            experience — <strong>currently writing production code</strong> day
-            to day and comfortable <strong>leveraging AI tools</strong> (Cursor,
-            Claude Code) to speed up and improve development. As a{" "}
+            experience — <strong>actively writing production code</strong> and
+            comfortable <strong>leveraging AI tools</strong> (Cursor, Claude
+            Code) to accelerate development. As a{" "}
             <strong>Staff Software Engineer</strong> at Talview, led and mentored
             a <strong>fully remote engineering team of 7–10</strong> for{" "}
             <strong>4+ years (since 2022)</strong> while staying hands-on —
             owning <strong>Agile/Scrum</strong> delivery,{" "}
             <strong>partnering with the CTO on new-feature direction and
             company-wide coding standards</strong>, and{" "}
-            <strong>developing and maintaining the company's flagship product
-            (its largest codebase)</strong>. Strong across{" "}
-            <strong>JavaScript</strong>, <strong>TypeScript</strong>,{" "}
-            <strong>Node.js</strong>, and <strong>React Native</strong>. A{" "}
-            <strong>founder</strong> who built a product end-to-end and a
-            product-company engineer — comfortable being the bridge between
-            hands-on engineering execution and broader product and business
-            priorities while keeping a small, high-trust team shipping.
+            <strong>owning the company's largest, flagship codebase</strong>.
+            Strong across <strong>JavaScript</strong>,{" "}
+            <strong>TypeScript</strong>, <strong>Node.js</strong>, and{" "}
+            <strong>React Native</strong>. A <strong>founder</strong> who built a
+            product end-to-end — bridging hands-on engineering execution with
+            product and business priorities while keeping a focused team
+            shipping.
           </p>
         </section>
 
@@ -267,14 +266,14 @@ export const TechLeadResume = () => {
                 <strong>Node.js / TypeScript</strong> services.
               </li>
               <li>
-                Make and own <strong>technical decisions</strong> across the{" "}
+                Own <strong>technical decisions</strong> across the{" "}
                 <strong>Node.js</strong> and <strong>React Native</strong> stack,
                 over <strong>PostgreSQL</strong> with GraphQL / REST APIs and
                 microservices on Docker / GCP with CI/CD.
               </li>
               <li>
-                Use <strong>AI tools</strong> (Cursor, Claude Code) to speed up
-                and improve day-to-day development while owning code quality.
+                Leverage <strong>AI tools</strong> (Cursor, Claude Code) to
+                accelerate development without compromising code quality.
               </li>
             </ul>
           </div>
@@ -306,14 +305,13 @@ export const TechLeadResume = () => {
                 <strong>Led and mentored a fully remote engineering team of
                 7–10</strong>{" "}
                 <strong>for 4+ years (since 2022)</strong> across distributed
-                global time zones — the exact remote, small-team model this role
-                needs.
+                global time zones.
               </li>
               <li>
                 Owned <strong>Agile/Scrum</strong> delivery —{" "}
                 <strong>sprint planning</strong>,{" "}
                 <strong>backlog grooming</strong>, <strong>code reviews</strong>,
-                and consistent <strong>on-time shipping</strong> — driving a{" "}
+                and consistent <strong>on-time delivery</strong> — driving a{" "}
                 <strong>60% improvement in team productivity</strong>.
               </li>
               <li>
@@ -335,7 +333,7 @@ export const TechLeadResume = () => {
               <li>
                 Led the team to <strong>deliver a new application
                 end-to-end</strong> — releasing all scoped features{" "}
-                <strong>on schedule</strong> with{" "}
+                <strong>on time</strong> with{" "}
                 <strong>zero blocker, high, or medium-severity defects</strong>{" "}
                 and <strong>no rollbacks or rework</strong>.
               </li>
