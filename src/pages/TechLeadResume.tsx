@@ -254,7 +254,7 @@ export const TechLeadResume = () => {
               </span>
             </div>
             <p className="text-sm font-semibold text-black mb-1">
-              LocalityAI (Veerluit Pvt Ltd) — Bengaluru, India (Remote)
+              LocalityAI (Veerluit Pvt Ltd)
             </p>
 
             <ul className="list-disc list-inside text-sm space-y-1 text-black">
