@@ -175,11 +175,11 @@ export const TechLeadResume = () => {
             Claude Code) to speed up and improve development. As a{" "}
             <strong>Staff Software Engineer</strong> at Talview, led and mentored
             a <strong>fully remote engineering team of 7–10</strong> for{" "}
-            <strong>4+ years (since 2022)</strong> while staying hands-on, owning{" "}
-            <strong>sprint planning</strong>,{" "}
-            <strong>backlog grooming</strong>, <strong>code reviews</strong>, and
-            consistent <strong>on-time delivery</strong> in an{" "}
-            <strong>Agile/Scrum</strong> process. Strong across{" "}
+            <strong>4+ years (since 2022)</strong> while staying hands-on —
+            owning <strong>Agile/Scrum</strong> delivery,{" "}
+            <strong>setting coding standards adopted org-wide</strong>, and{" "}
+            <strong>developing and maintaining the company's flagship product
+            (its largest codebase)</strong>. Strong across{" "}
             <strong>JavaScript</strong>, <strong>TypeScript</strong>,{" "}
             <strong>Node.js</strong>, and <strong>React Native</strong>. A{" "}
             <strong>founder</strong> who built a product end-to-end and a
