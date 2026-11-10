@@ -28,7 +28,7 @@ jobs:
           node-version: "22"
 
       - name: Install pnpm
-        run: npm install -g pnpm
+        run: npm install -g pnpm@10.7.0
 
       - name: Cache pnpm store
         uses: actions/cache@v3
