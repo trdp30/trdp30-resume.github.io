@@ -148,29 +148,6 @@ export const TechLeadResume = () => {
                   strokeLinecap="round"
                   strokeLinejoin="round"
                   strokeWidth={2}
-                  d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"
-                />
-              </svg>
-              <a
-                className="text-black underline hover:no-underline"
-                href="https://medium.com/@trdp30/closing-the-loop-7d2bfdb7180b"
-                target="_blank"
-                rel="noopener noreferrer"
-              >
-                Blog: Closing the Loop
-              </a>
-            </div>
-            <div className="flex items-center gap-1">
-              <svg
-                className="w-4 h-4 text-black"
-                fill="none"
-                stroke="currentColor"
-                viewBox="0 0 24 24"
-              >
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
                   d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
                 />
                 <path
@@ -295,7 +272,15 @@ export const TechLeadResume = () => {
                 microservices on Docker / GCP with CI/CD.
               </li>
               <li>
-                Established an internal <strong>&ldquo;software factory&rdquo;</strong>{" "}
+                Invented and established an internal{" "}
+                <a
+                  className="font-bold text-black underline hover:no-underline"
+                  href="https://medium.com/@trdp30/closing-the-loop-7d2bfdb7180b"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  &ldquo;software factory&rdquo;
+                </a>{" "}
                 — a standardized, repeatable{" "}
                 <strong>AI-assisted development pipeline</strong> of
                 project-specific harnesses, custom skills, hooks, guards, and
