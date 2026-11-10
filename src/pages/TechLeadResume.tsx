@@ -333,10 +333,10 @@ export const TechLeadResume = () => {
                 <strong>70% fewer production bugs</strong>.
               </li>
               <li>
-                With the team, <strong>delivered a brand-new application
-                end-to-end</strong> — shipped all required features{" "}
-                <strong>on time</strong> with{" "}
-                <strong>zero blocker, high, or medium-severity issues</strong>{" "}
+                Led the team to <strong>deliver a new application
+                end-to-end</strong> — releasing all scoped features{" "}
+                <strong>on schedule</strong> with{" "}
+                <strong>zero blocker, high, or medium-severity defects</strong>{" "}
                 and <strong>no rollbacks or rework</strong>.
               </li>
             </ul>
