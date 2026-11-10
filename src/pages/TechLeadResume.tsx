@@ -295,11 +295,13 @@ export const TechLeadResume = () => {
                 microservices on Docker / GCP with CI/CD.
               </li>
               <li>
-                Leverage and extend <strong>AI tools</strong> (Cursor, Claude
-                Code) to accelerate development — building{" "}
-                <strong>project-specific harnesses, custom skills, hooks,
-                guards, and review loops</strong> that keep AI-assisted output
-                safe and high-quality.
+                Established an internal <strong>&ldquo;software factory&rdquo;</strong>{" "}
+                — a standardized, repeatable{" "}
+                <strong>AI-assisted development pipeline</strong> of
+                project-specific harnesses, custom skills, hooks, guards, and
+                review loops (Cursor, Claude Code) that{" "}
+                <strong>any engineer can follow</strong> to accelerate delivery
+                while keeping output safe and high-quality.
               </li>
             </ul>
           </div>
