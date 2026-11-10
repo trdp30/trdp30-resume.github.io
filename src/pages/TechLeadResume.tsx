@@ -177,7 +177,8 @@ export const TechLeadResume = () => {
             a <strong>fully remote engineering team of 7–10</strong> for{" "}
             <strong>4+ years (since 2022)</strong> while staying hands-on —
             owning <strong>Agile/Scrum</strong> delivery,{" "}
-            <strong>setting coding standards adopted org-wide</strong>, and{" "}
+            <strong>partnering with the CTO on new-feature direction and
+            company-wide coding standards</strong>, and{" "}
             <strong>developing and maintaining the company's flagship product
             (its largest codebase)</strong>. Strong across{" "}
             <strong>JavaScript</strong>, <strong>TypeScript</strong>,{" "}
@@ -312,10 +313,14 @@ export const TechLeadResume = () => {
                 Owned <strong>Agile/Scrum</strong> delivery —{" "}
                 <strong>sprint planning</strong>,{" "}
                 <strong>backlog grooming</strong>, <strong>code reviews</strong>,
-                and consistent <strong>on-time shipping</strong> — and set{" "}
-                <strong>organization-wide coding and code-review standards</strong>{" "}
-                adopted by other teams, driving a{" "}
+                and consistent <strong>on-time shipping</strong> — driving a{" "}
                 <strong>60% improvement in team productivity</strong>.
+              </li>
+              <li>
+                Partnered directly with the <strong>CTO</strong> on{" "}
+                <strong>new-feature discussions</strong> and roadmap direction,
+                and established <strong>coding and code-review standards adopted
+                across the organization</strong>.
               </li>
               <li>
                 Stayed <strong>hands-on</strong> — developed and maintained{" "}
