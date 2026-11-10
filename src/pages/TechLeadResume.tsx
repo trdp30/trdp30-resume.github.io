@@ -389,10 +389,6 @@ export const TechLeadResume = () => {
               round-trips per PR and issue-closure time.
             </li>
             <li>
-              <strong>5,590 GitHub contributions</strong> in 2024 — highest in
-              the organization — while leading the team.
-            </li>
-            <li>
               Founded and <strong>solo-built</strong> an AI-native product
               (React Native + web + Node.js), live on the Google Play Store.
             </li>
