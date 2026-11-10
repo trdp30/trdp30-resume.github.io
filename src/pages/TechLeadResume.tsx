@@ -175,7 +175,7 @@ export const TechLeadResume = () => {
             development. As a{" "}
             <strong>Staff Software Engineer</strong> at Talview, led and mentored
             a <strong>fully remote engineering team of 7–10</strong> for{" "}
-            <strong>4+ years (since 2022)</strong> while staying hands-on —
+            <strong>4+ years</strong> while staying hands-on —
             owning <strong>Agile/Scrum</strong> delivery,{" "}
             <strong>partnering with the CTO on new-feature direction and
             company-wide coding standards</strong>, and{" "}
