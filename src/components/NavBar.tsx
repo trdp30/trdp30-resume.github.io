@@ -8,7 +8,8 @@ interface NavItem {
 }
 
 const navItems: NavItem[] = [
-  { path: "/", label: "Default Resume", color: "bg-gray-600" },
+  { path: "/", label: "Founding Engineer (Home)", color: "bg-gray-600" },
+  { path: "/default-resume", label: "Default Resume", color: "bg-gray-700" },
   { path: "/morphic", label: "Morphic Resume", color: "bg-blue-600" },
   { path: "/x-ai-resume", label: "xAI Resume", color: "bg-green-600" },
   { path: "/avoma-resume", label: "Avoma Resume", color: "bg-purple-600" },

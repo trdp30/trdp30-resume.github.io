@@ -35,7 +35,8 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
     <BrowserRouter basename={basePath}>
       <Routes>
         <Route path="/" element={<Layout />}>
-          <Route index element={<App />} />
+          <Route index element={<FoundingEngineerResume />} />
+          <Route path="default-resume" element={<App />} />
           <Route path="morphic" element={<AppMorphic />} />
           <Route path="x-ai-resume" element={<XAIResume />} />
           <Route path="avoma-resume" element={<AvomaResume />} />
