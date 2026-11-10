@@ -63,8 +63,8 @@ export const FoundingEngineerResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
-            Founding Full-Stack Engineer | TypeScript, React/React Native,
-            Node.js | 8 Years
+            Founding Engineer | TypeScript, React/React Native, Node.js | 8
+            Years
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
