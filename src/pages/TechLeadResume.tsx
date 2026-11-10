@@ -172,9 +172,10 @@ export const TechLeadResume = () => {
             <strong>Senior Developer</strong> with <strong>8 years</strong> of
             experience — <strong>currently writing production code</strong> day
             to day and comfortable <strong>leveraging AI tools</strong> (Cursor,
-            Claude Code) to speed up and improve development. Led and mentored a{" "}
-            <strong>fully remote engineering team of 7–10</strong> at Talview,
-            owning <strong>sprint planning</strong>,{" "}
+            Claude Code) to speed up and improve development. As a{" "}
+            <strong>Staff Software Engineer</strong> at Talview, led and mentored
+            a <strong>fully remote engineering team of 7–10</strong> while
+            staying hands-on, owning <strong>sprint planning</strong>,{" "}
             <strong>backlog grooming</strong>, <strong>code reviews</strong>, and
             consistent <strong>on-time delivery</strong> in an{" "}
             <strong>Agile/Scrum</strong> process. Strong across{" "}
