@@ -40,7 +40,7 @@
   :root{
     --bg:#060814; --ink:#eaf0ff; --muted:#9aa6c8;
     --c1:#7c5cff; --c2:#19c3ff; --c3:#ff5c9d; --c4:#2bf5c0;
-    --glass:rgba(255,255,255,.05); --stroke:rgba(255,255,255,.12);
+    --glass:rgba(11,15,31,.78); --stroke:rgba(255,255,255,.14);
   }
   *{box-sizing:border-box;margin:0;padding:0}
   html{scroll-behavior:smooth}
@@ -88,13 +88,15 @@
     box-shadow:0 16px 50px rgba(0,0,0,.35)}
 
   /* hero — content sits over the live 3D orb */
-  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:84px 0 40px}
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:84px 0 40px;position:relative}
+  .hero::before{content:"";position:absolute;inset:-60px -24px;z-index:-1;pointer-events:none;
+    background:linear-gradient(100deg,rgba(6,8,20,.86) 0%,rgba(6,8,20,.64) 46%,rgba(6,8,20,.2) 74%,transparent 100%)}
   .badge{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;padding:8px 14px;border-radius:999px;
     background:var(--glass);border:1px solid var(--stroke);color:var(--muted)}
   .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--c4);box-shadow:0 0 0 3px rgba(43,245,192,.2)}
   .hero h1{font-size:clamp(42px,12vw,74px);font-weight:800;line-height:1;letter-spacing:-2px}
   .hero h1 span{background:linear-gradient(120deg,var(--c2),var(--c1),var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent}
-  .role{font-size:clamp(16px,4.6vw,22px);color:var(--muted);min-height:1.4em}
+  .role{font-size:clamp(16px,4.6vw,22px);color:#c6d0ea;min-height:1.4em}
   .role b{color:var(--ink);font-weight:600}
   .cursor{display:inline-block;width:2px;height:1em;background:var(--c2);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
   @keyframes blink{50%{opacity:0}}
@@ -107,7 +109,7 @@
   .btn.primary{background:linear-gradient(120deg,var(--c1),var(--c2));color:#fff;border:none;box-shadow:0 10px 30px rgba(25,195,255,.35)}
   .btn.ghost{background:var(--glass);color:var(--ink)}
   .scrollhint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:2px;
-    text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px}
+    text-transform:uppercase;color:#c6d0ea;text-shadow:0 1px 8px rgba(0,0,0,.9);display:flex;flex-direction:column;align-items:center;gap:8px}
   .scrollhint .m{width:20px;height:32px;border:2px solid var(--stroke);border-radius:12px;position:relative}
   .scrollhint .m::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:3px;
     background:var(--c2);animation:wheel 1.6s infinite}
@@ -434,9 +436,9 @@ const mat=new THREE.ShaderMaterial({
     void main(){
       float fres=pow(1.0-max(dot(vNormalW,vView),0.0),2.3);
       vec3 col=mix(uColA,uColB,clamp(vN*0.6+0.5,0.0,1.0));
-      col=mix(col,uColC,fres*0.9);
-      col+=fres*0.4;
-      gl_FragColor=vec4(col,0.9);
+      col=mix(col,uColC,fres*0.8);
+      col+=fres*0.25;
+      gl_FragColor=vec4(col,0.92);
     }`
 });
 const orb=new THREE.Mesh(new THREE.IcosahedronGeometry(1.35,48),mat);
@@ -450,7 +452,7 @@ const N=1300,pos=new Float32Array(N*3);
 for(let i=0;i<N;i++){const r=2.2+Math.random()*1.9,t=Math.random()*Math.PI*2,ph=Math.acos(2*Math.random()-1);
   pos[i*3]=r*Math.sin(ph)*Math.cos(t);pos[i*3+1]=r*Math.sin(ph)*Math.sin(t);pos[i*3+2]=r*Math.cos(ph);}
 const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
-const particles=new THREE.Points(pg,new THREE.PointsMaterial({color:0x8fd8ff,size:0.02,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false}));
+const particles=new THREE.Points(pg,new THREE.PointsMaterial({color:0x8fd8ff,size:0.02,transparent:true,opacity:0.45,blending:THREE.AdditiveBlending,depthWrite:false}));
 group.add(particles);
 
 // pointer / gyro parallax
