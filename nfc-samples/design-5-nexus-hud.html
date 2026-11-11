@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Trideep Kumar Das — Nexus HUD</title>
+<meta name="description" content="Trideep Kumar Das · Tech Lead & Senior Developer · Node.js · React Native · AI-assisted dev" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@600;700;800;900&family=Rajdhani:wght@500;600;700&family=Share+Tech+Mono&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#04060f; --bg2:#070b18; --ink:#dff1ff; --dim:#8aa6c4;
+    --cy:#43e7ff; --am:#ffb020; --mg:#ff3d8b; --gn:#5dff9b;
+    --line:rgba(67,231,255,.28); --panel:rgba(8,14,28,.82); --cut:14px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Rajdhani',system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;line-height:1.5;
+    -webkit-font-smoothing:antialiased}
+  h1,h2,h3,.disp{font-family:'Orbitron',sans-serif;letter-spacing:.5px}
+  .mono{font-family:'Share Tech Mono',monospace}
+  a{color:inherit;text-decoration:none}
+
+  /* ---- backdrop: perspective grid + scan + vignette + radar ---- */
+  .bg{position:fixed;inset:0;z-index:0;overflow:hidden;background:
+    radial-gradient(130% 90% at 50% -10%,rgba(67,231,255,.08),transparent 55%),
+    radial-gradient(100% 80% at 90% 110%,rgba(255,61,139,.08),transparent 60%),var(--bg)}
+  .grid{position:absolute;left:-25%;right:-25%;bottom:-10%;height:62%;
+    background-image:linear-gradient(rgba(67,231,255,.22) 1px,transparent 1px),linear-gradient(90deg,rgba(67,231,255,.22) 1px,transparent 1px);
+    background-size:44px 44px;transform:perspective(420px) rotateX(70deg);transform-origin:bottom;
+    mask-image:linear-gradient(transparent,#000 60%);-webkit-mask-image:linear-gradient(transparent,#000 60%);
+    animation:grd 7s linear infinite;opacity:.6}
+  @keyframes grd{to{background-position:0 44px}}
+  .scan{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.5;
+    background:repeating-linear-gradient(0deg,transparent 0 2px,rgba(67,231,255,.03) 3px,transparent 4px)}
+  .radar{position:fixed;top:-120px;right:-120px;width:320px;height:320px;z-index:0;border-radius:50%;pointer-events:none;opacity:.5;
+    background:conic-gradient(from 0deg,rgba(67,231,255,.22),transparent 25%);animation:spin 6s linear infinite}
+  @keyframes spin{to{transform:rotate(360deg)}}
+
+  /* ---- boot ---- */
+  #boot{position:fixed;inset:0;z-index:60;background:var(--bg);display:grid;place-items:center;transition:opacity .8s,visibility .8s}
+  #boot.gone{opacity:0;visibility:hidden}
+  .reticle{width:150px;height:150px;position:relative;margin:0 auto}
+  .reticle svg{position:absolute;inset:0;width:100%;height:100%}
+  .reticle .r1{animation:spin 8s linear infinite}
+  .reticle .r2{animation:spin 4s linear infinite reverse}
+  .boot-log{margin-top:26px;width:min(86vw,360px);font-family:'Share Tech Mono';font-size:12.5px;color:var(--gn)}
+  .boot-log div{opacity:0;animation:fade .3s forwards;white-space:nowrap;overflow:hidden}
+  .boot-log .ok{color:var(--cy)}
+  @keyframes fade{to{opacity:1}}
+  .enter{margin-top:20px;text-align:center;opacity:0;animation:fade .4s 2.4s forwards}
+  .enter button{font-family:'Orbitron';font-weight:700;background:transparent;color:var(--cy);border:1px solid var(--cy);
+    padding:12px 30px;font-size:13px;letter-spacing:3px;cursor:pointer;clip-path:polygon(10px 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%,0 10px);
+    box-shadow:0 0 22px rgba(67,231,255,.3);transition:.2s}
+  .enter button:hover{background:var(--cy);color:#000}
+
+  .wrap{position:relative;z-index:5;max-width:780px;margin:0 auto;padding:0 18px 90px}
+  section{padding:44px 0;scroll-margin-top:24px}
+
+  /* ---- HUD panel (cut corners + holo border) ---- */
+  .panel{position:relative;background:var(--line);
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}
+  .panel>.in{position:relative;background:var(--panel);backdrop-filter:blur(8px);margin:1.5px;padding:22px;
+    clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}
+  .ptag{position:absolute;top:-9px;left:16px;font-family:'Share Tech Mono';font-size:11px;letter-spacing:2px;color:var(--cy);
+    background:var(--bg2);padding:1px 10px;z-index:2}
+  .ptag::before{content:"◈ "}
+  .corner{position:absolute;width:10px;height:10px;border:1.5px solid var(--am);z-index:2}
+  .corner.tr{top:3px;right:3px;border-left:0;border-bottom:0}
+  .corner.bl{bottom:3px;left:3px;border-right:0;border-top:0}
+
+  .eyebrow{font-family:'Share Tech Mono';font-size:12px;letter-spacing:3px;color:var(--cy);margin-bottom:12px}
+  .eyebrow::before{content:"// "}
+  h2.title{font-size:clamp(23px,6.4vw,34px);font-weight:800;text-transform:uppercase;margin-bottom:6px}
+  h2.title .hi{color:var(--cy)}
+  .lead{color:var(--dim);font-size:16.5px;font-weight:500;max-width:60ch}
+  .lead b{color:var(--ink)}
+
+  /* ---- hero ---- */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:18px;padding:84px 0 40px}
+  .idline{font-family:'Share Tech Mono';font-size:12px;letter-spacing:1.5px;color:var(--dim);display:flex;gap:10px;flex-wrap:wrap;align-items:center}
+  .idline b{color:var(--gn)}
+  .pulse{width:8px;height:8px;border-radius:50%;background:var(--gn);box-shadow:0 0 0 0 rgba(93,255,155,.6);animation:pls 1.8s infinite}
+  @keyframes pls{0%{box-shadow:0 0 0 0 rgba(93,255,155,.5)}70%{box-shadow:0 0 0 9px rgba(93,255,155,0)}100%{box-shadow:0 0 0 0 rgba(93,255,155,0)}}
+  .hero h1{font-size:clamp(40px,12.5vw,86px);font-weight:900;line-height:.95;text-transform:uppercase;
+    text-shadow:0 0 28px rgba(67,231,255,.28)}
+  .hero h1 .l2{color:transparent;-webkit-text-stroke:1.4px var(--cy)}
+  .role{font-family:'Share Tech Mono';font-size:clamp(13px,4vw,17px);color:var(--am);min-height:1.3em}
+  .role .c{display:inline-block;width:9px;height:1.05em;background:var(--am);margin-left:3px;vertical-align:-3px;animation:bl 1s steps(2) infinite}
+  @keyframes bl{50%{opacity:0}}
+  .telemetry{display:flex;gap:10px;flex-wrap:wrap;font-family:'Share Tech Mono';font-size:12px;color:var(--dim)}
+  .telemetry span{border:1px solid var(--line);padding:6px 11px;clip-path:polygon(7px 0,100% 0,100% calc(100% - 7px),calc(100% - 7px) 100%,0 100%,0 7px)}
+  .telemetry span b{color:var(--cy)}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:4px}
+  .btn{font-family:'Orbitron';font-weight:700;display:inline-flex;align-items:center;gap:8px;padding:14px 22px;font-size:13px;letter-spacing:2px;
+    cursor:pointer;border:1px solid var(--line);color:var(--ink);transition:.2s;text-transform:uppercase;
+    clip-path:polygon(11px 0,100% 0,100% calc(100% - 11px),calc(100% - 11px) 100%,0 100%,0 11px)}
+  .btn:active{transform:scale(.97)}
+  .btn.p{background:var(--cy);color:#02121a;border:none;box-shadow:0 0 26px rgba(67,231,255,.38)}
+  .btn.g:hover{border-color:var(--cy);color:var(--cy)}
+  .scrollhint{margin-top:10px;font-family:'Share Tech Mono';font-size:11px;letter-spacing:2px;color:var(--dim)}
+  .scrollhint::before{content:"▼ ";color:var(--cy);animation:bl 1.4s infinite}
+
+  /* ---- gauges ---- */
+  .gauges{display:grid;grid-template-columns:repeat(2,1fr);gap:14px;margin-top:4px}
+  .gauge{display:flex;align-items:center;gap:14px;padding:16px 18px}
+  .ring{width:66px;height:66px;flex:0 0 auto;transform:rotate(-90deg)}
+  .ring .bgc{fill:none;stroke:rgba(67,231,255,.14);stroke-width:5}
+  .ring .fg{fill:none;stroke:var(--cy);stroke-width:5;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;transition:stroke-dashoffset 1.4s ease}
+  .gauge .v{font-family:'Orbitron';font-weight:800;font-size:22px;color:var(--cy)}
+  .gauge .k{font-size:13px;color:var(--dim);font-weight:600;line-height:1.25}
+
+  /* ---- experience spine ---- */
+  .spine{margin-top:18px;position:relative;padding-left:22px}
+  .spine::before{content:"";position:absolute;left:4px;top:4px;bottom:4px;width:2px;background:linear-gradient(var(--cy),var(--mg))}
+  .node{position:relative;margin-bottom:14px}
+  .node::before{content:"";position:absolute;left:-22px;top:24px;width:10px;height:10px;background:var(--cy);
+    clip-path:polygon(50% 0,100% 50%,50% 100%,0 50%);box-shadow:0 0 10px var(--cy)}
+  .node h3{font-size:18px;font-weight:700;text-transform:uppercase}
+  .node .m{font-family:'Share Tech Mono';font-size:12px;color:var(--am);margin:3px 0 10px}
+  .node ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .node li{font-size:15px;color:var(--dim);font-weight:500;padding-left:17px;position:relative}
+  .node li::before{content:"▸";position:absolute;left:0;color:var(--gn)}
+
+  /* ---- systems / skills ---- */
+  .sysgrid{display:grid;gap:12px;margin-top:16px}
+  .sys .sh{font-family:'Share Tech Mono';font-size:12px;letter-spacing:2px;color:var(--am);margin-bottom:10px}
+  .sys .sh::before{content:"▪ "}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-family:'Share Tech Mono';font-size:12.5px;padding:7px 12px;border:1px solid var(--line);color:var(--ink);
+    clip-path:polygon(6px 0,100% 0,100% calc(100% - 6px),calc(100% - 6px) 100%,0 100%,0 6px);transition:.2s}
+  .chip:hover{border-color:var(--cy);color:var(--cy);box-shadow:0 0 12px rgba(67,231,255,.25)}
+
+  /* ---- deployments ---- */
+  .dep{margin-bottom:12px}
+  .dep .no{font-family:'Share Tech Mono';font-size:12px;color:var(--mg)}
+  .dep h3{font-size:19px;font-weight:700;text-transform:uppercase;margin:3px 0 6px}
+  .dep p{font-size:15px;color:var(--dim);font-weight:500}
+  .dep .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:11px}
+  .dep .tags span{font-family:'Share Tech Mono';font-size:11px;padding:4px 9px;color:var(--cy);border:1px solid var(--line)}
+
+  /* ---- uplink ---- */
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:16px}
+  .lk{display:flex;align-items:center;gap:13px;padding:16px}
+  .lk:active{transform:scale(.98)}
+  .lk .ico{width:40px;height:40px;flex:0 0 auto;display:grid;place-items:center;border:1px solid var(--line);
+    clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+  .lk .ico svg{width:19px;height:19px;fill:var(--cy)}
+  .lk .t{font-weight:700;font-size:15px;text-transform:uppercase}
+  .lk .s{font-family:'Share Tech Mono';font-size:11.5px;color:var(--dim)}
+
+  .contact{text-align:center;padding:38px 22px}
+  .contact h2{font-size:clamp(26px,7.4vw,40px)}
+  footer{text-align:center;color:var(--dim);font-family:'Share Tech Mono';font-size:11px;padding-top:28px}
+
+  .rv{opacity:0;transform:translateY(24px);transition:opacity .7s cubic-bezier(.2,.7,.2,1),transform .7s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  #prog{position:fixed;top:0;left:0;height:2px;z-index:60;width:0;background:linear-gradient(90deg,var(--cy),var(--am),var(--mg))}
+  @media(max-width:520px){.links,.gauges{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}.ring .fg{transition:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="bg"><div class="grid"></div></div>
+<div class="radar"></div>
+<div class="scan"></div>
+
+<!-- BOOT -->
+<div id="boot">
+  <div>
+    <div class="reticle">
+      <svg class="r1" viewBox="0 0 100 100"><circle cx="50" cy="50" r="46" fill="none" stroke="#43e7ff" stroke-width="1" stroke-dasharray="6 10"/><circle cx="50" cy="50" r="46" fill="none" stroke="#43e7ff" stroke-width="2" stroke-dasharray="40 250" opacity=".8"/></svg>
+      <svg class="r2" viewBox="0 0 100 100"><circle cx="50" cy="50" r="33" fill="none" stroke="#ffb020" stroke-width="1" stroke-dasharray="3 7"/><path d="M50 17 L50 83 M17 50 L83 50" stroke="#ff3d8b" stroke-width="1" opacity=".6"/></svg>
+      <svg viewBox="0 0 100 100"><circle cx="50" cy="50" r="18" fill="none" stroke="#43e7ff" stroke-width="1.5"/><text x="50" y="56" text-anchor="middle" font-family="Orbitron" font-weight="800" font-size="16" fill="#43e7ff">TD</text></svg>
+    </div>
+    <div class="boot-log" id="bootlog"></div>
+    <div class="enter"><button id="enterBtn">▶ ENTER</button></div>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <div class="idline rv"><span class="pulse"></span> ID: <b>TRIDEEP_KUMAR_DAS</b> · CLEARANCE: <b>TECH_LEAD</b> · NODE: <b>BENGALURU_IN</b></div>
+    <h1 class="rv"><span class="l1">TRIDEEP</span><br><span class="l2">KUMAR DAS</span></h1>
+    <div class="role rv mono">> <span id="role"></span><span class="c"></span></div>
+    <div class="telemetry rv">
+      <span>EXP <b>8 YRS</b></span><span>TEAM <b>7–10</b></span><span>MODE <b>100% REMOTE</b></span><span>STACK <b>NODE · RN · REACT</b></span>
+    </div>
+    <div class="cta rv">
+      <a class="btn p" id="saveContact">＋ Save Contact</a>
+      <a class="btn g" href="#transmit">Open Channel</a>
+    </div>
+    <div class="scrollhint rv mono">SCROLL TO DECRYPT PROFILE</div>
+  </section>
+
+  <!-- STATUS / ABOUT -->
+  <section id="status">
+    <div class="eyebrow rv">status_report</div>
+    <h2 class="title rv">Hands-on <span class="hi">Tech Lead</span>.</h2>
+    <div class="panel rv"><span class="ptag">PROFILE</span><span class="corner tr"></span><span class="corner bl"></span><div class="in">
+      <p class="lead">A <b>Tech Lead &amp; Senior Developer</b> with 8 years of experience who still <b>writes production code daily</b>. For 4+ years I've led a <b>fully remote team of 7–10</b> across distributed global teams — owning Agile/Scrum delivery, technical decisions, and on-time shipping. A <b>founder</b> who solo-built an AI-native product, and an early adopter of <b>AI-assisted development</b> at scale.</p>
+    </div></div>
+  </section>
+
+  <!-- TELEMETRY / STATS -->
+  <section id="telemetry">
+    <div class="eyebrow rv">telemetry</div>
+    <h2 class="title rv">Mission <span class="hi">metrics</span>.</h2>
+    <div class="gauges">
+      <div class="gauge panel rv"><span class="corner tr"></span><div class="in" style="display:flex;align-items:center;gap:14px;margin:1.5px">
+        <svg class="ring" viewBox="0 0 66 66"><circle class="bgc" cx="33" cy="33" r="28"/><circle class="fg" cx="33" cy="33" r="28" data-pct="100"/></svg>
+        <div><div class="v" data-count="8" data-suffix=" YRS">0</div><div class="k">Engineering experience</div></div></div></div>
+      <div class="gauge panel rv"><span class="corner tr"></span><div class="in" style="display:flex;align-items:center;gap:14px;margin:1.5px">
+        <svg class="ring" viewBox="0 0 66 66"><circle class="bgc" cx="33" cy="33" r="28"/><circle class="fg" cx="33" cy="33" r="28" data-pct="70"/></svg>
+        <div><div class="v" data-count="70" data-suffix="%">0</div><div class="k">Fewer production bugs</div></div></div></div>
+      <div class="gauge panel rv"><span class="corner tr"></span><div class="in" style="display:flex;align-items:center;gap:14px;margin:1.5px">
+        <svg class="ring" viewBox="0 0 66 66"><circle class="bgc" cx="33" cy="33" r="28"/><circle class="fg" cx="33" cy="33" r="28" data-pct="40"/></svg>
+        <div><div class="v" data-count="40" data-suffix="%">0</div><div class="k">Faster load times</div></div></div></div>
+      <div class="gauge panel rv"><span class="corner tr"></span><div class="in" style="display:flex;align-items:center;gap:14px;margin:1.5px">
+        <svg class="ring" viewBox="0 0 66 66"><circle class="bgc" cx="33" cy="33" r="28"/><circle class="fg" cx="33" cy="33" r="28" data-pct="35"/></svg>
+        <div><div class="v" data-count="35" data-suffix="%">0</div><div class="k">Delivery velocity (Ember→React)</div></div></div></div>
+    </div>
+  </section>
+
+  <!-- MISSION LOG / EXPERIENCE -->
+  <section id="log">
+    <div class="eyebrow rv">mission_log</div>
+    <h2 class="title rv">Service <span class="hi">record</span>.</h2>
+    <div class="panel rv"><span class="ptag">TIMELINE</span><span class="corner tr"></span><span class="corner bl"></span><div class="in">
+      <div class="spine">
+        <div class="node"><h3>Staff Engineer &amp; Team Lead — Front-End</h3>
+          <div class="m">TALVIEW · FULLY REMOTE · 2018 — PRESENT</div>
+          <ul>
+            <li>Led &amp; mentored a remote team of 7–10 for 4+ years (since 2022) across 3 teams org-wide.</li>
+            <li>Owned the company's largest, flagship codebase; led Ember.js → React migration (+35% velocity).</li>
+            <li>Reduced review cycles and shipped on time; 40% faster loads, 70% fewer production bugs.</li>
+          </ul></div>
+        <div class="node"><h3>Founder — Veerluit Pvt Ltd</h3>
+          <div class="m">LOCALITYAI · 2022 — PRESENT</div>
+          <ul>
+            <li>Founded &amp; solo-built an AI-native product (React Native + web + Node.js), live on Google Play.</li>
+            <li>Owned product, architecture, mobile, web, backend, payments &amp; infrastructure.</li>
+          </ul></div>
+        <div class="node"><h3>AI-Assisted Dev Workflow</h3>
+          <div class="m">STANDARDIZED · REPEATABLE</div>
+          <ul>
+            <li>Built a repeatable AI-assisted workflow any engineer can follow to ship safe code faster.</li>
+            <li>Cursor, Claude Code, LLM / agentic apps integrated into daily delivery.</li>
+          </ul></div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- SYSTEMS / SKILLS -->
+  <section id="systems">
+    <div class="eyebrow rv">systems_online</div>
+    <h2 class="title rv">Core <span class="hi">systems</span>.</h2>
+    <div class="sysgrid">
+      <div class="sys panel rv"><span class="corner tr"></span><div class="in"><div class="sh">LEADERSHIP</div><div class="chips">
+        <span class="chip">Team Lead 7–10</span><span class="chip">Fully Remote</span><span class="chip">Agile / Scrum</span><span class="chip">Code Review</span><span class="chip">Mentorship</span><span class="chip">Technical Decisions</span></div></div></div>
+      <div class="sys panel rv"><span class="corner tr"></span><div class="in"><div class="sh">FRONTEND</div><div class="chips">
+        <span class="chip">React</span><span class="chip">TypeScript</span><span class="chip">Redux</span><span class="chip">Module Federation</span><span class="chip">Responsive UI</span></div></div></div>
+      <div class="sys panel rv"><span class="corner tr"></span><div class="in"><div class="sh">BACKEND · MOBILE</div><div class="chips">
+        <span class="chip">Node.js</span><span class="chip">Express · Hono · Fastify</span><span class="chip">REST · GraphQL</span><span class="chip">React Native</span><span class="chip">PostgreSQL</span></div></div></div>
+      <div class="sys panel rv"><span class="corner tr"></span><div class="in"><div class="sh">AI-ASSISTED DEV · PLATFORM</div><div class="chips">
+        <span class="chip">Cursor</span><span class="chip">Claude Code</span><span class="chip">LLM / Agentic</span><span class="chip">GCP · Docker</span><span class="chip">GitHub Actions</span></div></div></div>
+    </div>
+  </section>
+
+  <!-- DEPLOYMENTS / PROJECTS -->
+  <section id="deployments">
+    <div class="eyebrow rv">deployments</div>
+    <h2 class="title rv">Shipped <span class="hi">builds</span>.</h2>
+    <div class="dep panel rv"><span class="corner tr"></span><div class="in"><div class="no">[ DEPLOY_01 ]</div><h3>LocalityAI</h3>
+      <p>AI-native marketplace SaaS — React Native + web + Node.js, live on Google Play. Founded &amp; solo-built.</p>
+      <div class="tags"><span>React Native</span><span>Node/TS</span><span>PostgreSQL</span><span>GCP</span><span>AI/RAG</span></div></div></div>
+    <div class="dep panel rv"><span class="corner tr"></span><div class="in"><div class="no">[ DEPLOY_02 ]</div><h3>Talview Flagship Platform</h3>
+      <p>Owned the company's largest codebase; led the Ember.js → React migration (+35% velocity) with Node REST/GraphQL APIs.</p>
+      <div class="tags"><span>React</span><span>Module Federation</span><span>Node.js</span><span>GraphQL</span></div></div></div>
+    <div class="dep panel rv"><span class="corner tr"></span><div class="in"><div class="no">[ DEPLOY_03 ]</div><h3>Proview Live Proctor</h3>
+      <p>Real-time proctoring with live video analysis &amp; chat; stable WebRTC streaming for secure remote exams.</p>
+      <div class="tags"><span>React</span><span>WebRTC</span><span>Socket.io</span></div></div></div>
+  </section>
+
+  <!-- UPLINK / PROFILES -->
+  <section id="uplink">
+    <div class="eyebrow rv">uplink</div>
+    <h2 class="title rv">Comms <span class="hi">channels</span>.</h2>
+    <div class="links">
+      <a class="lk panel rv" href="https://github.com/trdp30" target="_blank" rel="noopener"><div class="in" style="display:flex;align-items:center;gap:13px;margin:1.5px">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></span>
+        <div><div class="t">GitHub</div><div class="s">@trdp30</div></div></div></a>
+      <a class="lk panel rv" href="https://linkedin.com/in/trideep-das-817962133" target="_blank" rel="noopener"><div class="in" style="display:flex;align-items:center;gap:13px;margin:1.5px">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.46C23.2 24 24 23.22 24 22.27V1.73C24 .77 23.2 0 22.23 0z"/></svg></span>
+        <div><div class="t">LinkedIn</div><div class="s">trideep-das</div></div></div></a>
+      <a class="lk panel rv" href="mailto:trdp30@gmail.com"><div class="in" style="display:flex;align-items:center;gap:13px;margin:1.5px">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 12.7 0 5.3V19c0 .6.4 1 1 1h22c.6 0 1-.4 1-1V5.3L12 12.7zM23 4H1L12 10.8 23 4z"/></svg></span>
+        <div><div class="t">Email</div><div class="s">trdp30@gmail.com</div></div></div></a>
+      <a class="lk panel rv" href="tel:+919706055724"><div class="in" style="display:flex;align-items:center;gap:13px;margin:1.5px">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg></span>
+        <div><div class="t">Call</div><div class="s">+91 97060 55724</div></div></div></a>
+    </div>
+  </section>
+
+  <!-- TRANSMIT / CONTACT -->
+  <section id="transmit">
+    <div class="panel rv"><span class="ptag">TRANSMIT</span><span class="corner tr"></span><span class="corner bl"></span><div class="in contact">
+      <div class="eyebrow" style="display:inline-block">open_channel</div>
+      <h2 class="title">Let's <span class="hi">build</span>.</h2>
+      <p class="lead" style="margin:0 auto 20px">Open to Tech Lead / Senior Developer roles, founding-engineer gigs &amp; collaborations — fully remote.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn p" id="saveContact2">＋ Save Contact</a>
+        <a class="btn g" href="mailto:trdp30@gmail.com">Email</a>
+      </div>
+    </div></div>
+    <footer>// LINK ESTABLISHED VIA NFC · © <span id="yr"></span> TRIDEEP_KUMAR_DAS</footer>
+  </section>
+</div>
+
+<script>
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // boot log
+  const lines=[['> establishing uplink...',''],['> decrypting identity','OK'],['> clearance: TECH_LEAD','OK'],['> stack: node · react native · react','OK'],['> ai-assisted dev: online','OK'],['> profile ready','OK']];
+  const bl=document.getElementById('bootlog');let i=0;
+  (function nx(){if(i>=lines.length)return;const[t,s]=lines[i];const d=document.createElement('div');
+    d.innerHTML=t+(s?` <span class="ok">[${s}]</span>`:'');bl.appendChild(d);i++;setTimeout(nx,300);})();
+  const boot=document.getElementById('boot'),go=()=>boot.classList.add('gone');
+  document.getElementById('enterBtn').addEventListener('click',go);setTimeout(go,4000);
+
+  // role typing
+  const roles=["TECH LEAD & SENIOR DEVELOPER","HANDS-ON · SHIPS CODE DAILY","FULLY REMOTE TEAM LEAD (7–10)","NODE.JS · REACT NATIVE · REACT","AI-ASSISTED DEV · FOUNDER"];
+  const el=document.getElementById('role');let ri=0,ci=0,del=false;
+  (function type(){const w=roles[ri];el.textContent=del?w.slice(0,ci--):w.slice(0,ci++);
+    if(!del&&ci>w.length){del=true;setTimeout(type,1400);return;}
+    if(del&&ci<0){del=false;ri=(ri+1)%roles.length;ci=0;}setTimeout(type,del?30:60);})();
+
+  // reveal + gauge + counters
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){
+    e.target.classList.add('in');
+    e.target.querySelectorAll?.('.ring .fg').forEach(c=>{const r=28,circ=2*Math.PI*r,pct=+c.dataset.pct;
+      c.style.strokeDasharray=circ;c.style.strokeDashoffset=circ;
+      requestAnimationFrame(()=>requestAnimationFrame(()=>{c.style.strokeDashoffset=circ*(1-pct/100);}));});
+    e.target.querySelectorAll?.('[data-count]').forEach(n=>{const end=+n.dataset.count,suf=n.dataset.suffix||'';
+      if(reduce){n.textContent=end+suf;return;}let s=null;const dur=1300;
+      const step=t=>{s=s||t;const p=Math.min((t-s)/dur,1);n.textContent=Math.round(end*p)+suf;if(p<1)requestAnimationFrame(step);};requestAnimationFrame(step);});
+    io.unobserve(e.target);}}),{threshold:.18});
+  document.querySelectorAll('.rv').forEach(n=>io.observe(n));
+
+  // progress
+  const prog=document.getElementById('prog');
+  addEventListener('scroll',()=>{const h=document.documentElement;prog.style.width=(h.scrollTop/(h.scrollHeight-h.clientHeight)*100)+'%';},{passive:true});
+
+  // vCard
+  const vcard=`BEGIN:VCARD
+VERSION:3.0
+N:Das;Trideep;Kumar;;
+FN:Trideep Kumar Das
+TITLE:Tech Lead & Senior Developer
+ORG:Veerluit Pvt Ltd (LocalityAI)
+EMAIL;TYPE=INTERNET:trdp30@gmail.com
+TEL;TYPE=CELL:+919706055724
+ADR;TYPE=WORK:;;Bengaluru;;;;India
+URL:https://github.com/trdp30
+URL:https://linkedin.com/in/trideep-das-817962133
+END:VCARD`;
+  function save(){const b=new Blob([vcard],{type:'text/vcard'});const u=URL.createObjectURL(b);
+    const a=document.createElement('a');a.href=u;a.download='Trideep_Kumar_Das.vcf';a.click();URL.revokeObjectURL(u);}
+  ['saveContact','saveContact2'].forEach(id=>document.getElementById(id).addEventListener('click',save));
+  document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
