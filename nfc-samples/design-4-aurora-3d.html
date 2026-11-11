@@ -1,0 +1,499 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Trideep Kumar Das — Aurora 3D</title>
+<meta name="description" content="Trideep Kumar Das · Founder (Veerluit / LocalityAI) · Staff Full-Stack Engineer" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@300;400;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<script src="./vendor/gsap.min.js"></script>
+<script src="./vendor/ScrollTrigger.min.js"></script>
+<style>
+  :root{
+    --bg:#060814; --ink:#eaf0ff; --muted:#9aa6c8;
+    --c1:#7c5cff; --c2:#19c3ff; --c3:#ff5c9d; --c4:#2bf5c0;
+    --glass:rgba(255,255,255,.05); --stroke:rgba(255,255,255,.12);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--bg);color:var(--ink);overflow-x:hidden;
+    -webkit-font-smoothing:antialiased;line-height:1.5}
+  h1,h2,h3,.font-d{font-family:'Sora',sans-serif}
+  a{color:inherit;text-decoration:none}
+
+  /* 3D canvas + ambient aurora */
+  #scene{position:fixed;inset:0;z-index:0;will-change:opacity}
+  .aurora{position:fixed;inset:0;z-index:-1;filter:blur(80px);opacity:.55}
+  .blob{position:absolute;border-radius:50%;mix-blend-mode:screen;animation:drift 22s ease-in-out infinite}
+  .b1{width:50vw;height:50vw;background:var(--c1);top:-10%;left:-6%}
+  .b2{width:46vw;height:46vw;background:var(--c2);top:20%;right:-12%;animation-delay:-6s}
+  .b3{width:42vw;height:42vw;background:var(--c3);bottom:-14%;left:14%;animation-delay:-11s}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1)}50%{transform:translate(4vw,3vh) scale(1.12)}}
+  .grain{position:fixed;inset:0;z-index:1;pointer-events:none;opacity:.045;
+    background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='120' height='120'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+
+  /* Launch */
+  #launch{position:fixed;inset:0;z-index:50;background:#060814;display:grid;place-items:center;
+    transition:opacity 1s,visibility 1s}
+  #launch.gone{opacity:0;visibility:hidden}
+  .lwrap{text-align:center}
+  .ring{width:120px;height:120px;border-radius:50%;position:relative;display:grid;place-items:center;margin:0 auto}
+  .ring::before,.ring::after{content:"";position:absolute;inset:0;border-radius:50%;border:2px solid transparent}
+  .ring::before{border-top-color:var(--c2);border-right-color:var(--c1);animation:spin 2.4s linear infinite}
+  .ring::after{inset:14px;border-bottom-color:var(--c3);border-left-color:var(--c4);animation:spin 1.6s linear infinite reverse}
+  @keyframes spin{to{transform:rotate(360deg)}}
+  .mono{width:70px;height:70px;border-radius:22px;display:grid;place-items:center;
+    background:linear-gradient(135deg,var(--c1),var(--c2));font-family:'Sora';font-weight:800;font-size:30px;color:#fff;
+    box-shadow:0 10px 40px rgba(124,92,255,.5)}
+  .lname{font-family:'Sora';font-weight:700;font-size:20px;letter-spacing:.5px;margin-top:26px}
+  .lbar{width:160px;height:3px;border-radius:3px;background:var(--stroke);margin:16px auto 0;overflow:hidden}
+  .lbar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--c2),var(--c1),var(--c3));
+    animation:load 2.3s cubic-bezier(.4,0,.2,1) forwards}
+  @keyframes load{to{width:100%}}
+  .ltap{margin-top:14px;font-size:11px;color:var(--muted);letter-spacing:3px;text-transform:uppercase;animation:pulse 1.6s infinite}
+  @keyframes pulse{0%,100%{opacity:.35}50%{opacity:1}}
+
+  .wrap{position:relative;z-index:5;max-width:760px;margin:0 auto;padding:0 20px 90px}
+  section{padding:48px 0;scroll-margin-top:30px}
+  .eyebrow{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:var(--c2);margin-bottom:12px;font-weight:600}
+  .glass{background:var(--glass);border:1px solid var(--stroke);border-radius:22px;backdrop-filter:blur(16px);
+    box-shadow:0 16px 50px rgba(0,0,0,.35)}
+
+  /* hero — content sits over the live 3D orb */
+  .hero{min-height:100svh;display:flex;flex-direction:column;justify-content:center;gap:20px;padding:84px 0 40px}
+  .badge{align-self:flex-start;display:inline-flex;align-items:center;gap:8px;font-size:12.5px;padding:8px 14px;border-radius:999px;
+    background:var(--glass);border:1px solid var(--stroke);color:var(--muted)}
+  .badge .dot{width:7px;height:7px;border-radius:50%;background:var(--c4);box-shadow:0 0 0 3px rgba(43,245,192,.2)}
+  .hero h1{font-size:clamp(42px,12vw,74px);font-weight:800;line-height:1;letter-spacing:-2px}
+  .hero h1 span{background:linear-gradient(120deg,var(--c2),var(--c1),var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .role{font-size:clamp(16px,4.6vw,22px);color:var(--muted);min-height:1.4em}
+  .role b{color:var(--ink);font-weight:600}
+  .cursor{display:inline-block;width:2px;height:1em;background:var(--c2);margin-left:2px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .chips{display:flex;flex-wrap:wrap;gap:8px}
+  .chip{font-size:12.5px;padding:7px 13px;border-radius:999px;background:var(--glass);border:1px solid var(--stroke);color:var(--muted)}
+  .cta{display:flex;gap:12px;flex-wrap:wrap}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;
+    border:1px solid var(--stroke);transition:transform .2s,box-shadow .2s;cursor:pointer}
+  .btn:active{transform:scale(.96)}
+  .btn.primary{background:linear-gradient(120deg,var(--c1),var(--c2));color:#fff;border:none;box-shadow:0 10px 30px rgba(25,195,255,.35)}
+  .btn.ghost{background:var(--glass);color:var(--ink)}
+  .scrollhint{position:absolute;bottom:24px;left:50%;transform:translateX(-50%);font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;color:var(--muted);display:flex;flex-direction:column;align-items:center;gap:8px}
+  .scrollhint .m{width:20px;height:32px;border:2px solid var(--stroke);border-radius:12px;position:relative}
+  .scrollhint .m::before{content:"";position:absolute;top:6px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:3px;
+    background:var(--c2);animation:wheel 1.6s infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+  .stat{padding:20px}
+  .stat .n{font-family:'Sora';font-weight:800;font-size:30px;background:linear-gradient(120deg,var(--c4),var(--c2));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .stat .l{font-size:12.5px;color:var(--muted);margin-top:4px}
+
+  h2.title{font-size:clamp(26px,7vw,38px);font-weight:700;letter-spacing:-.6px;margin-bottom:10px}
+  h2.title em{font-style:normal;background:linear-gradient(120deg,var(--c2),var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent}
+  .lead{color:var(--muted);font-size:16px;max-width:58ch}
+
+  .tl{margin-top:20px;position:relative;padding-left:24px}
+  .tl::before{content:"";position:absolute;left:5px;top:6px;bottom:6px;width:2px;background:linear-gradient(var(--c1),var(--c3))}
+  .tl-item{position:relative;margin-bottom:16px}
+  .tl-item::before{content:"";position:absolute;left:-23px;top:22px;width:12px;height:12px;border-radius:50%;background:var(--c2);box-shadow:0 0 0 4px rgba(25,195,255,.18)}
+  .tl-item .card{padding:20px}
+  .tl-item h3{font-size:18px;font-weight:600}
+  .tl-item .meta{font-size:13px;color:var(--c2);margin:3px 0 10px}
+  .tl-item ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+  .tl-item li{font-size:14px;color:var(--muted);padding-left:16px;position:relative}
+  .tl-item li::before{content:"▹";position:absolute;left:0;color:var(--c4)}
+
+  /* venture spotlight */
+  .venture{padding:26px;margin-top:20px;position:relative;overflow:hidden}
+  .venture::after{content:"";position:absolute;inset:0;background:radial-gradient(120% 90% at 100% 0,rgba(124,92,255,.18),transparent 60%);pointer-events:none}
+  .vhead{display:flex;align-items:center;gap:14px;flex-wrap:wrap}
+  .vlogo{width:54px;height:54px;border-radius:16px;display:grid;place-items:center;flex:0 0 auto;
+    background:linear-gradient(135deg,var(--c3),var(--c1));font-family:'Sora';font-weight:800;font-size:22px;color:#fff}
+  .vhead h3{font-size:22px;font-weight:700}
+  .vhead .sub{font-size:13px;color:var(--muted)}
+  .vtag{font-size:11px;padding:5px 11px;border-radius:999px;background:rgba(43,245,192,.14);color:var(--c4);font-weight:600;margin-left:auto}
+  .vbody{margin-top:16px;font-size:14.5px;color:var(--muted)}
+  .vgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+  .vcell{padding:14px 16px;border-radius:14px;background:rgba(255,255,255,.03);border:1px solid var(--stroke)}
+  .vcell .k{font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--c2);font-weight:600}
+  .vcell .v{font-size:13.5px;margin-top:5px;color:var(--ink)}
+  .vcta{margin-top:18px;display:flex;gap:10px;flex-wrap:wrap}
+
+  /* skill groups */
+  .skgroups{display:grid;gap:12px;margin-top:20px}
+  .skgroup{padding:18px 20px}
+  .skgroup .gl{font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--c3);font-weight:600;margin-bottom:12px}
+  .skgroup .items{display:flex;flex-wrap:wrap;gap:8px}
+  .sk{font-size:13px;padding:8px 13px;border-radius:10px;background:rgba(255,255,255,.04);border:1px solid var(--stroke);font-weight:500}
+
+  .pgrid{display:grid;gap:14px;margin-top:20px}
+  .proj{padding:22px;transition:transform .3s,box-shadow .3s}
+  .proj h3{font-size:19px;font-weight:600;margin-bottom:6px}
+  .proj p{font-size:14px;color:var(--muted)}
+  .proj .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}
+  .proj .tags span{font-size:11.5px;padding:5px 10px;border-radius:8px;background:rgba(124,92,255,.14);color:#c9bcff}
+
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:20px}
+  .lk{padding:18px;display:flex;align-items:center;gap:14px;transition:transform .2s}
+  .lk:active{transform:scale(.97)}
+  .lk .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;background:var(--glass);border:1px solid var(--stroke)}
+  .lk .ico svg{width:20px;height:20px;fill:var(--ink)}
+  .lk .t{font-weight:600;font-size:14.5px}
+  .lk .s{font-size:12px;color:var(--muted)}
+
+  .contact{text-align:center;padding:42px 24px;margin-top:8px}
+  .contact h2{font-size:clamp(28px,8vw,42px);margin-bottom:10px}
+  footer{text-align:center;color:var(--muted);font-size:12.5px;padding-top:30px}
+
+  .rv{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  #prog{position:fixed;top:0;left:0;height:3px;z-index:60;width:0;background:linear-gradient(90deg,var(--c2),var(--c1),var(--c3))}
+  @media(max-width:520px){.links,.vgrid{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+<div id="prog"></div>
+<div class="aurora"><div class="blob b1"></div><div class="blob b2"></div><div class="blob b3"></div></div>
+<canvas id="scene"></canvas>
+<div class="grain"></div>
+
+<!-- LAUNCH -->
+<div id="launch">
+  <div class="lwrap">
+    <div class="ring"><div class="mono">TD</div></div>
+    <div class="lname">Trideep Kumar Das</div>
+    <div class="lbar"><i></i></div>
+    <div class="ltap">Tap to enter</div>
+  </div>
+</div>
+
+<div class="wrap">
+  <!-- HERO -->
+  <section class="hero">
+    <span class="badge rv"><span class="dot"></span> Founder · Veerluit Pvt Ltd</span>
+    <div>
+      <h1 class="rv">Hi, I'm <span>Trideep.</span></h1>
+      <p class="role rv" id="role"><b></b><span class="cursor"></span></p>
+    </div>
+    <div class="chips rv">
+      <span class="chip">⚡ 8 yrs full-stack</span>
+      <span class="chip">⚛️ React · Node · React Native</span>
+      <span class="chip">🚀 Built LocalityAI solo</span>
+      <span class="chip">📍 Bengaluru, India</span>
+    </div>
+    <div class="cta rv">
+      <a class="btn primary" id="saveContact">＋ Save Contact</a>
+      <a class="btn ghost" href="#venture">See my venture</a>
+    </div>
+    <div class="stats rv" style="margin-top:12px">
+      <div class="stat glass"><div class="n" data-count="8" data-suffix="+">0</div><div class="l">Years building products</div></div>
+      <div class="stat glass"><div class="n" data-count="10" data-suffix="+">0</div><div class="l">Microservices shipped (LocalityAI)</div></div>
+      <div class="stat glass"><div class="n" data-count="40" data-suffix="%">0</div><div class="l">Faster load times delivered</div></div>
+      <div class="stat glass"><div class="n" data-count="1" data-suffix=" live">0</div><div class="l">App on Google Play</div></div>
+    </div>
+    <div class="scrollhint"><div class="m"></div>Scroll</div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="eyebrow rv">About</div>
+    <h2 class="title rv">Founder &amp; <em>full-stack</em> engineer.</h2>
+    <p class="lead rv">8 years building and scaling web &amp; mobile products — and a founder who took a product from idea to a live app, solo. I lead with architecture and craft: shipping React/TypeScript frontends, Node.js services on PostgreSQL, React Native apps, real-time systems and payments. Currently Staff Full-Stack Engineer at Talview while running my own venture, Veerluit.</p>
+  </section>
+
+  <!-- VENTURE / BUSINESS -->
+  <section id="venture">
+    <div class="eyebrow rv">My venture</div>
+    <h2 class="title rv">The <em>business</em> I built.</h2>
+    <div class="venture glass rv">
+      <div class="vhead">
+        <div class="vlogo">LA</div>
+        <div>
+          <h3>LocalityAI</h3>
+          <div class="sub">Veerluit Pvt Ltd · Bengaluru, India</div>
+        </div>
+        <span class="vtag">LIVE</span>
+      </div>
+      <p class="vbody">An <b style="color:var(--ink)">AI-native, multi-tenant marketplace SaaS</b> — taken from idea to a live product end-to-end: product, architecture, mobile, web, backend and infrastructure. Solo-built.</p>
+      <div class="vgrid">
+        <div class="vcell"><div class="k">Mobile</div><div class="v">React Native app live on Google Play — consumer &amp; partner experiences with real-time updates.</div></div>
+        <div class="vcell"><div class="k">Web</div><div class="v">Module Federation React/TypeScript super-app + admin &amp; ops dashboards.</div></div>
+        <div class="vcell"><div class="k">Backend</div><div class="v">Node/TS (Express·Hono·Fastify), GraphQL (Hasura) &amp; REST on PostgreSQL + Prisma, real-time via graphql-ws.</div></div>
+        <div class="vcell"><div class="k">Payments</div><div class="v">Razorpay payments, commission, booking &amp; discovery with strict per-tenant isolation.</div></div>
+        <div class="vcell"><div class="k">Platform</div><div class="v">10+ microservices on Docker/GCP, GitHub Actions CI/CD, Firebase Auth + JWT/RBAC, Sentry &amp; OpenTelemetry.</div></div>
+        <div class="vcell"><div class="k">AI / GenAI</div><div class="v">MCP tools + an agentic LLM chat server with RAG baked into the platform.</div></div>
+      </div>
+      <div class="vcta">
+        <a class="btn primary" id="playBtn" href="#" target="_blank" rel="noopener">▶ View on Google Play</a>
+        <a class="btn ghost" href="#contact">Partner with me</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="eyebrow rv">Experience</div>
+    <h2 class="title rv">Where I've made <em>impact</em>.</h2>
+    <div class="tl">
+      <div class="tl-item rv"><div class="card glass">
+        <h3>Staff Engineer — Full-Stack (Frontend Focus)</h3>
+        <div class="meta">Talview · Bengaluru · Jun 2018 – May 2026</div>
+        <ul>
+          <li>Built &amp; scaled React/TypeScript SaaS serving thousands of concurrent users.</li>
+          <li>Led migration from legacy Ember.js to a React Micro-Frontend architecture; +40% load speed.</li>
+          <li>Mentored engineers to 40–60% productivity gains; top org GitHub contributor (5,590/yr).</li>
+        </ul>
+      </div></div>
+      <div class="tl-item rv"><div class="card glass">
+        <h3>Founder — Veerluit Pvt Ltd</h3>
+        <div class="meta">LocalityAI · 2023 – Present</div>
+        <ul>
+          <li>Solo-built an AI-native marketplace SaaS from idea to a live Google Play app.</li>
+          <li>Owned product, architecture, mobile, web, backend, payments &amp; infrastructure.</li>
+        </ul>
+      </div></div>
+      <div class="tl-item rv"><div class="card glass">
+        <h3>Master of Computer Applications</h3>
+        <div class="meta">SMIT · 2015 – 2018 · Engineering Champion awards</div>
+      </div></div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="eyebrow rv">Toolbox</div>
+    <h2 class="title rv">The <em>full stack</em> I ship with.</h2>
+    <div class="skgroups">
+      <div class="skgroup glass rv"><div class="gl">Frontend</div><div class="items">
+        <span class="sk">React</span><span class="sk">TypeScript</span><span class="sk">Redux / Saga</span><span class="sk">GraphQL · Apollo</span><span class="sk">Module Federation</span><span class="sk">Tailwind · Shadcn</span></div></div>
+      <div class="skgroup glass rv"><div class="gl">Backend</div><div class="items">
+        <span class="sk">Node.js</span><span class="sk">Express · Hono · Fastify</span><span class="sk">PostgreSQL · Prisma</span><span class="sk">Hasura</span><span class="sk">graphql-ws</span><span class="sk">Razorpay</span></div></div>
+      <div class="skgroup glass rv"><div class="gl">Mobile &amp; Platform</div><div class="items">
+        <span class="sk">React Native</span><span class="sk">Docker · GCP</span><span class="sk">GitHub Actions</span><span class="sk">Firebase Auth · JWT</span><span class="sk">Sentry · OpenTelemetry</span></div></div>
+      <div class="skgroup glass rv"><div class="gl">AI / GenAI</div><div class="items">
+        <span class="sk">MCP tools</span><span class="sk">Agentic LLM</span><span class="sk">RAG</span><span class="sk">Cursor · Claude Code</span></div></div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="work">
+    <div class="eyebrow rv">Selected work</div>
+    <h2 class="title rv">Things I've <em>built</em>.</h2>
+    <div class="pgrid">
+      <div class="proj glass rv"><h3>LocalityAI — marketplace SaaS</h3>
+        <p>AI-native, multi-tenant marketplace from idea to live: mobile, web, backend, payments &amp; infra. Solo-built.</p>
+        <div class="tags"><span>React Native</span><span>Node/TS</span><span>PostgreSQL</span><span>Razorpay</span><span>GCP</span><span>RAG</span></div></div>
+      <div class="proj glass rv"><h3>Talview Orchestration Platform</h3>
+        <p>Scalable orchestration with real-time pipelines over WebSocket + Apollo on an Nx monorepo.</p>
+        <div class="tags"><span>React</span><span>Redux-Saga</span><span>GraphQL</span><span>WebSocket</span></div></div>
+      <div class="proj glass rv"><h3>Proview Live Proctor</h3>
+        <p>Real-time proctoring with live video analysis &amp; chat; stable WebRTC streaming for secure exams.</p>
+        <div class="tags"><span>React</span><span>WebRTC</span><span>Socket.io</span></div></div>
+    </div>
+  </section>
+
+  <!-- PROFILES -->
+  <section id="profiles">
+    <div class="eyebrow rv">Find me</div>
+    <h2 class="title rv">Profiles &amp; <em>links</em>.</h2>
+    <div class="links">
+      <a class="lk glass rv" href="https://github.com/trdp30" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></span>
+        <div><div class="t">GitHub</div><div class="s">@trdp30</div></div></a>
+      <a class="lk glass rv" href="https://linkedin.com/in/trideep-das-817962133" target="_blank" rel="noopener">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.46C23.2 24 24 23.22 24 22.27V1.73C24 .77 23.2 0 22.23 0z"/></svg></span>
+        <div><div class="t">LinkedIn</div><div class="s">trideep-das</div></div></a>
+      <a class="lk glass rv" href="mailto:trdp30@gmail.com">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M12 12.7 0 5.3V19c0 .6.4 1 1 1h22c.6 0 1-.4 1-1V5.3L12 12.7zM23 4H1L12 10.8 23 4z"/></svg></span>
+        <div><div class="t">Email</div><div class="s">trdp30@gmail.com</div></div></a>
+      <a class="lk glass rv" href="tel:+919706055724">
+        <span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg></span>
+        <div><div class="t">Call</div><div class="s">+91 97060 55724</div></div></a>
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact glass rv">
+      <div class="eyebrow" style="justify-self:center">Let's talk</div>
+      <h2>Build something <em>great</em>?</h2>
+      <p class="lead" style="margin:0 auto 22px">Open to staff / lead roles, founding engineer gigs, advisory &amp; collaborations.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn primary" id="saveContact2">＋ Save my contact</a>
+        <a class="btn ghost" href="mailto:trdp30@gmail.com">Email me</a>
+      </div>
+    </div>
+    <footer>Tapped from an NFC card · © <span id="yr"></span> Trideep Kumar Das</footer>
+  </section>
+</div>
+
+<!-- real WebGL 3D -->
+<script src="./vendor/three.min.js"></script>
+<script>
+const reduce = matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+/* ---------- Three.js: morphing iridescent "plasma cloud" orb + particle field ---------- */
+const canvas=document.getElementById('scene');
+const renderer=new THREE.WebGLRenderer({canvas,alpha:true,antialias:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+const scene=new THREE.Scene();
+const camera=new THREE.PerspectiveCamera(45,innerWidth/innerHeight,0.1,100);
+camera.position.z=5;
+const group=new THREE.Group();scene.add(group);
+
+const noiseGLSL=`
+vec3 mod289(vec3 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 mod289(vec4 x){return x-floor(x*(1.0/289.0))*289.0;}
+vec4 permute(vec4 x){return mod289(((x*34.0)+1.0)*x);}
+vec4 taylorInvSqrt(vec4 r){return 1.79284291400159-0.85373472095314*r;}
+float snoise(vec3 v){
+  const vec2 C=vec2(1.0/6.0,1.0/3.0);const vec4 D=vec4(0.0,0.5,1.0,2.0);
+  vec3 i=floor(v+dot(v,C.yyy));vec3 x0=v-i+dot(i,C.xxx);
+  vec3 g=step(x0.yzx,x0.xyz);vec3 l=1.0-g;vec3 i1=min(g.xyz,l.zxy);vec3 i2=max(g.xyz,l.zxy);
+  vec3 x1=x0-i1+C.xxx;vec3 x2=x0-i2+C.yyy;vec3 x3=x0-D.yyy;
+  i=mod289(i);
+  vec4 p=permute(permute(permute(i.z+vec4(0.0,i1.z,i2.z,1.0))+i.y+vec4(0.0,i1.y,i2.y,1.0))+i.x+vec4(0.0,i1.x,i2.x,1.0));
+  float n_=0.142857142857;vec3 ns=n_*D.wyz-D.xzx;
+  vec4 j=p-49.0*floor(p*ns.z*ns.z);
+  vec4 x_=floor(j*ns.z);vec4 y_=floor(j-7.0*x_);
+  vec4 x=x_*ns.x+ns.yyyy;vec4 y=y_*ns.x+ns.yyyy;vec4 h=1.0-abs(x)-abs(y);
+  vec4 b0=vec4(x.xy,y.xy);vec4 b1=vec4(x.zw,y.zw);
+  vec4 s0=floor(b0)*2.0+1.0;vec4 s1=floor(b1)*2.0+1.0;vec4 sh=-step(h,vec4(0.0));
+  vec4 a0=b0.xzyw+s0.xzyw*sh.xxyy;vec4 a1=b1.xzyw+s1.xzyw*sh.zzww;
+  vec3 p0=vec3(a0.xy,h.x);vec3 p1=vec3(a0.zw,h.y);vec3 p2=vec3(a1.xy,h.z);vec3 p3=vec3(a1.zw,h.w);
+  vec4 norm=taylorInvSqrt(vec4(dot(p0,p0),dot(p1,p1),dot(p2,p2),dot(p3,p3)));
+  p0*=norm.x;p1*=norm.y;p2*=norm.z;p3*=norm.w;
+  vec4 m=max(0.6-vec4(dot(x0,x0),dot(x1,x1),dot(x2,x2),dot(x3,x3)),0.0);m=m*m;
+  return 42.0*dot(m*m,vec4(dot(p0,x0),dot(p1,x1),dot(p2,x2),dot(p3,x3)));
+}`;
+
+const uniforms={
+  uTime:{value:0},
+  uAmp:{value:0.42},
+  uColA:{value:new THREE.Color('#19c3ff')},
+  uColB:{value:new THREE.Color('#7c5cff')},
+  uColC:{value:new THREE.Color('#ff5c9d')}
+};
+const mat=new THREE.ShaderMaterial({
+  uniforms,transparent:true,
+  vertexShader:`${noiseGLSL}
+    uniform float uTime;uniform float uAmp;
+    varying float vN;varying vec3 vNormalW;varying vec3 vView;
+    void main(){
+      float n=snoise(normal*1.6+uTime*0.28)+0.5*snoise(normal*3.2-uTime*0.2);
+      vec3 pos=position+normal*n*uAmp;
+      vN=n;
+      vec4 mv=modelViewMatrix*vec4(pos,1.0);
+      vView=normalize(-mv.xyz);
+      vNormalW=normalize(normalMatrix*normal);
+      gl_Position=projectionMatrix*mv;
+    }`,
+  fragmentShader:`
+    uniform vec3 uColA;uniform vec3 uColB;uniform vec3 uColC;
+    varying float vN;varying vec3 vNormalW;varying vec3 vView;
+    void main(){
+      float fres=pow(1.0-max(dot(vNormalW,vView),0.0),2.3);
+      vec3 col=mix(uColA,uColB,clamp(vN*0.6+0.5,0.0,1.0));
+      col=mix(col,uColC,fres*0.9);
+      col+=fres*0.4;
+      gl_FragColor=vec4(col,0.9);
+    }`
+});
+const orb=new THREE.Mesh(new THREE.IcosahedronGeometry(1.35,48),mat);
+group.add(orb);
+const wire=new THREE.Mesh(new THREE.IcosahedronGeometry(1.55,6),
+  new THREE.MeshBasicMaterial({color:0x19c3ff,wireframe:true,transparent:true,opacity:0.12}));
+group.add(wire);
+
+// particle cloud shell
+const N=1300,pos=new Float32Array(N*3);
+for(let i=0;i<N;i++){const r=2.2+Math.random()*1.9,t=Math.random()*Math.PI*2,ph=Math.acos(2*Math.random()-1);
+  pos[i*3]=r*Math.sin(ph)*Math.cos(t);pos[i*3+1]=r*Math.sin(ph)*Math.sin(t);pos[i*3+2]=r*Math.cos(ph);}
+const pg=new THREE.BufferGeometry();pg.setAttribute('position',new THREE.BufferAttribute(pos,3));
+const particles=new THREE.Points(pg,new THREE.PointsMaterial({color:0x8fd8ff,size:0.02,transparent:true,opacity:0.7,blending:THREE.AdditiveBlending,depthWrite:false}));
+group.add(particles);
+
+// pointer / gyro parallax
+let tx=0,ty=0,cx=0,cy=0;
+addEventListener('pointermove',e=>{tx=(e.clientX/innerWidth-0.5);ty=(e.clientY/innerHeight-0.5);},{passive:true});
+addEventListener('deviceorientation',e=>{if(e.gamma!=null){tx=Math.max(-1,Math.min(1,e.gamma/45));ty=Math.max(-1,Math.min(1,e.beta/90));}});
+
+function resize(){camera.aspect=innerWidth/innerHeight;camera.updateProjectionMatrix();renderer.setSize(innerWidth,innerHeight);}
+resize();addEventListener('resize',resize);
+
+const clock=new THREE.Clock();
+function frame(){
+  const t=clock.getElapsedTime();
+  uniforms.uTime.value=t;
+  cx+=(tx-cx)*0.05;cy+=(ty-cy)*0.05;
+  group.rotation.y=t*0.12+cx*0.6;
+  group.rotation.x=cy*0.5;
+  particles.rotation.y=-t*0.04;
+  camera.position.x=cx*0.6;camera.position.y=-cy*0.4;camera.lookAt(0,0,0);
+  renderer.render(scene,camera);
+}
+if(reduce){resize();renderer.render(scene,camera);}
+else renderer.setAnimationLoop(frame);
+
+/* ---------- Reveals (no external dep — always runs) ---------- */
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+document.querySelectorAll('.rv').forEach(n=>io.observe(n));
+
+/* ---------- GSAP motion design (progressive enhancement) ---------- */
+if(window.gsap){
+  gsap.registerPlugin(ScrollTrigger);
+  if(!reduce){
+    // fade the 3D scene as you leave the hero so text stays readable
+    gsap.to('#scene',{opacity:0.28,ease:'none',
+      scrollTrigger:{trigger:'.hero',start:'bottom 80%',end:'bottom 20%',scrub:true}});
+    // shift orb color through scroll
+    const st={v:0};
+    ScrollTrigger.create({trigger:'.wrap',start:'top top',end:'bottom bottom',scrub:true,
+      onUpdate:self=>{const p=self.progress;
+        uniforms.uColA.value.setHSL((0.55+p*0.25)%1,0.9,0.6);
+        uniforms.uAmp.value=0.42+Math.sin(p*Math.PI)*0.18;}});
+    // animated stat counters
+    gsap.utils.toArray('.stat .n').forEach(n=>{
+      const end=+n.dataset.count,suf=n.dataset.suffix||'';const o={v:0};
+      ScrollTrigger.create({trigger:n,start:'top 90%',once:true,onEnter:()=>{
+        gsap.to(o,{v:end,duration:1.4,ease:'power2.out',onUpdate:()=>n.textContent=Math.round(o.v)+suf});}});
+    });
+  }else{gsap.set('.rv',{opacity:1,y:0});}
+  // progress bar
+  gsap.to('#prog',{width:'100%',ease:'none',scrollTrigger:{trigger:document.body,start:'top top',end:'bottom bottom',scrub:true}});
+}
+
+/* ---------- Launch + typing + vCard ---------- */
+const launch=document.getElementById('launch'),openUp=()=>launch.classList.add('gone');
+launch.addEventListener('click',openUp);setTimeout(openUp,2600);
+
+const roles=["Founder · Veerluit","Staff Full-Stack Engineer","React · Node · React Native","Builder of LocalityAI"];
+const el=document.querySelector('#role b');let ri=0,ci=0,del=false;
+(function type(){const w=roles[ri];el.textContent=del?w.slice(0,ci--):w.slice(0,ci++);
+  if(!del&&ci>w.length){del=true;setTimeout(type,1300);return;}
+  if(del&&ci<0){del=false;ri=(ri+1)%roles.length;ci=0;}setTimeout(type,del?40:70);})();
+
+const vcard=`BEGIN:VCARD
+VERSION:3.0
+N:Das;Trideep;Kumar;;
+FN:Trideep Kumar Das
+TITLE:Founder & Staff Full-Stack Engineer
+ORG:Veerluit Pvt Ltd (LocalityAI)
+EMAIL;TYPE=INTERNET:trdp30@gmail.com
+TEL;TYPE=CELL:+919706055724
+ADR;TYPE=WORK:;;Bengaluru;;;;India
+URL:https://github.com/trdp30
+URL:https://linkedin.com/in/trideep-das-817962133
+END:VCARD`;
+function save(){const b=new Blob([vcard],{type:'text/vcard'});const u=URL.createObjectURL(b);
+  const a=document.createElement('a');a.href=u;a.download='Trideep_Kumar_Das.vcf';a.click();URL.revokeObjectURL(u);}
+['saveContact','saveContact2'].forEach(id=>document.getElementById(id).addEventListener('click',save));
+document.getElementById('yr').textContent=new Date().getFullYear();
+</script>
+</body>
+</html>
