@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>Trideep Kumar Das — Kaziranga</title>
+<meta name="description" content="Trideep Kumar Das · Engineer from the land of Kaziranga · React · Node · React Native" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;0,9..144,700;1,9..144,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f3ecdc; --ink:#1e2a20; --dim:#505f52; --green:#2c6b42; --leaf:#4e8c5a;
+    --terra:#b4471a; --gold:#8a6a16; --earth:#6b4f34; --line:rgba(30,42,32,.14);
+    /* sky */
+    --sky1:#16213f; --sky2:#5b4a74; --sky3:#c76a52; --sky4:#f3a24f; --sun:#ffe199;
+    --sil0:#0c110c; --sil1:#15201655;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:'Inter',system-ui,sans-serif;background:var(--paper);color:var(--ink);overflow-x:hidden;line-height:1.55;-webkit-font-smoothing:antialiased}
+  .serif{font-family:'Fraunces',serif}
+  a{color:inherit;text-decoration:none}
+
+  /* ============ SOUND TOGGLE ============ */
+  .sound{position:fixed;top:14px;right:14px;z-index:40;display:inline-flex;align-items:center;gap:9px;
+    padding:9px 14px 9px 11px;border-radius:999px;cursor:pointer;border:1px solid rgba(255,255,255,.35);
+    background:rgba(13,19,13,.82);backdrop-filter:blur(8px);color:#fdf6e8;font-size:12.5px;font-weight:600;letter-spacing:.3px}
+  .sound .wave{display:inline-flex;gap:2px;align-items:flex-end;height:14px}
+  .sound .wave i{width:2.5px;background:#ffe199;border-radius:2px;height:5px}
+  .sound.on .wave i{animation:eq .9s ease-in-out infinite}
+  .sound .wave i:nth-child(2){animation-delay:.15s}.sound .wave i:nth-child(3){animation-delay:.3s}.sound .wave i:nth-child(4){animation-delay:.45s}
+  @keyframes eq{0%,100%{height:4px}50%{height:14px}}
+
+  /* ============ HERO SCENE ============ */
+  .scene{position:relative;height:100svh;min-height:600px;overflow:hidden;
+    background:linear-gradient(180deg,var(--sky1) 0%,var(--sky2) 34%,var(--sky3) 60%,var(--sky4) 78%,#f6c06a 100%)}
+  .sun{position:absolute;left:62%;top:46%;width:150px;height:150px;border-radius:50%;transform:translate(-50%,-50%);
+    background:radial-gradient(circle,var(--sun) 0%,rgba(255,211,120,.85) 38%,rgba(255,180,90,0) 70%);
+    box-shadow:0 0 120px 50px rgba(255,205,120,.5);animation:sunrise 8s ease-out both}
+  @keyframes sunrise{from{top:60%;opacity:.4}to{top:46%;opacity:1}}
+  .layer{position:absolute;left:0;right:0;bottom:0;color:var(--sil0);will-change:transform}
+  .layer svg{display:block;width:100%}
+  .hills{bottom:37%;color:#46506a;opacity:.85}
+  .hills2{bottom:34%;color:#394566;opacity:.9}
+  .mist{position:absolute;left:-10%;right:-10%;bottom:33%;height:90px;background:
+    radial-gradient(60% 100% at 30% 50%,rgba(226,232,235,.55),transparent 70%),
+    radial-gradient(50% 100% at 70% 50%,rgba(226,232,235,.5),transparent 70%);filter:blur(5px);animation:drift 18s ease-in-out infinite alternate}
+  @keyframes drift{from{transform:translateX(-4%)}to{transform:translateX(4%)}}
+  .treeline{bottom:33%;color:#0d1710}
+  .grassland{bottom:0;height:34%;background:linear-gradient(180deg,#1c2a1a 0%,#0e160d 100%)}
+  .water{position:absolute;left:0;right:0;bottom:33%;height:4%;background:linear-gradient(180deg,rgba(255,205,120,.4),rgba(120,150,120,.08));filter:blur(1px)}
+
+  /* flock */
+  .flock{position:absolute;top:12%;left:0;width:200%;height:30%;animation:fly 34s linear infinite}
+  @keyframes fly{from{transform:translateX(-10%)}to{transform:translateX(40%)}}
+  .bird{position:absolute;width:26px;color:#1a2130}
+  .bird svg{width:100%}
+  .bird path{animation:flap 1.1s ease-in-out infinite}
+  @keyframes flap{0%,100%{transform:scaleY(1)}50%{transform:scaleY(.55)}}
+
+  /* animals */
+  .rhino,.tiger,.hornbill{position:absolute;color:var(--sil0)}
+  .rhino svg,.tiger svg,.hornbill svg{width:100%;display:block}
+  .r-big{width:172px;left:5%;bottom:31%}
+  .r-mid{width:116px;left:40%;bottom:33%;color:#0f1a12}
+  .r-mid2{width:84px;left:65%;bottom:34%;color:#1b2a1d;opacity:.6;filter:blur(.4px)}
+  .tiger-el{width:158px;right:5%;bottom:30.5%;color:#0b0f0a}
+  .hornbill-el{width:86px;left:6%;bottom:34%;color:#0c120d}
+  .herd{position:absolute;left:0;right:0;bottom:34%;height:34px}
+  .herd .mini{position:absolute;color:#2a3a2c66}
+  .grass{position:absolute;left:-2%;right:-2%;bottom:0;color:#0a0f0a}
+  .grass svg{width:104%}
+  .grass g{transform-origin:bottom center;animation:sway 5s ease-in-out infinite}
+  .grass .g2 g{animation-duration:6.5s;animation-delay:-1s}
+  @keyframes sway{0%,100%{transform:skewX(-2.2deg)}50%{transform:skewX(2.2deg)}}
+
+  /* hero copy */
+  .hero-copy{position:absolute;left:0;right:0;top:0;z-index:10;padding:76px 22px 0;max-width:780px;margin:0 auto}
+  .hero-copy::before{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+    background:linear-gradient(180deg,rgba(16,20,45,.52) 0%,rgba(16,20,45,.18) 55%,transparent 100%)}
+  .place{font-family:'Share Tech Mono',monospace;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:#ffe199;font-weight:600;
+    display:flex;align-items:center;gap:8px}
+  .place .dot{width:7px;height:7px;border-radius:50%;background:#7ee0a6;box-shadow:0 0 0 3px rgba(126,224,166,.25)}
+  .hero-copy h1{font-family:'Fraunces',serif;font-size:clamp(40px,12vw,72px);font-weight:700;line-height:1;color:#fdf6e8;margin:14px 0 4px;
+    text-shadow:0 2px 24px rgba(0,0,0,.35)}
+  .hero-copy h1 em{font-style:italic;color:#ffcf8a}
+  .hero-copy .role{font-size:clamp(15px,4.4vw,20px);color:#f3e7d4;font-weight:500;min-height:1.4em;text-shadow:0 1px 12px rgba(0,0,0,.4)}
+  .hero-copy .role b{color:#fff}
+  .cursor{display:inline-block;width:2px;height:1em;background:#ffcf8a;margin-left:2px;vertical-align:-2px;animation:blink 1s steps(2) infinite}
+  @keyframes blink{50%{opacity:0}}
+  .cta{display:flex;gap:12px;flex-wrap:wrap;margin-top:18px}
+  .btn{display:inline-flex;align-items:center;gap:8px;padding:14px 22px;border-radius:14px;font-weight:600;font-size:15px;cursor:pointer;
+    border:1px solid rgba(255,255,255,.3);color:#fdf6e8;transition:transform .2s;background:rgba(20,28,20,.3);backdrop-filter:blur(4px)}
+  .btn:active{transform:scale(.96)}
+  .btn.p{background:linear-gradient(120deg,var(--terra),#e07a2b);color:#fff;border:none;box-shadow:0 10px 30px rgba(180,71,26,.4)}
+  .scrolltip{position:absolute;bottom:18px;left:50%;transform:translateX(-50%);z-index:10;color:#fdf6e8;font-size:11px;letter-spacing:2px;
+    text-transform:uppercase;text-align:center;text-shadow:0 1px 8px rgba(0,0,0,.6);opacity:.85}
+  .scrolltip .ch{display:block;margin:0 auto 6px;width:18px;height:28px;border:2px solid rgba(255,255,255,.6);border-radius:10px;position:relative}
+  .scrolltip .ch::before{content:"";position:absolute;top:5px;left:50%;transform:translateX(-50%);width:3px;height:6px;border-radius:2px;background:#ffcf8a;animation:wheel 1.6s infinite}
+  @keyframes wheel{0%{opacity:0;transform:translate(-50%,0)}30%{opacity:1}100%{opacity:0;transform:translate(-50%,10px)}}
+
+  /* ============ CONTENT ============ */
+  .wrap{position:relative;z-index:5;max-width:720px;margin:0 auto;padding:0 22px 90px}
+  section.block{padding:52px 0;scroll-margin-top:24px}
+  .eyebrow{display:flex;align-items:center;gap:9px;font-size:12px;letter-spacing:3px;text-transform:uppercase;color:var(--green);font-weight:700;margin-bottom:14px}
+  .eyebrow svg{width:20px;height:20px;color:var(--terra)}
+  h2.title{font-family:'Fraunces',serif;font-size:clamp(27px,7vw,40px);font-weight:700;letter-spacing:-.5px;line-height:1.05;margin-bottom:12px}
+  h2.title em{font-style:italic;color:var(--terra)}
+  .lead{color:var(--dim);font-size:16.5px;max-width:58ch}
+  .lead b{color:var(--ink)}
+  .card{background:#fffaf0;border:1px solid var(--line);border-radius:18px;box-shadow:0 12px 34px rgba(30,42,32,.07)}
+
+  .exp{padding:24px;margin-top:16px}
+  .exp .top{display:flex;justify-content:space-between;align-items:baseline;gap:12px;flex-wrap:wrap}
+  .exp h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600}
+  .exp .yr{font-size:12.5px;color:var(--green);font-weight:700;white-space:nowrap}
+  .exp .org{font-size:13.5px;color:var(--dim);margin:2px 0 13px}
+  .exp ul{list-style:none;display:flex;flex-direction:column;gap:9px}
+  .exp li{font-size:15px;color:var(--dim);padding-left:20px;position:relative}
+  .exp li::before{content:"";position:absolute;left:0;top:8px;width:9px;height:9px;border-radius:50%;background:var(--leaf)}
+
+  .sks{display:flex;flex-wrap:wrap;gap:9px;margin-top:18px}
+  .sk{font-size:14px;padding:9px 15px;border-radius:999px;background:#fffaf0;border:1px solid var(--line);font-weight:500;transition:.2s}
+  .sk:hover{border-color:var(--leaf);color:var(--green);transform:translateY(-2px)}
+
+  .proj{padding:22px;margin-bottom:13px;transition:transform .3s,box-shadow .3s}
+  .proj:hover{transform:translateY(-3px);box-shadow:0 20px 44px rgba(30,42,32,.1)}
+  .proj .no{font-family:'Share Tech Mono',monospace;font-size:12px;color:var(--gold);font-weight:600}
+  .proj h3{font-family:'Fraunces',serif;font-size:20px;font-weight:600;margin:3px 0 7px}
+  .proj p{font-size:14.5px;color:var(--dim)}
+  .proj .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
+  .proj .tags span{font-size:11.5px;padding:5px 11px;border-radius:7px;background:rgba(44,107,66,.1);color:var(--green);font-weight:600}
+
+  /* wildlife band */
+  .wild{margin-top:18px;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,#17251a,#0f1a12);color:#eef3e9;
+    padding:28px 22px;position:relative}
+  .wild h3{font-family:'Fraunces',serif;font-size:22px;font-weight:600;color:#fff;margin-bottom:4px}
+  .wild p.s{color:#a9c3ad;font-size:14px;margin-bottom:20px}
+  .wgrid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+  .wcell{text-align:center;padding:16px 10px;border:1px solid rgba(255,255,255,.1);border-radius:14px;background:rgba(255,255,255,.03)}
+  .wcell svg{width:40px;height:40px;color:#ffcf8a;margin-bottom:8px}
+  .wcell .n{font-family:'Fraunces',serif;font-weight:700;font-size:24px;color:#fff}
+  .wcell .l{font-size:12px;color:#a9c3ad;margin-top:3px}
+
+  .links{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .lk{padding:18px;display:flex;align-items:center;gap:14px;transition:transform .2s,box-shadow .2s}
+  .lk:hover{transform:translateY(-3px);box-shadow:0 16px 34px rgba(30,42,32,.09)}
+  .lk .ico{width:42px;height:42px;border-radius:12px;display:grid;place-items:center;flex:0 0 auto;background:var(--paper)}
+  .lk .ico svg{width:20px;height:20px;fill:var(--ink)}
+  .lk .t{font-weight:600;font-size:14.5px}
+  .lk .s{font-size:12px;color:var(--dim)}
+
+  .contact{text-align:center;padding:44px 24px;margin-top:8px;background:linear-gradient(160deg,#fffaf0,#f4e9d2)}
+  .contact h2{margin-bottom:12px}
+  footer{text-align:center;color:var(--dim);font-size:12.5px;padding-top:30px}
+  footer b{color:var(--green)}
+
+  .rv{opacity:0;transform:translateY(26px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1)}
+  .rv.in{opacity:1;transform:none}
+  @media(max-width:520px){.links,.wgrid{grid-template-columns:1fr 1fr}}
+  @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+</style>
+</head>
+<body>
+
+<!-- SOUND -->
+<button class="sound" id="sound" aria-pressed="false">
+  <span class="wave"><i></i><i></i><i></i><i></i></span>
+  <span id="soundLbl">Forest sounds</span>
+</button>
+
+<!-- ============ HERO SCENE ============ -->
+<div class="scene">
+  <div class="sun"></div>
+
+  <!-- birds -->
+  <div class="flock" id="flock"></div>
+
+  <!-- hills -->
+  <div class="layer hills" data-depth="0.08"><svg viewBox="0 0 1200 160" preserveAspectRatio="none"><path d="M0,160 L0,90 C120,60 220,78 340,52 C460,28 560,66 700,44 C840,24 960,70 1100,48 L1200,60 L1200,160 Z" fill="currentColor"/></svg></div>
+  <div class="layer hills2" data-depth="0.12"><svg viewBox="0 0 1200 160" preserveAspectRatio="none"><path d="M0,160 L0,110 C140,84 260,100 400,80 C560,58 680,96 820,78 C960,60 1080,96 1200,82 L1200,160 Z" fill="currentColor"/></svg></div>
+  <div class="mist"></div>
+  <div class="water"></div>
+
+  <!-- treeline -->
+  <div class="layer treeline" data-depth="0.18"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><path d="M0,120 L0,70 C40,70 50,40 70,40 C78,22 96,22 104,40 C150,40 150,64 190,66 C210,40 236,44 240,66 C300,66 300,48 340,50 C360,30 388,34 392,54 C470,56 470,40 520,44 C545,24 575,30 580,52 C660,54 700,46 760,58 C800,36 835,40 840,60 C930,60 980,50 1040,62 C1070,42 1105,46 1110,64 L1200,70 L1200,120 Z" fill="currentColor"/></svg></div>
+
+  <!-- distant rhino herd (filled by JS) -->
+  <div class="herd" id="herd"></div>
+
+  <!-- hornbill on a snag -->
+  <div class="hornbill hornbill-el"><svg viewBox="0 0 170 150">
+    <g fill="currentColor">
+      <path d="M30,64 L8,122 L24,120 L48,74 Z"/>
+      <ellipse cx="72" cy="72" rx="42" ry="31"/>
+      <circle cx="114" cy="52" r="21"/>
+      <path d="M130,58 Q172,60 162,74 Q150,68 130,66 Z"/>
+      <path d="M122,38 Q168,30 164,54 Q150,46 128,50 Q124,44 122,38 Z"/>
+      <rect x="66" y="98" width="5" height="30"/><rect x="84" y="98" width="5" height="30"/>
+      <rect x="2" y="124" width="150" height="7" rx="3"/>
+    </g></svg></div>
+
+  <!-- rhinos -->
+  <div class="rhino r-mid2"><svg viewBox="0 0 240 150"><g fill="currentColor"><ellipse cx="120" cy="72" rx="78" ry="40"/><ellipse cx="60" cy="58" rx="42" ry="34"/><ellipse cx="182" cy="66" rx="42" ry="33"/><ellipse cx="214" cy="84" rx="26" ry="20"/><ellipse cx="236" cy="92" rx="14" ry="11"/><path d="M236 82 Q250 64 244 90 Z"/><path d="M198 50 Q202 36 210 50 Z"/><rect x="60" y="98" width="17" height="42" rx="6"/><rect x="98" y="102" width="17" height="38" rx="6"/><rect x="152" y="102" width="17" height="38" rx="6"/><rect x="188" y="98" width="17" height="42" rx="6"/><path d="M44 66 q-14 6 -11 24" stroke="currentColor" stroke-width="5" fill="none"/></g></svg></div>
+  <div class="rhino r-mid"><svg viewBox="0 0 240 150"><g fill="currentColor"><ellipse cx="120" cy="72" rx="78" ry="40"/><ellipse cx="60" cy="58" rx="42" ry="34"/><ellipse cx="182" cy="66" rx="42" ry="33"/><ellipse cx="214" cy="84" rx="26" ry="20"/><ellipse cx="236" cy="92" rx="14" ry="11"/><path d="M236 82 Q250 64 244 90 Z"/><path d="M198 50 Q202 36 210 50 Z"/><rect x="60" y="98" width="17" height="42" rx="6"/><rect x="98" y="102" width="17" height="38" rx="6"/><rect x="152" y="102" width="17" height="38" rx="6"/><rect x="188" y="98" width="17" height="42" rx="6"/><path d="M44 66 q-14 6 -11 24" stroke="currentColor" stroke-width="5" fill="none"/></g></svg></div>
+  <div class="rhino r-big"><svg viewBox="0 0 240 150"><g fill="currentColor"><ellipse cx="120" cy="72" rx="78" ry="40"/><ellipse cx="60" cy="58" rx="42" ry="34"/><ellipse cx="182" cy="66" rx="42" ry="33"/><ellipse cx="214" cy="84" rx="26" ry="20"/><ellipse cx="236" cy="92" rx="14" ry="11"/><path d="M236 82 Q250 64 244 90 Z"/><path d="M198 50 Q202 36 210 50 Z"/><rect x="60" y="98" width="17" height="42" rx="6"/><rect x="98" y="102" width="17" height="38" rx="6"/><rect x="152" y="102" width="17" height="38" rx="6"/><rect x="188" y="98" width="17" height="42" rx="6"/><path d="M44 66 q-14 6 -11 24" stroke="currentColor" stroke-width="5" fill="none"/></g></svg></div>
+
+  <!-- tiger -->
+  <div class="tiger tiger-el"><svg viewBox="0 0 260 130">
+    <g fill="currentColor">
+      <path d="M44,56 q-30,-6 -34,-34" stroke="currentColor" stroke-width="9" fill="none" stroke-linecap="round"/>
+      <ellipse cx="122" cy="62" rx="82" ry="27"/>
+      <ellipse cx="214" cy="54" rx="25" ry="21"/>
+      <path d="M198,36 Q201,25 210,37 Z"/><path d="M220,36 Q223,25 232,37 Z"/>
+      <ellipse cx="236" cy="62" rx="13" ry="10"/>
+      <rect x="58" y="82" width="12" height="42" rx="5"/><rect x="84" y="84" width="12" height="40" rx="5"/>
+      <rect x="150" y="84" width="12" height="40" rx="5"/><rect x="178" y="82" width="12" height="42" rx="5"/>
+    </g></svg></div>
+
+  <!-- grassland + swaying grass -->
+  <div class="layer grassland"></div>
+  <div class="grass g1"><svg viewBox="0 0 1200 150" preserveAspectRatio="none"><g></g></svg></div>
+  <div class="grass g2"><svg viewBox="0 0 1200 120" preserveAspectRatio="none"><g></g></svg></div>
+
+  <!-- copy -->
+  <div class="hero-copy">
+    <div class="place"><span class="dot"></span> Kaziranga · Assam · India</div>
+    <h1 class="serif">Trideep<br><em>Kumar Das</em></h1>
+    <div class="role">> <b id="role"></b><span class="cursor"></span></div>
+    <div class="cta">
+      <a class="btn p" id="saveContact">＋ Save Contact</a>
+      <a class="btn" href="#contact">Get in touch</a>
+    </div>
+  </div>
+  <div class="scrolltip"><span class="ch"></span>Enter the grasslands</div>
+</div>
+
+<!-- ============ CONTENT ============ -->
+<div class="wrap">
+  <section class="block" id="about">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 18c3-1 5-4 5-7 2 2 5 2 7 0 1 3 3 5 4 6-4 1-12 1-16 1z"/></svg>From the land of Kaziranga</div>
+    <h2 class="title rv">An engineer rooted in <em>Assam</em>.</h2>
+    <p class="lead rv">Born by the grasslands of Kaziranga, I build software the way the park endures — resilient, quietly powerful, built to last. A <b>Tech Lead &amp; Senior Developer</b> with 8 years shipping React, Node.js &amp; React Native, I've led a fully remote team of 7–10 and founded my own AI-native product. Hands-on, still writing production code daily.</p>
+  </section>
+
+  <section class="block" id="experience">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l2.4 5.2L20 8l-4 3.8 1 5.6-5-2.8-5 2.8 1-5.6L4 8l5.6-.8z"/></svg>Trail log</div>
+    <h2 class="title rv">The path <em>so far</em>.</h2>
+    <div class="exp card rv">
+      <div class="top"><h3>Staff Engineer &amp; Team Lead — Front-End</h3><span class="yr">2018 — Present</span></div>
+      <div class="org">Talview · Bengaluru · Fully remote</div>
+      <ul>
+        <li>Led &amp; mentored a remote team of 7–10 for 4+ years across 3 teams org-wide.</li>
+        <li>Owned the flagship codebase; led Ember.js → React migration (+35% velocity).</li>
+        <li>40% faster load times · 70% fewer production bugs · on-time delivery.</li>
+      </ul>
+    </div>
+    <div class="exp card rv">
+      <div class="top"><h3>Founder — Veerluit Pvt Ltd</h3><span class="yr">2022 — Present</span></div>
+      <div class="org">LocalityAI · AI-native marketplace SaaS</div>
+      <ul>
+        <li>Solo-built an AI-native product (React Native + web + Node.js), live on Google Play.</li>
+        <li>Owned product, architecture, mobile, web, backend, payments &amp; infrastructure.</li>
+      </ul>
+    </div>
+  </section>
+
+  <section class="block" id="skills">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 3C7 3 4 7 4 11c0 5 5 9 8 10 3-1 8-5 8-10 0-4-3-8-8-8zm0 3c2.5 0 4 2 4 4H8c0-2 1.5-4 4-4z"/></svg>Field kit</div>
+    <h2 class="title rv">Tools I <em>carry</em>.</h2>
+    <div class="sks rv" id="sks"></div>
+  </section>
+
+  <section class="block" id="work">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 7h16v12H4zM8 7V5h8v2"/></svg>Expeditions</div>
+    <h2 class="title rv">Things I've <em>built</em>.</h2>
+    <div class="proj card rv"><div class="no">[ 01 ]</div><h3>LocalityAI</h3>
+      <p>AI-native marketplace SaaS — React Native + web + Node.js, live on Google Play. Founded &amp; solo-built.</p>
+      <div class="tags"><span>React Native</span><span>Node/TS</span><span>PostgreSQL</span><span>GCP</span><span>AI/RAG</span></div></div>
+    <div class="proj card rv"><div class="no">[ 02 ]</div><h3>Talview Flagship Platform</h3>
+      <p>Owned the largest codebase; led Ember → React migration (+35% velocity) with Node REST/GraphQL APIs.</p>
+      <div class="tags"><span>React</span><span>Module Federation</span><span>Node.js</span><span>GraphQL</span></div></div>
+    <div class="proj card rv"><div class="no">[ 03 ]</div><h3>Proview Live Proctor</h3>
+      <p>Real-time proctoring with live video analysis &amp; chat; stable WebRTC streaming for secure exams.</p>
+      <div class="tags"><span>React</span><span>WebRTC</span><span>Socket.io</span></div></div>
+  </section>
+
+  <!-- WILDLIFE BAND -->
+  <section class="block" id="kaziranga">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3 17c4-2 6-6 6-9 2 2 4 2 6 1l6 3c0 3-3 6-9 6-4 0-7 0-9-1z"/></svg>My home ground</div>
+    <h2 class="title rv">Kaziranga, in <em>numbers</em>.</h2>
+    <div class="wild rv">
+      <h3 class="serif">A UNESCO World Heritage wilderness</h3>
+      <p class="s">The grassland that raised me — and the world's stronghold of the one-horned rhino.</p>
+      <div class="wgrid">
+        <div class="wcell">
+          <svg viewBox="0 0 64 40" fill="currentColor"><g><ellipse cx="32" cy="22" rx="20" ry="10"/><ellipse cx="16" cy="18" rx="10" ry="9"/><ellipse cx="50" cy="20" rx="11" ry="9"/><ellipse cx="58" cy="24" rx="5" ry="4"/><path d="M58 19 Q64 10 62 24 Z"/><rect x="18" y="29" width="4" height="10" rx="2"/><rect x="28" y="30" width="4" height="9" rx="2"/><rect x="40" y="30" width="4" height="9" rx="2"/><rect x="48" y="29" width="4" height="10" rx="2"/></g></svg>
+          <div class="n">~2,600</div><div class="l">One-horned rhinos</div></div>
+        <div class="wcell">
+          <svg viewBox="0 0 64 40" fill="currentColor"><g><path d="M12 20 q-8,-2 -9,-9" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><ellipse cx="32" cy="22" rx="21" ry="8"/><circle cx="52" cy="18" r="7"/><path d="M47 10 Q48 5 52 11 Z"/><path d="M54 10 Q55 5 59 11 Z"/><rect x="16" y="28" width="3.5" height="11" rx="1.5"/><rect x="26" y="29" width="3.5" height="10" rx="1.5"/><rect x="40" y="29" width="3.5" height="10" rx="1.5"/><rect x="47" y="28" width="3.5" height="11" rx="1.5"/></g></svg>
+          <div class="n">100+</div><div class="l">Royal Bengal tigers</div></div>
+        <div class="wcell">
+          <svg viewBox="0 0 64 40" fill="currentColor"><g><path d="M6 24 Q16 10 26 22 Q36 8 46 22 Q54 12 60 22" stroke="currentColor" stroke-width="3" fill="none" stroke-linecap="round"/><path d="M14 30 Q22 22 30 30" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/><path d="M36 31 Q44 24 52 31" stroke="currentColor" stroke-width="2.5" fill="none" stroke-linecap="round"/></g></svg>
+          <div class="n">500+</div><div class="l">Bird species</div></div>
+        <div class="wcell">
+          <svg viewBox="0 0 64 40" fill="currentColor"><g><ellipse cx="26" cy="22" rx="16" ry="11"/><circle cx="42" cy="16" r="8"/><path d="M48 20 Q62 21 58 28 Q52 25 48 24 Z"/><path d="M46 10 Q60 6 58 18 Q52 14 44 16 Z"/><path d="M12 20 L2 34 L10 33 L20 23 Z"/><rect x="22" y="31" width="3" height="8"/><rect x="30" y="31" width="3" height="8"/></g></svg>
+          <div class="n">Great</div><div class="l">Hornbill country</div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="block" id="profiles">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a7 7 0 00-7 7c0 5 7 13 7 13s7-8 7-13a7 7 0 00-7-7zm0 9a2 2 0 110-4 2 2 0 010 4z"/></svg>Tracks</div>
+    <h2 class="title rv">Find <em>me</em>.</h2>
+    <div class="links">
+      <a class="lk card rv" href="https://github.com/trdp30" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 .5A11.5 11.5 0 0 0 .5 12a11.5 11.5 0 0 0 7.86 10.92c.57.1.78-.25.78-.55v-2c-3.2.7-3.88-1.37-3.88-1.37-.52-1.33-1.28-1.68-1.28-1.68-1.05-.72.08-.7.08-.7 1.16.08 1.77 1.2 1.77 1.2 1.03 1.77 2.7 1.26 3.36.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.69 0-1.26.45-2.29 1.2-3.1-.12-.3-.52-1.47.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.8 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.58.23 2.75.12 3.05.75.81 1.2 1.84 1.2 3.1 0 4.42-2.7 5.39-5.26 5.68.41.36.78 1.06.78 2.14v3.17c0 .31.2.66.79.55A11.5 11.5 0 0 0 23.5 12 11.5 11.5 0 0 0 12 .5z"/></svg></span><div><div class="t">GitHub</div><div class="s">@trdp30</div></div></a>
+      <a class="lk card rv" href="https://linkedin.com/in/trideep-das-817962133" target="_blank" rel="noopener"><span class="ico"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 1 1 0-4.13 2.06 2.06 0 0 1 0 4.13zM7.12 20.45H3.56V9h3.56v11.45zM22.23 0H1.77C.8 0 0 .77 0 1.73v20.54C0 23.22.8 24 1.77 24h20.46C23.2 24 24 23.22 24 22.27V1.73C24 .77 23.2 0 22.23 0z"/></svg></span><div><div class="t">LinkedIn</div><div class="s">trideep-das</div></div></a>
+      <a class="lk card rv" href="mailto:trdp30@gmail.com"><span class="ico"><svg viewBox="0 0 24 24"><path d="M12 12.7 0 5.3V19c0 .6.4 1 1 1h22c.6 0 1-.4 1-1V5.3L12 12.7zM23 4H1L12 10.8 23 4z"/></svg></span><div><div class="t">Email</div><div class="s">trdp30@gmail.com</div></div></a>
+      <a class="lk card rv" href="tel:+919706055724"><span class="ico"><svg viewBox="0 0 24 24"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1A17 17 0 0 1 3 4c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.6.1.4 0 .8-.3 1l-2.2 2.2z"/></svg></span><div><div class="t">Call</div><div class="s">+91 97060 55724</div></div></a>
+    </div>
+  </section>
+
+  <section class="block" id="contact">
+    <div class="contact card rv">
+      <div class="eyebrow" style="justify-content:center"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M4 18c3-1 5-4 5-7 2 2 5 2 7 0 1 3 3 5 4 6-4 1-12 1-16 1z"/></svg>Let's talk</div>
+      <h2 class="title">Build something <em>wild</em>?</h2>
+      <p class="lead" style="margin:0 auto 22px">Open to Tech Lead / Senior Developer roles, founding-engineer gigs &amp; collaborations — fully remote.</p>
+      <div class="cta" style="justify-content:center">
+        <a class="btn p" id="saveContact2">＋ Save my contact</a>
+        <a class="btn" style="color:var(--ink);border-color:var(--line);background:transparent" href="mailto:trdp30@gmail.com">Email me</a>
+      </div>
+    </div>
+    <footer>Tapped from an NFC card · made with 🦏 in <b>Assam</b> · © <span id="yr"></span> Trideep Kumar Das</footer>
+  </section>
+</div>
+
+<script>
+  const reduce=matchMedia('(prefers-reduced-motion:reduce)').matches;
+
+  // birds flock
+  const flock=document.getElementById('flock');
+  const birdSvg='<svg viewBox="0 0 24 12"><path d="M1,8 Q6,1 12,7 Q18,1 23,8" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>';
+  for(let i=0;i<9;i++){const d=document.createElement('div');d.className='bird';
+    d.style.left=(Math.random()*60)+'%';d.style.top=(Math.random()*70)+'%';
+    const s=.5+Math.random()*.9;d.style.width=(20*s)+'px';d.style.opacity=.5+Math.random()*.5;
+    d.innerHTML=birdSvg;const p=d.querySelector('path');p.style.animationDelay=(-Math.random()*1.1)+'s';flock.appendChild(d);}
+
+  // distant rhino herd (implying a large population)
+  const herd=document.getElementById('herd');
+  const rhinoMini='<svg viewBox="0 0 60 36"><g fill="currentColor"><ellipse cx="30" cy="20" rx="18" ry="8"/><ellipse cx="16" cy="17" rx="8" ry="7"/><ellipse cx="46" cy="18" rx="8" ry="7"/><ellipse cx="55" cy="21" rx="4" ry="3"/><path d="M55 17 Q60 10 59 22 Z"/><rect x="18" y="26" width="3" height="9" rx="1.5"/><rect x="27" y="27" width="3" height="8" rx="1.5"/><rect x="38" y="27" width="3" height="8" rx="1.5"/><rect x="45" y="26" width="3" height="9" rx="1.5"/></g></svg>';
+  for(let i=0;i<22;i++){const d=document.createElement('div');d.className='mini';
+    const s=.3+Math.random()*.6;d.style.width=(46*s)+'px';d.style.left=(Math.random()*96)+'%';
+    d.style.bottom=(Math.random()*30-6)+'px';d.style.opacity=(.25+Math.random()*.4);
+    d.innerHTML=rhinoMini;herd.appendChild(d);}
+
+  // procedural swaying grass
+  function buildGrass(g,W,H,count,maxH){let d='M0,'+H;const step=W/count;
+    for(let i=0;i<=count;i++){const bx=i*step;const h=H-(maxH*(0.35+Math.random()*0.65));
+      d+=` L${(bx-step*0.32).toFixed(1)},${H} L${bx.toFixed(1)},${h.toFixed(1)} L${(bx+step*0.32).toFixed(1)},${H}`;}
+    d+=` L${W},${H} Z`;const p=document.createElementNS('http://www.w3.org/2000/svg','path');
+    p.setAttribute('d',d);p.setAttribute('fill','currentColor');g.appendChild(p);}
+  buildGrass(document.querySelector('.grass.g1 g'),1200,150,46,140);
+  buildGrass(document.querySelector('.grass.g2 g'),1200,120,38,104);
+
+  // role typing
+  const roles=["Tech Lead & Senior Developer","React · Node.js · React Native","8 years · fully remote","Founder of LocalityAI","Builder, like the grasslands — resilient"];
+  const el=document.getElementById('role');let ri=0,ci=0,del=false;
+  (function type(){const w=roles[ri];el.textContent=del?w.slice(0,ci--):w.slice(0,ci++);
+    if(!del&&ci>w.length){del=true;setTimeout(type,1500);return;}
+    if(del&&ci<0){del=false;ri=(ri+1)%roles.length;ci=0;}setTimeout(type,del?35:68);})();
+
+  // skills
+  const skills=["React","TypeScript","Node.js","React Native","Redux","GraphQL","Module Federation","PostgreSQL","Express · Hono · Fastify","Cursor · Claude Code","GCP · Docker","Agile / Scrum"];
+  document.getElementById('sks').innerHTML=skills.map(s=>`<span class="sk">${s}</span>`).join('');
+
+  // reveal
+  const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}}),{threshold:.14});
+  document.querySelectorAll('.rv').forEach(n=>io.observe(n));
+
+  // subtle scroll parallax on hero layers
+  if(!reduce){const layers=[...document.querySelectorAll('.layer[data-depth]')];
+    addEventListener('scroll',()=>{const y=scrollY;layers.forEach(l=>{l.style.transform=`translateY(${y*+l.dataset.depth}px)`;});},{passive:true});}
+
+  // vCard
+  const vcard=`BEGIN:VCARD
+VERSION:3.0
+N:Das;Trideep;Kumar;;
+FN:Trideep Kumar Das
+TITLE:Tech Lead & Senior Developer
+ORG:Veerluit Pvt Ltd (LocalityAI)
+EMAIL;TYPE=INTERNET:trdp30@gmail.com
+TEL;TYPE=CELL:+919706055724
+ADR;TYPE=WORK:;;Bengaluru;;;;India
+URL:https://github.com/trdp30
+URL:https://linkedin.com/in/trideep-das-817962133
+END:VCARD`;
+  function save(){const b=new Blob([vcard],{type:'text/vcard'});const u=URL.createObjectURL(b);
+    const a=document.createElement('a');a.href=u;a.download='Trideep_Kumar_Das.vcf';a.click();URL.revokeObjectURL(u);}
+  ['saveContact','saveContact2'].forEach(id=>document.getElementById(id).addEventListener('click',save));
+  document.getElementById('yr').textContent=new Date().getFullYear();
+
+  /* ============ PROCEDURAL FOREST AMBIENCE (Web Audio) ============ */
+  let AC=null, master=null, running=false, timers=[];
+  function noiseBuffer(ctx,sec){const n=ctx.sampleRate*sec;const buf=ctx.createBuffer(1,n,ctx.sampleRate);const d=buf.getChannelData(0);
+    let last=0;for(let i=0;i<n;i++){const w=Math.random()*2-1;last=(last+0.02*w)/1.02;d[i]=last*3.2;}return buf;}
+  function chirp(ctx,out){const t=ctx.currentTime;const o=ctx.createOscillator();const g=ctx.createGain();
+    o.type=Math.random()<.5?'sine':'triangle';const base=1800+Math.random()*2200;
+    o.frequency.setValueAtTime(base,t);o.frequency.exponentialRampToValueAtTime(base*(1.3+Math.random()*.6),t+.06);
+    o.frequency.exponentialRampToValueAtTime(base*.85,t+.14);
+    g.gain.setValueAtTime(0,t);g.gain.linearRampToValueAtTime(.12+Math.random()*.08,t+.02);g.gain.exponentialRampToValueAtTime(.0008,t+.18);
+    o.connect(g).connect(out);o.start(t);o.stop(t+.22);
+    // sometimes a quick second note
+    if(Math.random()<.5){const o2=ctx.createOscillator();const g2=ctx.createGain();o2.type='sine';
+      o2.frequency.setValueAtTime(base*1.1,t+.16);o2.frequency.exponentialRampToValueAtTime(base*1.4,t+.22);
+      g2.gain.setValueAtTime(0,t+.16);g2.gain.linearRampToValueAtTime(.09,t+.18);g2.gain.exponentialRampToValueAtTime(.0008,t+.3);
+      o2.connect(g2).connect(out);o2.start(t+.16);o2.stop(t+.34);}}
+  function hornbill(ctx,out){const t=ctx.currentTime;const notes=2+Math.floor(Math.random()*3);
+    for(let k=0;k<notes;k++){const st=t+k*0.26;const o=ctx.createOscillator();const lp=ctx.createBiquadFilter();const g=ctx.createGain();
+      o.type='sawtooth';o.frequency.setValueAtTime(300+Math.random()*60,st);lp.type='lowpass';lp.frequency.value=900;
+      g.gain.setValueAtTime(0,st);g.gain.linearRampToValueAtTime(.16,st+.03);g.gain.exponentialRampToValueAtTime(.001,st+.2);
+      o.connect(lp).connect(g).connect(out);o.start(st);o.stop(st+.24);}}
+  function scheduleBirds(ctx,out){function go(){if(!running)return;chirp(ctx,out);
+    const id=setTimeout(go,500+Math.random()*2600);timers.push(id);}go();}
+  function scheduleHornbill(ctx,out){function go(){if(!running)return;hornbill(ctx,out);
+    const id=setTimeout(go,9000+Math.random()*16000);timers.push(id);}setTimeout(go,4000);}
+  function startAmbience(){
+    AC=new (window.AudioContext||window.webkitAudioContext)();
+    master=AC.createGain();master.gain.value=0;master.connect(AC.destination);
+    // wind
+    const wind=AC.createBufferSource();wind.buffer=noiseBuffer(AC,4);wind.loop=true;
+    const wf=AC.createBiquadFilter();wf.type='lowpass';wf.frequency.value=480;
+    const wg=AC.createGain();wg.gain.value=0.5;
+    const lfo=AC.createOscillator();const lfoG=AC.createGain();lfo.frequency.value=0.08;lfoG.gain.value=180;
+    lfo.connect(lfoG).connect(wf.frequency);lfo.start();
+    wind.connect(wf).connect(wg).connect(master);wind.start();
+    // crickets (gentle high shimmer)
+    const cr=AC.createBufferSource();cr.buffer=noiseBuffer(AC,4);cr.loop=true;
+    const cf=AC.createBiquadFilter();cf.type='bandpass';cf.frequency.value=5200;cf.Q.value=8;
+    const cg=AC.createGain();cg.gain.value=0.06;
+    const trem=AC.createOscillator();const tremG=AC.createGain();trem.type='sine';trem.frequency.value=16;tremG.gain.value=0.05;
+    trem.connect(tremG).connect(cg.gain);trem.start();
+    cr.connect(cf).connect(cg).connect(master);cr.start();
+    // birds + hornbill
+    const birdBus=AC.createGain();birdBus.gain.value=0.9;birdBus.connect(master);
+    running=true;scheduleBirds(AC,birdBus);scheduleHornbill(AC,birdBus);
+    master.gain.linearRampToValueAtTime(0.9,AC.currentTime+1.2);
+  }
+  function stopAmbience(){running=false;timers.forEach(clearTimeout);timers=[];
+    if(master&&AC){master.gain.linearRampToValueAtTime(0,AC.currentTime+.4);
+      setTimeout(()=>{try{AC.close();}catch(e){}AC=null;master=null;},600);}}
+  const sbtn=document.getElementById('sound'),slbl=document.getElementById('soundLbl');
+  sbtn.addEventListener('click',()=>{
+    if(!running){try{startAmbience();sbtn.classList.add('on');sbtn.setAttribute('aria-pressed','true');slbl.textContent='Sounds: on';}catch(e){slbl.textContent='Audio unavailable';}}
+    else{stopAmbience();sbtn.classList.remove('on');sbtn.setAttribute('aria-pressed','false');slbl.textContent='Forest sounds';}
+  });
+</script>
+</body>
+</html>
