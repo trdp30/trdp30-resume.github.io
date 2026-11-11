@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<title>NFC Card — Design Picker</title>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',system-ui,sans-serif;background:#070a16;color:#eaf0ff;line-height:1.5;
+    min-height:100svh;padding:40px 20px 60px}
+  .head{max-width:620px;margin:0 auto 28px;text-align:center}
+  .kick{font-size:12px;letter-spacing:4px;text-transform:uppercase;color:#19c3ff;font-weight:600;font-family:'Sora'}
+  h1{font-family:'Sora';font-size:clamp(26px,7vw,36px);font-weight:800;letter-spacing:-.6px;margin:10px 0 8px}
+  .sub{color:#9aa6c8;font-size:15px}
+  .grid{max-width:620px;margin:0 auto;display:grid;gap:14px}
+  a.card{display:block;text-decoration:none;color:inherit;border-radius:20px;padding:22px;position:relative;overflow:hidden;
+    border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);transition:transform .2s}
+  a.card:active{transform:scale(.98)}
+  .card .row{display:flex;align-items:center;gap:14px}
+  .swatch{width:52px;height:52px;border-radius:15px;flex:0 0 auto}
+  .s1{background:linear-gradient(135deg,#7c5cff,#19c3ff)}
+  .s2{background:linear-gradient(135deg,#00f6ff,#b14bff)}
+  .s3{background:linear-gradient(135deg,#e2542b,#c89b3c)}
+  .s4{background:linear-gradient(135deg,#19c3ff,#7c5cff,#ff5c9d)}
+  .card h2{font-family:'Sora';font-size:19px;font-weight:700}
+  .card .d{color:#9aa6c8;font-size:13.5px;margin-top:3px}
+  .badge{position:absolute;top:16px;right:16px;font-size:10px;font-weight:700;letter-spacing:1px;text-transform:uppercase;
+    padding:5px 10px;border-radius:999px;background:rgba(43,245,192,.16);color:#2bf5c0}
+  .tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px}
+  .tags span{font-size:11px;padding:4px 10px;border-radius:7px;background:rgba(255,255,255,.06);color:#c3cdeb}
+  .foot{max-width:620px;margin:26px auto 0;text-align:center;color:#6c7a9c;font-size:12.5px}
+</style>
+</head>
+<body>
+  <div class="head">
+    <div class="kick">Trideep · NFC Card</div>
+    <h1>Pick a design</h1>
+    <div class="sub">Tap a card to open it full-screen. Try it on your phone — tilt &amp; scroll.</div>
+  </div>
+  <div class="grid">
+    <a class="card" href="./design-4-aurora-3d.html">
+      <span class="badge">Real 3D</span>
+      <div class="row"><div class="swatch s4"></div><div><h2>4 · Aurora 3D</h2><div class="d">Live WebGL orb, gyroscope-reactive, scroll-motion. Founder + LocalityAI.</div></div></div>
+      <div class="tags"><span>WebGL / Three.js</span><span>GSAP motion</span><span>Business section</span><span>Flagship</span></div>
+    </a>
+    <a class="card" href="./design-1-aurora-glass.html">
+      <div class="row"><div class="swatch s1"></div><div><h2>1 · Aurora Glass</h2><div class="d">Premium dark, floating glass cards, aurora cloud motion, 3D tilt.</div></div></div>
+      <div class="tags"><span>Elegant</span><span>Glassmorphism</span><span>CSS motion</span></div>
+    </a>
+    <a class="card" href="./design-2-neon-terminal.html">
+      <div class="row"><div class="swatch s2"></div><div><h2>2 · Neon Terminal</h2><div class="d">Cyber boot sequence, particle network, glitching neon name.</div></div></div>
+      <div class="tags"><span>Developer vibe</span><span>Particle canvas</span><span>Bold</span></div>
+    </a>
+    <a class="card" href="./design-3-editorial-light.html">
+      <div class="row"><div class="swatch s3"></div><div><h2>3 · Editorial Light</h2><div class="d">Bright, warm, business-friendly. Spotlight cursor, 3D parallax card.</div></div></div>
+      <div class="tags"><span>Professional</span><span>Serif</span><span>Recruiter-ready</span></div>
+    </a>
+  </div>
+  <div class="foot">All built with your real details · Save Contact (vCard) works on each · © Trideep Kumar Das</div>
+</body>
+</html>
