@@ -132,6 +132,21 @@
   .proj .tags{display:flex;flex-wrap:wrap;gap:7px;margin-top:13px}
   .proj .tags span{font-size:11.5px;padding:5px 11px;border-radius:7px;background:rgba(44,107,66,.1);color:var(--green);font-weight:600}
 
+  /* real photo gallery */
+  .gallery{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:18px}
+  .shot{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:4/3;background:#17251a;border:1px solid var(--line);display:block}
+  .shot img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .6s ease}
+  .shot:hover img{transform:scale(1.07)}
+  .shot .cap{position:absolute;left:0;right:0;bottom:0;padding:26px 14px 11px;color:#fff;font-weight:600;font-size:14px;
+    background:linear-gradient(transparent,rgba(8,14,8,.88));z-index:2}
+  .shot .cap small{display:block;font-weight:400;font-size:10px;color:#dbe6d8;opacity:.85;margin-top:2px}
+  .shot .fallback{position:absolute;inset:0;display:none;flex-direction:column;align-items:center;justify-content:center;gap:6px;
+    color:#cfe0cc;font-weight:600;font-size:15px;text-align:center;padding:12px;background:linear-gradient(160deg,#1c2a1d,#0f1a12)}
+  .shot .fallback .em{font-size:30px}
+  .shot.err img{display:none}.shot.err .fallback{display:flex}.shot.err .cap{display:none}
+  .credit{font-size:11px;color:var(--dim);margin-top:13px;text-align:center;line-height:1.5}
+  .credit a{color:var(--green);text-decoration:underline}
+
   /* wildlife band */
   .wild{margin-top:18px;border-radius:20px;overflow:hidden;background:linear-gradient(160deg,#17251a,#0f1a12);color:#eef3e9;
     padding:28px 22px;position:relative}
@@ -284,6 +299,31 @@
     <div class="proj card rv"><div class="no">[ 03 ]</div><h3>Proview Live Proctor</h3>
       <p>Real-time proctoring with live video analysis &amp; chat; stable WebRTC streaming for secure exams.</p>
       <div class="tags"><span>React</span><span>WebRTC</span><span>Socket.io</span></div></div>
+  </section>
+
+  <!-- REAL PHOTO GALLERY -->
+  <section class="block" id="wildlife">
+    <div class="eyebrow rv"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 4l-1.5 2H4a2 2 0 00-2 2v10a2 2 0 002 2h16a2 2 0 002-2V8a2 2 0 00-2-2h-3.5L15 4H9zm3 4.5a4.5 4.5 0 110 9 4.5 4.5 0 010-9z"/></svg>Caught on camera</div>
+    <h2 class="title rv">The <em>real</em> Kaziranga.</h2>
+    <div class="gallery">
+      <a class="shot rv" href="https://commons.wikimedia.org/wiki/File:Indian_rhinoceros_in_Kaziranga_National_Park_March_2025_by_Tisha_Mukherjee_14.jpg" target="_blank" rel="noopener">
+        <img loading="lazy" alt="Greater one-horned rhinoceros grazing in Kaziranga" src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/fa/Indian_rhinoceros_in_Kaziranga_National_Park_March_2025_by_Tisha_Mukherjee_14.jpg/1280px-Indian_rhinoceros_in_Kaziranga_National_Park_March_2025_by_Tisha_Mukherjee_14.jpg" onerror="this.closest('.shot').classList.add('err')">
+        <span class="fallback"><span class="em">🦏</span>One-horned Rhino</span>
+        <span class="cap">Greater One-horned Rhino<small>Kaziranga · © Tisha Mukherjee · CC BY-SA 4.0</small></span></a>
+      <a class="shot rv" href="https://commons.wikimedia.org/wiki/File:Bengal_tiger_by_Tisha_Mukherjee_96.jpg" target="_blank" rel="noopener">
+        <img loading="lazy" alt="Royal Bengal tiger" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/db/Bengal_tiger_by_Tisha_Mukherjee_96.jpg/1280px-Bengal_tiger_by_Tisha_Mukherjee_96.jpg" onerror="this.closest('.shot').classList.add('err')">
+        <span class="fallback"><span class="em">🐅</span>Royal Bengal Tiger</span>
+        <span class="cap">Royal Bengal Tiger<small>© Tisha Mukherjee · CC BY-SA 4.0</small></span></a>
+      <a class="shot rv" href="https://commons.wikimedia.org/wiki/File:Great_Hornbill_(Buceros_bicornis).jpg" target="_blank" rel="noopener">
+        <img loading="lazy" alt="Great hornbill" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/76/Great_Hornbill_%28Buceros_bicornis%29.jpg/1280px-Great_Hornbill_%28Buceros_bicornis%29.jpg" onerror="this.closest('.shot').classList.add('err')">
+        <span class="fallback"><span class="em">🦜</span>Great Hornbill</span>
+        <span class="cap">Great Hornbill<small>Wikimedia Commons · CC BY-SA 4.0</small></span></a>
+      <a class="shot rv" href="https://commons.wikimedia.org/wiki/File:Black-necked_Stork_in_Kaziranga_National_Park_March_2025_by_Tisha_Mukherjee_04.jpg" target="_blank" rel="noopener">
+        <img loading="lazy" alt="Black-necked stork in Kaziranga" src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/ae/Black-necked_Stork_in_Kaziranga_National_Park_March_2025_by_Tisha_Mukherjee_04.jpg/1280px-Black-necked_Stork_in_Kaziranga_National_Park_March_2025_by_Tisha_Mukherjee_04.jpg" onerror="this.closest('.shot').classList.add('err')">
+        <span class="fallback"><span class="em">🐦</span>Black-necked Stork</span>
+        <span class="cap">Black-necked Stork<small>Kaziranga · © Tisha Mukherjee · CC BY-SA 4.0</small></span></a>
+    </div>
+    <div class="credit">Live photos from <a href="https://commons.wikimedia.org/wiki/Category:Kaziranga_National_Park" target="_blank" rel="noopener">Wikimedia Commons</a>, licensed <a href="https://creativecommons.org/licenses/by-sa/4.0/" target="_blank" rel="noopener">CC BY-SA 4.0</a> — © their respective photographers.</div>
   </section>
 
   <!-- WILDLIFE BAND -->
