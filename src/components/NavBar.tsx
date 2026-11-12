@@ -66,6 +66,11 @@ const navItems: NavItem[] = [
     color: "bg-red-700",
   },
   {
+    path: "/quickhyre-resume",
+    label: "Quickhyre Full-Stack (AI)",
+    color: "bg-cyan-700",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",
