@@ -17,6 +17,7 @@ import AffirmFrontendResume from "./pages/AffirmFrontendResume";
 import InterosFrontendResume from "./pages/InterosFrontendResume";
 import FoundingEngineerResume from "./pages/FoundingEngineerResume";
 import TechLeadResume from "./pages/TechLeadResume";
+import QuickhyreResume from "./pages/QuickhyreResume";
 import JJMResume from "./pages/JJMResume";
 import LightResume from "./pages/LightResume";
 import PortfolioAnswer from "./pages/PortfolioAnswer";
@@ -56,6 +57,7 @@ ReactDOM.createRoot(document.getElementById("root")!).render(
           <Route path="interos-frontend-resume" element={<InterosFrontendResume />} />
           <Route path="founding-engineer-resume" element={<FoundingEngineerResume />} />
           <Route path="tech-lead-resume" element={<TechLeadResume />} />
+          <Route path="quickhyre-resume" element={<QuickhyreResume />} />
           <Route path="ge-healthcare-resume" element={<GEHealthcareResume />} />
           <Route path="jjm-resume" element={<JJMResume />} />
           <Route
