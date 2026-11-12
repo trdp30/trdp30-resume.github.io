@@ -63,8 +63,7 @@ export const TechLeadResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
-            Tech Lead &amp; Senior Developer | Node.js · JavaScript/TypeScript ·
-            React/React Native | 8 Years
+            Tech Lead | Node.js · TypeScript · React | 8 Years
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
