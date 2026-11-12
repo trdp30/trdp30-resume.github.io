@@ -345,11 +345,12 @@ export const TechLeadResume = () => {
                 <strong>70% fewer production bugs</strong>.
               </li>
               <li>
-                Led the team to <strong>deliver a new application
-                end-to-end</strong> — releasing all scoped features{" "}
+                Led the team to <strong>ship a brand-new application
+                end-to-end</strong> — every scoped feature delivered{" "}
                 <strong>on time</strong> with{" "}
-                <strong>zero blocker, high, or medium-severity defects</strong>{" "}
-                and <strong>no rollbacks or rework</strong>.
+                <strong>zero blocker/high/medium-severity defects</strong> and{" "}
+                <strong>no rollbacks or rework</strong>: a{" "}
+                <strong>clean-record launch</strong>.
               </li>
             </ul>
           </div>
