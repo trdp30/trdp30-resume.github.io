@@ -71,6 +71,11 @@ const navItems: NavItem[] = [
     color: "bg-cyan-700",
   },
   {
+    path: "/creditsea-resume",
+    label: "CreditSea EM Frontend",
+    color: "bg-lime-700",
+  },
+  {
     path: "/ge-healthcare-resume",
     label: "GE Healthcare (FE)",
     color: "bg-pink-600",
