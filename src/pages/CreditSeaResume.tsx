@@ -170,8 +170,10 @@ export const CreditSeaResume = () => {
           <p className="text-sm leading-relaxed text-black">
             <strong>Frontend engineering lead</strong> with{" "}
             <strong>8 years</strong> across <strong>mobile and web</strong>, and{" "}
-            <strong>4+ years leading a team of 7–10</strong> while staying{" "}
-            <strong>hands-on (~40–50% in the code)</strong>. Own frontend
+            <strong>4+ years leading a team of 7–10</strong> while{" "}
+            <strong>providing the base architecture setup of the projects and
+            handling the critical aspects of projects, features, and
+            functionalities when required</strong>. Own frontend
             architecture across <strong>React Native</strong> apps and{" "}
             <strong>React / TypeScript</strong> web — shared{" "}
             <strong>design systems</strong>, reusable journey components, state
