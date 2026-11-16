@@ -153,7 +153,8 @@ export const SeniorFrontendResume = () => {
           <h2 className="text-xl font-bold mb-1 text-black">Summary</h2>
           <p className="text-sm leading-relaxed text-black">
             <strong>Senior Frontend Developer</strong> with <strong>8 years</strong> building
-            <strong> responsive, accessible, high-performance web applications</strong> with
+            <strong> scalable, high-performance, responsive web applications</strong> and owning
+            <strong> frontend architecture</strong> with
             <strong> React</strong>, <strong>TypeScript</strong>, <strong>JavaScript (ES6+)</strong>, and
             <strong> Next.js</strong>. Currently <strong>Staff Frontend Engineer</strong> at Talview,
             leading a team of <strong>7-10 engineers</strong> across multiple SaaS products. Deep
@@ -163,7 +164,7 @@ export const SeniorFrontendResume = () => {
             and <strong>unit &amp; integration testing</strong>. Fluent in <strong>Git</strong>,
             <strong> CI/CD</strong>, and <strong>frontend security best practices</strong>. Delivered
             measurable impact: <strong>40% faster load times</strong>, <strong>85%+ test coverage</strong>,
-            and <strong>70% fewer production bugs</strong>. Comfortable working remotely across US time
+            and <strong>70% fewer production bugs</strong>. Comfortable working remotely across EU time
             zones with distributed, cross-functional teams.
           </p>
         </section>
