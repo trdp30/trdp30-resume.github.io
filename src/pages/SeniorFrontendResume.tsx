@@ -48,7 +48,7 @@ export const SeniorFrontendResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
-            Senior Frontend Developer | React, TypeScript & Next.js | 8 Years Building Scalable Web Apps
+            Senior Frontend Developer | React, TypeScript | 8 Years Building Scalable Web Apps
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -155,8 +155,8 @@ export const SeniorFrontendResume = () => {
             <strong>Senior Frontend Developer</strong> with <strong>8 years</strong> building
             <strong> scalable, high-performance, responsive web applications</strong> and owning
             <strong> frontend architecture</strong> with
-            <strong> React</strong>, <strong>TypeScript</strong>, <strong>JavaScript (ES6+)</strong>, and
-            <strong> Next.js</strong>. Currently <strong>Staff Frontend Engineer</strong> at Talview,
+            <strong> React</strong>, <strong>TypeScript</strong>, and{" "}
+            <strong>JavaScript (ES6+)</strong>. Currently <strong>Staff Frontend Engineer</strong> at Talview,
             leading a team of <strong>7-10 engineers</strong> across multiple SaaS products. Deep
             experience in <strong>state management</strong> (<strong>Redux Toolkit</strong>,
             <strong> RTK Query</strong>, <strong>Context API</strong>), <strong>REST API</strong> and GraphQL
@@ -187,7 +187,7 @@ export const SeniorFrontendResume = () => {
             <p>
               <span className="font-semibold">Frameworks &amp; Libraries:</span>{" "}
               <span itemProp="itemListElement">
-                React, Next.js, React Native, Tailwind CSS, Shadcn/ui, Radix UI, Ember.js (legacy)
+                React, React Native, Tailwind CSS, Shadcn/ui, Radix UI, Ember.js (legacy)
               </span>
             </p>
             <p>
