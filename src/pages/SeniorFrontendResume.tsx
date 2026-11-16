@@ -156,8 +156,11 @@ export const SeniorFrontendResume = () => {
             <strong> scalable, high-performance, responsive web applications</strong> and owning
             <strong> frontend architecture</strong> with
             <strong> React</strong>, <strong>TypeScript</strong>, and{" "}
-            <strong>JavaScript (ES6+)</strong>. Currently <strong>Staff Frontend Engineer</strong> at Talview,
-            leading a team of <strong>7-10 engineers</strong> across multiple SaaS products. Deep
+            <strong>JavaScript (ES6+)</strong>. Currently <strong>Founder</strong> at
+            <strong> LocalityAI (Veerluit Pvt Ltd)</strong>, building an AI-native product
+            (<strong>React Native</strong> + web) end-to-end; previously <strong>Staff Frontend
+            Engineer</strong> at Talview, where I led a team of <strong>7-10 engineers</strong>
+            across multiple SaaS products. Deep
             experience in <strong>state management</strong> (<strong>Redux Toolkit</strong>,
             <strong> RTK Query</strong>, <strong>Context API</strong>), <strong>REST API</strong> and GraphQL
             integration, <strong>web performance optimization</strong>, <strong>WCAG accessibility</strong>,
@@ -241,6 +244,41 @@ export const SeniorFrontendResume = () => {
             Professional Experience
           </h2>
 
+          {/* LocalityAI / Veerluit */}
+          <div
+            className="mb-2"
+            itemScope
+            itemType="https://schema.org/OrganizationRole"
+          >
+            <div className="flex justify-between items-start mb-0.5">
+              <h3
+                className="text-lg font-semibold text-black"
+                itemProp="jobTitle"
+              >
+                Founder
+              </h3>
+              <span className="text-sm text-black font-medium">
+                June 2026 - Present
+              </span>
+            </div>
+            <p className="text-base font-semibold text-black mb-1">
+              LocalityAI (Veerluit Pvt Ltd)
+            </p>
+            <ul className="list-disc list-inside text-sm space-y-1 text-black">
+              <li>
+                Founded and solo-built an AI-native product end-to-end — a{" "}
+                <strong>React Native</strong> app (live on Google Play) and a{" "}
+                <strong>React / TypeScript</strong> web super-app on a{" "}
+                <strong>Module Federation</strong> architecture.
+              </li>
+              <li>
+                Own <strong>frontend architecture</strong>, reusable components,
+                state management, and performance across mobile and web.
+              </li>
+            </ul>
+          </div>
+
+          {/* Talview */}
           <div
             className="mb-2"
             itemScope
@@ -254,7 +292,7 @@ export const SeniorFrontendResume = () => {
                 Staff Frontend Engineer
               </h3>
               <span className="text-sm text-black font-medium">
-                June 2018 - Present
+                June 2018 - May 2026
               </span>
             </div>
             <div
