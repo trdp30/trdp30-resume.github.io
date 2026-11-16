@@ -48,7 +48,7 @@ export const SeniorFrontendResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
-            Senior Frontend Developer | React, TypeScript & Next.js | 7+ Years Building Scalable Web Apps
+            Senior Frontend Developer | React, TypeScript & Next.js | 8 Years Building Scalable Web Apps
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -142,7 +142,7 @@ export const SeniorFrontendResume = () => {
                 />
               </svg>
               <span className="text-black">
-                {data.location} · Open to US Remote Contract
+                {data.location}
               </span>
             </div>
           </div>
@@ -152,7 +152,7 @@ export const SeniorFrontendResume = () => {
         <section className="mb-2 pb-2 border-b border-black">
           <h2 className="text-xl font-bold mb-1 text-black">Summary</h2>
           <p className="text-sm leading-relaxed text-black">
-            <strong>Senior Frontend Developer</strong> with <strong>7+ years</strong> building
+            <strong>Senior Frontend Developer</strong> with <strong>8 years</strong> building
             <strong> responsive, accessible, high-performance web applications</strong> with
             <strong> React</strong>, <strong>TypeScript</strong>, <strong>JavaScript (ES6+)</strong>, and
             <strong> Next.js</strong>. Currently <strong>Staff Frontend Engineer</strong> at Talview,
