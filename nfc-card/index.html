@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Trideep — NFC Card (Nebula)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700;800&family=Inter:wght@400;500;600&display=swap">
+<style>
+  :root{
+    --bg:#060814; --ink:#eaf0ff; --muted:#9aa6c8;
+    --c1:#7c5cff; --c2:#19c3ff; --c3:#ff5c9d; --c4:#2bf5c0;
+    --stroke:rgba(255,255,255,.14); --glass:rgba(255,255,255,.05);
+    --s:2.15;              /* on-screen zoom of the real-size cards */
+    --sora:"Sora",system-ui,sans-serif; --inter:"Inter",system-ui,sans-serif;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:var(--inter);background:
+      radial-gradient(60vmax 60vmax at 12% -10%,rgba(124,92,255,.14),transparent 60%),
+      radial-gradient(55vmax 55vmax at 110% 4%,rgba(25,195,255,.12),transparent 60%),
+      radial-gradient(50vmax 50vmax at 50% 120%,rgba(255,92,157,.10),transparent 60%),#05070f;
+    color:var(--ink);min-height:100vh;padding:34px 18px 70px}
+  .wrap{max-width:1060px;margin:0 auto}
+  header{display:flex;flex-wrap:wrap;gap:14px;align-items:center;justify-content:space-between;margin-bottom:26px}
+  header h1{font-family:var(--sora);font-weight:800;font-size:clamp(20px,3.4vw,27px);letter-spacing:-.02em}
+  header p{color:var(--muted);font-size:13px;margin-top:3px;max-width:60ch}
+  .btn{font-family:var(--inter);font-weight:600;font-size:14px;color:#05070f;cursor:pointer;border:none;
+    padding:11px 18px;border-radius:12px;background:linear-gradient(120deg,var(--c2),var(--c1));box-shadow:0 10px 26px rgba(25,195,255,.3)}
+  .btn:active{transform:scale(.97)}
+
+  .cards{display:flex;flex-wrap:wrap;gap:calc(26px);justify-content:center;align-items:flex-start}
+  .slot{display:flex;flex-direction:column;align-items:center;gap:10px}
+  .tag{font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--muted);font-weight:600}
+
+  /* real card footprint, zoomed for the screen; print resets --s to 1 */
+  .cardwrap{width:calc(85.6mm * var(--s));height:calc(54mm * var(--s))}
+  .card{width:85.6mm;height:54mm;zoom:var(--s);border-radius:3.4mm;position:relative;overflow:hidden;
+    background:#070a16;color:var(--ink);box-shadow:0 18px 50px rgba(0,0,0,.5);
+    font-family:var(--inter);isolation:isolate}
+  /* nebula field */
+  .card::before{content:"";position:absolute;inset:0;z-index:0;background:
+      radial-gradient(14mm 14mm at 82% 14%,rgba(25,195,255,.5),transparent 60%),
+      radial-gradient(16mm 16mm at 12% 92%,rgba(124,92,255,.42),transparent 62%),
+      radial-gradient(10mm 10mm at 96% 96%,rgba(255,92,157,.32),transparent 60%),
+      linear-gradient(135deg,#0a0f20 0%,#070a16 55%,#05070f 100%)}
+  .card::after{content:"";position:absolute;inset:0;z-index:0;opacity:.5;pointer-events:none;
+    background:radial-gradient(60% 50% at 50% 42%,transparent 60%,rgba(0,0,0,.35) 100%)}
+  .card .edge{position:absolute;inset:0;border-radius:3.4mm;border:0.3mm solid rgba(255,255,255,.08);z-index:6;pointer-events:none}
+  .card .sheen{position:absolute;top:0;left:0;right:0;height:1.1mm;z-index:6;
+    background:linear-gradient(90deg,var(--c2),var(--c1),var(--c3));opacity:.9}
+  .pad{position:absolute;inset:0;z-index:3;padding:4.6mm 5.2mm;display:flex;flex-direction:column}
+
+  .eyebrow{font-size:2.05mm;letter-spacing:.42mm;text-transform:uppercase;color:var(--muted);font-weight:600}
+  .mono{width:7.4mm;height:7.4mm;border-radius:2mm;display:grid;place-items:center;flex:0 0 auto;
+    font-family:var(--sora);font-weight:800;font-size:4mm;color:#05070f;
+    background:linear-gradient(130deg,var(--c2),var(--c1));box-shadow:0 1mm 3mm rgba(25,195,255,.4)}
+  .name{font-family:var(--sora);font-weight:800;letter-spacing:-.04mm;line-height:1.02}
+  .grad{background:linear-gradient(120deg,var(--c2),var(--c1) 55%,var(--c3));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+  /* ---- central NFC tap ring (marks the chip) ---- */
+  .tapwrap{position:absolute;z-index:4;left:50%;transform:translateX(-50%);text-align:center}
+  .ring{width:16mm;height:16mm;border-radius:50%;position:relative;margin:0 auto;display:grid;place-items:center;
+    background:radial-gradient(circle at 50% 42%,rgba(25,195,255,.16),rgba(124,92,255,.07) 60%,transparent 72%);
+    border:0.35mm solid rgba(255,255,255,.22)}
+  .ring::before{content:"";position:absolute;inset:-1.4mm;border-radius:50%;border:0.3mm dashed rgba(25,195,255,.45)}
+  .ring svg{width:8.4mm;height:8.4mm;display:block}
+  .taplabel{margin-top:1.6mm;font-size:1.95mm;letter-spacing:.5mm;text-transform:uppercase;color:#cfe6ff;font-weight:600}
+  .taplabel b{color:#fff}
+
+  /* ---- FRONT ---- */
+  .front .pad{justify-content:space-between}
+  .front .top{display:flex;align-items:flex-start;justify-content:space-between}
+  .front .tapwrap{top:14.5mm}
+  .front .foot .name{font-size:5.4mm}
+  .front .foot .role{color:var(--muted);font-size:2.5mm;margin-top:.8mm;font-weight:500}
+  .front .foot .url{color:#bfe9ff;font-size:2.3mm;margin-top:1.4mm;font-weight:600;letter-spacing:.1mm}
+
+  /* ---- BACK ---- */
+  .back .pad{justify-content:space-between}
+  .back .top{display:flex;align-items:center;justify-content:space-between}
+  .back .top .nm{font-family:var(--sora);font-weight:700;font-size:3mm}
+  .back .mid{display:flex;align-items:center;gap:4.4mm;justify-content:center;margin-top:.4mm}
+  .back .tapwrap{position:static;transform:none}
+  .back .ring{width:14mm;height:14mm}
+  .back .ring svg{width:7.2mm;height:7.2mm}
+  .divider{width:.3mm;height:15mm;background:linear-gradient(transparent,rgba(255,255,255,.22),transparent)}
+  .qrtile{background:#fff;border-radius:2.2mm;padding:1.6mm;width:17.5mm;height:17.5mm;display:grid;place-items:center;box-shadow:0 1mm 3mm rgba(0,0,0,.3)}
+  .qrtile img{width:100%;height:100%;display:block;image-rendering:pixelated}
+  .qrcap{text-align:center;font-size:1.85mm;letter-spacing:.4mm;text-transform:uppercase;color:var(--muted);margin-top:1mm;font-weight:600}
+  .contacts{display:flex;flex-direction:column;gap:1.25mm}
+  .crow{display:flex;align-items:center;gap:1.8mm;font-size:2.35mm;color:#dfe7f7;font-weight:500}
+  .crow svg{width:2.9mm;height:2.9mm;flex:0 0 auto;opacity:.9}
+  .contacts.two{flex-direction:row;flex-wrap:wrap;gap:1mm 4mm}
+
+  .note{margin:40px auto 0;max-width:760px;background:rgba(10,14,25,.6);border:1px solid var(--stroke);border-radius:16px;padding:20px 22px;color:var(--muted);font-size:13.5px;line-height:1.65}
+  .note h3{color:var(--ink);font-family:var(--sora);font-size:15px;margin-bottom:8px}
+  .note b{color:#cfe0ff}
+  .note code{background:rgba(255,255,255,.08);color:#c9bcff;padding:1px 6px;border-radius:5px;font-size:.92em}
+  .note ul{margin:8px 0 0 18px} .note li{margin:4px 0}
+
+  @media (max-width:760px){ :root{--s:1.6} }
+  @media (max-width:430px){ :root{--s:1.08} }
+
+  /* ---------- PRINT: true size, one card per page, no chrome ---------- */
+  @media print{
+    @page{size:85.6mm 54mm;margin:0}
+    :root{--s:1}
+    body{background:#fff;padding:0}
+    header,.note,.tag,.btn{display:none!important}
+    .wrap{max-width:none}
+    .cards{display:block}
+    .slot{gap:0}
+    .cardwrap{width:85.6mm;height:54mm}
+    .card{box-shadow:none;border-radius:0;break-after:page;page-break-after:always}
+    .card .edge{border-radius:0}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div>
+      <h1>NFC Card — <span class="grad">Nebula</span></h1>
+      <p>Front &amp; back, true business-card size (85.6 × 54&nbsp;mm). The center ring marks the chip — tap a phone there. Print or “Save as PDF” gives a true-size, one-card-per-page proof.</p>
+    </div>
+    <button class="btn" onclick="window.print()">⇩ Print / Save PDF</button>
+  </header>
+
+  <div class="cards">
+    <!-- ============ FRONT ============ -->
+    <div class="slot">
+      <span class="tag">Front</span>
+      <div class="cardwrap">
+        <div class="card front">
+          <div class="sheen"></div><div class="edge"></div>
+          <div class="pad">
+            <div class="top">
+              <div class="mono">T</div>
+              <div style="text-align:right">
+                <div class="eyebrow">Founder · Engineer</div>
+                <div class="eyebrow" style="color:#7fe3ff;margin-top:.6mm">LocalityAI</div>
+              </div>
+            </div>
+
+            <div class="tapwrap">
+              <div class="ring">
+                <svg viewBox="0 0 24 24" fill="none" stroke="url(#g)" stroke-width="2" stroke-linecap="round">
+                  <defs><linearGradient id="g" x1="0" y1="0" x2="24" y2="24">
+                    <stop offset="0" stop-color="#19c3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+                  <path d="M8.5 4.5a10 10 0 0 1 0 15"/><path d="M12.5 7a6 6 0 0 1 0 10"/><path d="M16.5 9.4a2.6 2.6 0 0 1 0 5.2"/>
+                </svg>
+              </div>
+              <div class="taplabel"><b>Tap</b> to connect</div>
+            </div>
+
+            <div class="foot">
+              <div class="name" style="font-size:5.4mm"><span class="grad">Trideep Kumar Das</span></div>
+              <div class="role">Tech Lead &amp; Staff Engineer · Founder, LocalityAI</div>
+              <div class="url">profile.trideep.co.in</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============ BACK ============ -->
+    <div class="slot">
+      <span class="tag">Back</span>
+      <div class="cardwrap">
+        <div class="card back">
+          <div class="sheen"></div><div class="edge"></div>
+          <div class="pad">
+            <div class="top">
+              <div class="eyebrow">Tap · Scan · Save my contact</div>
+              <div class="nm"><span class="grad">Trideep Kumar Das</span></div>
+            </div>
+
+            <div class="mid">
+              <div class="tapwrap">
+                <div class="ring">
+                  <svg viewBox="0 0 24 24" fill="none" stroke="url(#g2)" stroke-width="2" stroke-linecap="round">
+                    <defs><linearGradient id="g2" x1="0" y1="0" x2="24" y2="24">
+                      <stop offset="0" stop-color="#19c3ff"/><stop offset="1" stop-color="#7c5cff"/></linearGradient></defs>
+                    <path d="M8.5 4.5a10 10 0 0 1 0 15"/><path d="M12.5 7a6 6 0 0 1 0 10"/><path d="M16.5 9.4a2.6 2.6 0 0 1 0 5.2"/>
+                  </svg>
+                </div>
+                <div class="taplabel"><b>Tap</b> phone</div>
+              </div>
+
+              <div class="divider"></div>
+
+              <div>
+                <div class="qrtile"><img src="qr.png" alt="Scan to open profile.trideep.co.in"></div>
+                <div class="qrcap">Scan</div>
+              </div>
+            </div>
+
+            <div class="contacts two">
+              <div class="crow"><svg viewBox="0 0 24 24" fill="none" stroke="#7fe3ff" stroke-width="2"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg>trdp30@gmail.com</div>
+              <div class="crow"><svg viewBox="0 0 24 24" fill="#7fe3ff"><path d="M6.6 10.8a15 15 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11 11 0 0 0 3.5.56 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 4a1 1 0 0 1 1-1h3.3a1 1 0 0 1 1 1 11 11 0 0 0 .56 3.5 1 1 0 0 1-.25 1z"/></svg>+91 97060 55724</div>
+              <div class="crow"><svg viewBox="0 0 24 24" fill="#7fe3ff"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20zm0 2c1.6 0 3.5 2.6 3.9 7H8.1C8.5 6.6 10.4 4 12 4zM6.1 11H4.3A8 8 0 0 1 8 5.1 14 14 0 0 0 6.1 11zm0 2a14 14 0 0 0 1.9 5.9A8 8 0 0 1 4.3 13zm2 0h7.8c-.4 4.4-2.3 7-3.9 7s-3.5-2.6-3.9-7zm9.8 0h1.8a8 8 0 0 1-3.7 5.9 14 14 0 0 0 1.9-5.9zm0-2a14 14 0 0 0-1.9-5.9A8 8 0 0 1 19.7 11z"/></svg>profile.trideep.co.in</div>
+              <div class="crow"><svg viewBox="0 0 24 24" fill="#7fe3ff"><path d="M4.98 3.5a2.5 2.5 0 1 1-.02 5 2.5 2.5 0 0 1 .02-5zM3 9h4v12H3zM9 9h3.8v1.6h.05c.53-1 1.8-2 3.7-2 4 0 4.7 2.6 4.7 6V21h-4v-5.3c0-1.3 0-2.9-1.8-2.9s-2 1.4-2 2.8V21H9z"/></svg>linkedin.com/in/trideep-das</div>
+              <div class="crow"><svg viewBox="0 0 24 24" fill="#7fe3ff"><path d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.9 1.53 2.36 1.09 2.94.83.09-.65.35-1.09.63-1.34-2.22-.25-4.55-1.11-4.55-4.94 0-1.09.39-1.98 1.03-2.68-.1-.26-.45-1.28.1-2.66 0 0 .84-.27 2.75 1.02a9.5 9.5 0 0 1 5 0c1.91-1.29 2.75-1.02 2.75-1.02.55 1.38.2 2.4.1 2.66.64.7 1.03 1.59 1.03 2.68 0 3.84-2.34 4.68-4.57 4.93.36.31.68.92.68 1.85l-.01 2.75c0 .27.18.58.69.48A10 10 0 0 0 12 2z"/></svg>github.com/trdp30</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <h3>Print &amp; NFC notes</h3>
+    <ul>
+      <li><b>Size:</b> CR80 credit-card, 85.6 × 54&nbsp;mm, ~3.4&nbsp;mm corner radius. For a print shop, add <b>2–3&nbsp;mm bleed</b> on every side and keep text ≥4&nbsp;mm from the edge (already respected here).</li>
+      <li><b>Tap zone:</b> the center ring marks where the NFC chip sits — avoid metallic/foil finishes over the center, as metal detunes the antenna. Matte or soft-touch over the center prints fine.</li>
+      <li><b>QR:</b> points to <code>https://profile.trideep.co.in</code> on a white tile for reliable scanning. Regenerate at higher resolution for the final print if needed.</li>
+      <li><b>Encode the chip</b> (NTAG213/215) with the same URL using any “NFC Tools” app so a tap opens your profile.</li>
+      <li><b>Export:</b> use <b>Print → Save as PDF</b> (this page prints each face true-size, one per page) and hand that to the printer.</li>
+    </ul>
+  </div>
+</div>
+</body>
+</html>
