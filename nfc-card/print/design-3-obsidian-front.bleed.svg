@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="97.6mm" height="66mm" viewBox="0 0 976 660" font-family="'Helvetica Neue',Arial,sans-serif">
+  <!-- Canvas 97.6x66mm = trim 85.6x54mm + 3mm bleed + 3mm crop-mark margin.
+       Trim box: x60 y60 -> x916 y600 (die-cut, radius 3.18mm). Bleed box: x30 y30 -> x946 y630. -->
+  <defs>
+    <linearGradient id="acc" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19c3ff"/><stop offset="0.55" stop-color="#7c5cff"/><stop offset="1" stop-color="#ff5c9d"/>
+    </linearGradient>
+    <linearGradient id="mono" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#19c3ff"/><stop offset="1" stop-color="#7c5cff"/>
+    </linearGradient>
+    <linearGradient id="spine" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#19c3ff"/><stop offset="1" stop-color="#7c5cff"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#19c3ff" stop-opacity="0.34"/><stop offset="1" stop-color="#19c3ff" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="glow2" cx="0.5" cy="0.5" r="0.5">
+      <stop offset="0" stop-color="#7c5cff" stop-opacity="0.28"/><stop offset="1" stop-color="#7c5cff" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+
+  <!-- white page so crop-mark margin is clean -->
+  <rect x="0" y="0" width="976" height="660" fill="#ffffff"/>
+
+  <!-- ===== ARTWORK, filled to the 3mm bleed (square corners) ===== -->
+  <rect x="30" y="30" width="916" height="600" fill="#0a0b11"/>
+  <circle cx="830" cy="130" r="300" fill="url(#glow)"/>
+  <circle cx="130" cy="580" r="260" fill="url(#glow2)"/>
+  <rect x="30" y="30" width="39" height="600" fill="url(#spine)"/>
+
+  <!-- foreground: original trim-coord content shifted into the trim box (+60,+60) -->
+  <g transform="translate(60,60)">
+    <g transform="translate(428,248)">
+      <circle r="84" fill="none" stroke="#ffffff" stroke-opacity="0.08" stroke-width="1.4"/>
+      <circle r="62" fill="none" stroke="#19c3ff" stroke-opacity="0.26" stroke-width="1.4"/>
+      <circle r="42" fill="none" stroke="#7c5cff" stroke-opacity="0.5" stroke-width="1.4" stroke-dasharray="3 5"/>
+      <g fill="none" stroke="url(#acc)" stroke-width="3.4" stroke-linecap="round" transform="translate(-22,-22) scale(1.85)">
+        <path d="M8.5 4.5a10 10 0 0 1 0 15"/><path d="M12.5 7a6 6 0 0 1 0 10"/><path d="M16.5 9.4a2.6 2.6 0 0 1 0 5.2"/>
+      </g>
+    </g>
+    <text x="428" y="366" text-anchor="middle" fill="#cfe6ff" font-size="15" font-weight="600" letter-spacing="4">TAP TO CONNECT</text>
+    <rect x="46" y="42" width="60" height="60" rx="15" fill="url(#mono)"/>
+    <text x="76" y="84" text-anchor="middle" fill="#05070f" font-size="34" font-weight="700">T</text>
+    <text x="122" y="66" fill="#8591ad" font-size="15" font-weight="600" letter-spacing="3">FOUNDER · ENGINEER</text>
+    <text x="122" y="90" fill="#7fe3ff" font-size="15" font-weight="600" letter-spacing="3">LOCALITYAI</text>
+    <text x="46" y="452" fill="#eef3ff" font-size="47" font-weight="700" letter-spacing="-1">Trideep Kumar Das</text>
+    <text x="46" y="480" fill="#8591ad" font-size="19" font-weight="500">Tech Lead &amp; Staff Engineer · Founder, LocalityAI</text>
+    <text x="46" y="504" fill="#9fe6ff" font-size="19" font-weight="600" letter-spacing="0.3">profile.trideep.co.in</text>
+  </g>
+
+  <!-- ===== crop marks at the trim corners (sit in the margin, outside the bleed) ===== -->
+  <g stroke="#111111" stroke-width="1.2">
+    <line x1="60"  y1="0"   x2="60"  y2="24"/><line x1="0"   y1="60"  x2="24"  y2="60"/>
+    <line x1="916" y1="0"   x2="916" y2="24"/><line x1="952" y1="60"  x2="976" y2="60"/>
+    <line x1="60"  y1="636" x2="60"  y2="660"/><line x1="0"   y1="600" x2="24"  y2="600"/>
+    <line x1="916" y1="636" x2="916" y2="660"/><line x1="952" y1="600" x2="976" y2="600"/>
+  </g>
+  <text x="488" y="653" text-anchor="middle" fill="#9aa0ab" font-size="11">FRONT · trim 85.6×54mm · 3mm bleed · die radius 3.18mm — marks &amp; margin are trimmed off</text>
+</svg>
