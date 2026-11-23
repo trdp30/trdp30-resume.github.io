@@ -13,7 +13,7 @@ const data = {
 // The browser uses document.title as the default filename when the page is
 // printed to PDF, so set it to a role-specific filename for this position.
 const PDF_FILE_NAME =
-  "Tech Lead & Senior Developer | Node.js, JavaScript, React Native | Remote Team Lead (7-10) | 8 Years";
+  "Frontend Lead | React, TypeScript, Contentful (Headless CMS) | Remote Team Lead (7-10) | 8 Years";
 
 export const TechLeadResume = () => {
   const contentRef = useRef<HTMLDivElement>(null);
@@ -63,7 +63,7 @@ export const TechLeadResume = () => {
             <meta itemProp="addressCountry" content="India" />
           </div>
           <p className="text-lg font-bold mb-2 text-black" itemProp="jobTitle">
-            Tech Lead | Node.js · TypeScript · React | 8 Years
+            Frontend Lead | React · TypeScript · Headless CMS (Contentful) | 8 Years
           </p>
           <div className="flex flex-wrap items-center gap-4 text-sm text-black">
             <div className="flex items-center gap-1">
@@ -167,24 +167,30 @@ export const TechLeadResume = () => {
             Professional Summary
           </h2>
           <p className="text-sm leading-relaxed text-black">
-            Hands-on <strong>Tech Lead</strong> and{" "}
-            <strong>Senior Developer</strong> with <strong>8 years</strong> of
-            experience — <strong>actively writing production code</strong> and
-            comfortable <strong>leveraging AI tools</strong> to accelerate
-            development. As a{" "}
-            <strong>Staff Software Engineer</strong> at Talview, led and mentored
-            a <strong>fully remote engineering team of 7–10</strong> for{" "}
-            <strong>4+ years</strong> while coding alongside the team —
-            owning <strong>Agile/Scrum</strong> delivery,{" "}
-            <strong>partnering with the CTO on new-feature direction and
-            company-wide coding standards</strong>, and{" "}
-            <strong>owning the company's largest, flagship codebase</strong>.
-            Strong across <strong>JavaScript</strong>,{" "}
-            <strong>TypeScript</strong>, <strong>Node.js</strong>, and{" "}
-            <strong>React Native</strong>. A <strong>founder</strong> who built a
-            product end-to-end — bridging engineering execution with
-            product and business priorities while keeping a focused team
-            shipping.
+            Hands-on <strong>Frontend Lead</strong> with{" "}
+            <strong>8 years</strong> building scalable, high-performance{" "}
+            <strong>React / TypeScript</strong> web applications and owning{" "}
+            <strong>frontend architecture</strong>,{" "}
+            <strong>design systems</strong>, and coding standards —{" "}
+            <strong>actively writing production code</strong> and comfortable{" "}
+            <strong>leveraging AI tools</strong> to accelerate delivery. As a{" "}
+            <strong>Staff Software Engineer &amp; Front-End Lead</strong> at
+            Talview, led and mentored a{" "}
+            <strong>fully remote frontend team of 7–10</strong> for{" "}
+            <strong>4+ years</strong> while coding alongside the team — owning
+            reusable component libraries,{" "}
+            <strong>headless CMS (Contentful) integration</strong>,{" "}
+            <strong>Core Web Vitals</strong>,{" "}
+            <strong>WCAG accessibility</strong>, <strong>SEO</strong>, and{" "}
+            <strong>localization / i18n</strong>, running{" "}
+            <strong>Agile/Scrum</strong> delivery and{" "}
+            <strong>code reviews</strong>, and partnering with the{" "}
+            <strong>CTO</strong> on frontend direction and company-wide
+            standards. A <strong>founder</strong> who built an AI-native product
+            end-to-end across <strong>React</strong>,{" "}
+            <strong>React Native</strong>, and <strong>Node.js</strong> —
+            bridging engineering execution with product and business priorities
+            while keeping a focused team shipping.
           </p>
         </section>
 
@@ -200,31 +206,39 @@ export const TechLeadResume = () => {
           <meta itemProp="name" content="Technical Skills" />
           <div className="text-sm text-black space-y-0.5">
             <p>
-              <span className="font-semibold">Core:</span> JavaScript,
-              TypeScript, Node.js (Express, Hono, Fastify)
+              <span className="font-semibold">Frontend:</span> React,
+              TypeScript, JavaScript (ES6+), Redux, Module Federation, Tailwind
+              CSS, Shadcn/ui, Radix UI, Storybook, Responsive UI
             </p>
             <p>
-              <span className="font-semibold">Frontend &amp; Mobile:</span>{" "}
-              React, React Native, Redux, Module Federation, Responsive UI
+              <span className="font-semibold">Headless CMS &amp; Content:</span>{" "}
+              Contentful / headless CMS integration (Delivery, Preview, GraphQL,
+              Images APIs), content modeling, content-driven UIs
             </p>
             <p>
-              <span className="font-semibold">APIs &amp; Data:</span> REST &amp;
-              GraphQL APIs, PostgreSQL, Prisma, Microservices
+              <span className="font-semibold">Performance, A11y &amp; SEO:</span>{" "}
+              Core Web Vitals, code splitting, lazy loading, caching, WCAG 2.1+,
+              SEO, Localization / i18n
             </p>
             <p>
-              <span className="font-semibold">Engineering Process:</span>{" "}
-              Agile/Scrum, Sprint Planning, Backlog Grooming, Code Reviews,
-              On-Time Delivery, CI/CD
+              <span className="font-semibold">Testing &amp; Quality:</span> Jest,
+              React Testing Library, Playwright, Cypress, Code Reviews, Release
+              Management
             </p>
             <p>
-              <span className="font-semibold">Leadership:</span> Fully Remote
-              Team Leadership (7–10), Mentorship, Technical Decision-Making,
-              Cross-Functional Collaboration
+              <span className="font-semibold">Backend &amp; Data:</span> Node.js
+              (Express, Hono, Fastify), REST &amp; GraphQL APIs, PostgreSQL,
+              Prisma, Microservices
+            </p>
+            <p>
+              <span className="font-semibold">Process &amp; Leadership:</span>{" "}
+              Agile/Scrum, Sprint Planning, Backlog Grooming, Fully Remote Team
+              Leadership (7–10), Mentorship, Cross-Functional Collaboration
             </p>
             <p>
               <span className="font-semibold">AI-Assisted Dev &amp; Platform:</span>{" "}
               Cursor, Claude Code, LLM / Agentic Apps; GCP, Docker, Git, GitHub
-              Actions
+              Actions, CI/CD
             </p>
           </div>
         </section>
@@ -342,6 +356,15 @@ export const TechLeadResume = () => {
                 <strong>40% faster loads</strong>,{" "}
                 <strong>85%+ coverage</strong>, and{" "}
                 <strong>70% fewer production bugs</strong>.
+              </li>
+              <li>
+                Built content-driven React UIs backed by{" "}
+                <strong>headless CMS (Contentful)</strong> via{" "}
+                <strong>Delivery / Preview / GraphQL APIs</strong> — letting
+                content teams publish without engineering — and drove{" "}
+                <strong>Core Web Vitals</strong>, <strong>SEO</strong>,{" "}
+                <strong>WCAG accessibility</strong>, and{" "}
+                <strong>localization / i18n</strong> across key user journeys.
               </li>
               <li>
                 Led the team to <strong>ship a brand-new application
