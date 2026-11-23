@@ -164,9 +164,13 @@ export const SeniorFrontendResume = () => {
             experience in <strong>state management</strong> (<strong>Redux Toolkit</strong>,
             <strong> RTK Query</strong>, <strong>Context API</strong>), <strong>REST API</strong> and GraphQL
             integration, <strong>web performance optimization</strong>, <strong>WCAG accessibility</strong>,
-            and <strong>unit &amp; integration testing</strong>. Fluent in <strong>Git</strong>,
-            <strong> CI/CD</strong>, and <strong>frontend security best practices</strong>. Delivered
-            measurable impact: <strong>40% faster load times</strong>, <strong>85%+ test coverage</strong>,
+            and <strong>unit &amp; integration testing</strong> (<strong>Jest</strong>,
+            <strong> React Testing Library</strong>, <strong>Playwright</strong>). Fluent in <strong>Git</strong>,
+            <strong> CI/CD</strong>, <strong>Docker</strong>, <strong>GCP</strong>, and <strong>frontend security
+            best practices</strong> — <strong>OAuth2/OIDC</strong> auth flows (<strong>WorkOS AuthKit</strong>),
+            XSS/CSRF mitigation, and CSP. Domain experience across <strong>SaaS</strong> and
+            <strong> fintech/payments</strong> (consumer lending app with <strong>Razorpay</strong> integration).
+            Delivered measurable impact: <strong>40% faster load times</strong>, <strong>85%+ test coverage</strong>,
             and <strong>70% fewer production bugs</strong>. Comfortable working remotely across EU time
             zones with distributed, cross-functional teams.
           </p>
@@ -214,7 +218,7 @@ export const SeniorFrontendResume = () => {
             <p>
               <span className="font-semibold">Testing &amp; Quality:</span>{" "}
               <span itemProp="itemListElement">
-                Jest, React Testing Library, Cypress, Unit Testing, Integration Testing, E2E Testing
+                Jest, React Testing Library, Playwright, Cypress, Unit Testing, Integration Testing, E2E Testing
               </span>
             </p>
             <p>
@@ -224,9 +228,9 @@ export const SeniorFrontendResume = () => {
               </span>
             </p>
             <p>
-              <span className="font-semibold">Git, CI/CD &amp; Security:</span>{" "}
+              <span className="font-semibold">Git, CI/CD, Cloud &amp; Security:</span>{" "}
               <span itemProp="itemListElement">
-                Git, GitHub Actions, CI/CD Pipelines, Docker, Frontend Security (XSS/CSRF mitigation, CSP, secure auth flows)
+                Git, GitHub Actions, CI/CD Pipelines, Docker, GCP, OAuth2/OIDC &amp; secure auth flows (WorkOS AuthKit), Frontend Security (XSS/CSRF mitigation, CSP, token handling)
               </span>
             </p>
             <p>
@@ -274,6 +278,18 @@ export const SeniorFrontendResume = () => {
               <li>
                 Own <strong>frontend architecture</strong>, reusable components,
                 state management, and performance across mobile and web.
+              </li>
+              <li>
+                Implemented <strong>OAuth2 / OIDC</strong> authentication with{" "}
+                <strong>WorkOS AuthKit</strong> — <strong>JWT</strong> verification against
+                JWKS with issuer, audience, and scope validation — securing the super-app's
+                API gateway as an <strong>OAuth 2.1 resource server</strong>.
+              </li>
+              <li>
+                Integrated secure in-app <strong>payments (Razorpay)</strong> and{" "}
+                <strong>JWT/RBAC</strong> auth into the consumer mobile app
+                (<strong>fintech/payments</strong> domain) with secure storage and
+                real-time data flows.
               </li>
             </ul>
           </div>
